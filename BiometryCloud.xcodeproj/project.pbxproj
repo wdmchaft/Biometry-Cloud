@@ -1,0 +1,312 @@
+// !$*UTF8*$!
+{
+	archiveVersion = 1;
+	classes = {
+	};
+	objectVersion = 46;
+	objects = {
+
+/* Begin PBXBuildFile section */
+		F122C68A143E1D6F00E2FFE8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F122C689143E1D6F00E2FFE8 /* UIKit.framework */; };
+		F122C68C143E1D6F00E2FFE8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F122C68B143E1D6F00E2FFE8 /* Foundation.framework */; };
+		F122C68E143E1D6F00E2FFE8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F122C68D143E1D6F00E2FFE8 /* CoreGraphics.framework */; };
+		F122C694143E1D6F00E2FFE8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F122C692143E1D6F00E2FFE8 /* InfoPlist.strings */; };
+		F122C696143E1D6F00E2FFE8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F122C695143E1D6F00E2FFE8 /* main.m */; };
+		F122C69A143E1D6F00E2FFE8 /* BiometryCloudAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F122C699143E1D6F00E2FFE8 /* BiometryCloudAppDelegate.m */; };
+		F122C69E143E1D7000E2FFE8 /* BiometryCloudAppDelegate_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = F122C69D143E1D7000E2FFE8 /* BiometryCloudAppDelegate_iPhone.m */; };
+		F122C6A1143E1D7000E2FFE8 /* MainWindow_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = F122C69F143E1D7000E2FFE8 /* MainWindow_iPhone.xib */; };
+		F122C6A5143E1D7000E2FFE8 /* BiometryCloudAppDelegate_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = F122C6A4143E1D7000E2FFE8 /* BiometryCloudAppDelegate_iPad.m */; };
+		F122C6A8143E1D7000E2FFE8 /* MainWindow_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = F122C6A6143E1D7000E2FFE8 /* MainWindow_iPad.xib */; };
+/* End PBXBuildFile section */
+
+/* Begin PBXFileReference section */
+		F122C685143E1D6F00E2FFE8 /* BiometryCloud.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BiometryCloud.app; sourceTree = BUILT_PRODUCTS_DIR; };
+		F122C689143E1D6F00E2FFE8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
+		F122C68B143E1D6F00E2FFE8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
+		F122C68D143E1D6F00E2FFE8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		F122C691143E1D6F00E2FFE8 /* BiometryCloud-Info.plist */ = {isa = PBXFileReference; path = "BiometryCloud-Info.plist"; sourceTree = "<group>"; };
+		F122C693143E1D6F00E2FFE8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
+		F122C695143E1D6F00E2FFE8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
+		F122C697143E1D6F00E2FFE8 /* BiometryCloud-Prefix.pch */ = {isa = PBXFileReference; path = "BiometryCloud-Prefix.pch"; sourceTree = "<group>"; };
+		F122C698143E1D6F00E2FFE8 /* BiometryCloudAppDelegate.h */ = {isa = PBXFileReference; path = BiometryCloudAppDelegate.h; sourceTree = "<group>"; };
+		F122C699143E1D6F00E2FFE8 /* BiometryCloudAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BiometryCloudAppDelegate.m; sourceTree = "<group>"; };
+		F122C69C143E1D6F00E2FFE8 /* BiometryCloudAppDelegate_iPhone.h */ = {isa = PBXFileReference; name = BiometryCloudAppDelegate_iPhone.h; path = iPhone/BiometryCloudAppDelegate_iPhone.h; sourceTree = "<group>"; };
+		F122C69D143E1D7000E2FFE8 /* BiometryCloudAppDelegate_iPhone.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = BiometryCloudAppDelegate_iPhone.m; path = iPhone/BiometryCloudAppDelegate_iPhone.m; sourceTree = "<group>"; };
+		F122C6A0143E1D7000E2FFE8 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = iPhone/en.lproj/MainWindow_iPhone.xib; sourceTree = "<group>"; };
+		F122C6A3143E1D7000E2FFE8 /* BiometryCloudAppDelegate_iPad.h */ = {isa = PBXFileReference; name = BiometryCloudAppDelegate_iPad.h; path = iPad/BiometryCloudAppDelegate_iPad.h; sourceTree = "<group>"; };
+		F122C6A4143E1D7000E2FFE8 /* BiometryCloudAppDelegate_iPad.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = BiometryCloudAppDelegate_iPad.m; path = iPad/BiometryCloudAppDelegate_iPad.m; sourceTree = "<group>"; };
+		F122C6A7143E1D7000E2FFE8 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = iPad/en.lproj/MainWindow_iPad.xib; sourceTree = "<group>"; };
+/* End PBXFileReference section */
+
+/* Begin PBXFrameworksBuildPhase section */
+		F122C682143E1D6F00E2FFE8 /* Frameworks */ = {
+			isa = PBXFrameworksBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F122C68A143E1D6F00E2FFE8 /* UIKit.framework in Frameworks */,
+				F122C68C143E1D6F00E2FFE8 /* Foundation.framework in Frameworks */,
+				F122C68E143E1D6F00E2FFE8 /* CoreGraphics.framework in Frameworks */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXFrameworksBuildPhase section */
+
+/* Begin PBXGroup section */
+		F122C67A143E1D6F00E2FFE8 = {
+			isa = PBXGroup;
+			children = (
+				F122C68F143E1D6F00E2FFE8 /* BiometryCloud */,
+				F122C688143E1D6F00E2FFE8 /* Frameworks */,
+				F122C686143E1D6F00E2FFE8 /* Products */,
+			);
+			sourceTree = "<group>";
+		};
+		F122C686143E1D6F00E2FFE8 /* Products */ = {
+			isa = PBXGroup;
+			children = (
+				F122C685143E1D6F00E2FFE8 /* BiometryCloud.app */,
+			);
+			name = Products;
+			sourceTree = "<group>";
+		};
+		F122C688143E1D6F00E2FFE8 /* Frameworks */ = {
+			isa = PBXGroup;
+			children = (
+				F122C689143E1D6F00E2FFE8 /* UIKit.framework */,
+				F122C68B143E1D6F00E2FFE8 /* Foundation.framework */,
+				F122C68D143E1D6F00E2FFE8 /* CoreGraphics.framework */,
+			);
+			name = Frameworks;
+			sourceTree = "<group>";
+		};
+		F122C68F143E1D6F00E2FFE8 /* BiometryCloud */ = {
+			isa = PBXGroup;
+			children = (
+				F122C698143E1D6F00E2FFE8 /* BiometryCloudAppDelegate.h */,
+				F122C699143E1D6F00E2FFE8 /* BiometryCloudAppDelegate.m */,
+				F122C69B143E1D6F00E2FFE8 /* iPhone */,
+				F122C6A2143E1D7000E2FFE8 /* iPad */,
+				F122C690143E1D6F00E2FFE8 /* Supporting Files */,
+			);
+			path = BiometryCloud;
+			sourceTree = "<group>";
+		};
+		F122C690143E1D6F00E2FFE8 /* Supporting Files */ = {
+			isa = PBXGroup;
+			children = (
+				F122C691143E1D6F00E2FFE8 /* BiometryCloud-Info.plist */,
+				F122C692143E1D6F00E2FFE8 /* InfoPlist.strings */,
+				F122C695143E1D6F00E2FFE8 /* main.m */,
+				F122C697143E1D6F00E2FFE8 /* BiometryCloud-Prefix.pch */,
+			);
+			name = "Supporting Files";
+			sourceTree = "<group>";
+		};
+		F122C69B143E1D6F00E2FFE8 /* iPhone */ = {
+			isa = PBXGroup;
+			children = (
+				F122C69C143E1D6F00E2FFE8 /* BiometryCloudAppDelegate_iPhone.h */,
+				F122C69D143E1D7000E2FFE8 /* BiometryCloudAppDelegate_iPhone.m */,
+				F122C69F143E1D7000E2FFE8 /* MainWindow_iPhone.xib */,
+			);
+			name = iPhone;
+			sourceTree = "<group>";
+		};
+		F122C6A2143E1D7000E2FFE8 /* iPad */ = {
+			isa = PBXGroup;
+			children = (
+				F122C6A3143E1D7000E2FFE8 /* BiometryCloudAppDelegate_iPad.h */,
+				F122C6A4143E1D7000E2FFE8 /* BiometryCloudAppDelegate_iPad.m */,
+				F122C6A6143E1D7000E2FFE8 /* MainWindow_iPad.xib */,
+			);
+			name = iPad;
+			sourceTree = "<group>";
+		};
+/* End PBXGroup section */
+
+/* Begin PBXNativeTarget section */
+		F122C684143E1D6F00E2FFE8 /* BiometryCloud */ = {
+			isa = PBXNativeTarget;
+			buildConfigurationList = F122C6AB143E1D7000E2FFE8 /* Build configuration list for PBXNativeTarget "BiometryCloud" */;
+			buildPhases = (
+				F122C681143E1D6F00E2FFE8 /* Sources */,
+				F122C682143E1D6F00E2FFE8 /* Frameworks */,
+				F122C683143E1D6F00E2FFE8 /* Resources */,
+			);
+			buildRules = (
+			);
+			dependencies = (
+			);
+			name = BiometryCloud;
+			productName = BiometryCloud;
+			productReference = F122C685143E1D6F00E2FFE8 /* BiometryCloud.app */;
+			productType = "com.apple.product-type.application";
+		};
+/* End PBXNativeTarget section */
+
+/* Begin PBXProject section */
+		F122C67C143E1D6F00E2FFE8 /* Project object */ = {
+			isa = PBXProject;
+			buildConfigurationList = F122C67F143E1D6F00E2FFE8 /* Build configuration list for PBXProject "BiometryCloud" */;
+			compatibilityVersion = "Xcode 3.2";
+			developmentRegion = English;
+			hasScannedForEncodings = 0;
+			knownRegions = (
+				en,
+			);
+			mainGroup = F122C67A143E1D6F00E2FFE8;
+			productRefGroup = F122C686143E1D6F00E2FFE8 /* Products */;
+			projectDirPath = "";
+			projectRoot = "";
+			targets = (
+				F122C684143E1D6F00E2FFE8 /* BiometryCloud */,
+			);
+		};
+/* End PBXProject section */
+
+/* Begin PBXResourcesBuildPhase section */
+		F122C683143E1D6F00E2FFE8 /* Resources */ = {
+			isa = PBXResourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F122C694143E1D6F00E2FFE8 /* InfoPlist.strings in Resources */,
+				F122C6A1143E1D7000E2FFE8 /* MainWindow_iPhone.xib in Resources */,
+				F122C6A8143E1D7000E2FFE8 /* MainWindow_iPad.xib in Resources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXResourcesBuildPhase section */
+
+/* Begin PBXSourcesBuildPhase section */
+		F122C681143E1D6F00E2FFE8 /* Sources */ = {
+			isa = PBXSourcesBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+				F122C696143E1D6F00E2FFE8 /* main.m in Sources */,
+				F122C69A143E1D6F00E2FFE8 /* BiometryCloudAppDelegate.m in Sources */,
+				F122C69E143E1D7000E2FFE8 /* BiometryCloudAppDelegate_iPhone.m in Sources */,
+				F122C6A5143E1D7000E2FFE8 /* BiometryCloudAppDelegate_iPad.m in Sources */,
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+		};
+/* End PBXSourcesBuildPhase section */
+
+/* Begin PBXVariantGroup section */
+		F122C692143E1D6F00E2FFE8 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F122C693143E1D6F00E2FFE8 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		F122C69F143E1D7000E2FFE8 /* MainWindow_iPhone.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F122C6A0143E1D7000E2FFE8 /* en */,
+			);
+			name = MainWindow_iPhone.xib;
+			sourceTree = "<group>";
+		};
+		F122C6A6143E1D7000E2FFE8 /* MainWindow_iPad.xib */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F122C6A7143E1D7000E2FFE8 /* en */,
+			);
+			name = MainWindow_iPad.xib;
+			sourceTree = "<group>";
+		};
+/* End PBXVariantGroup section */
+
+/* Begin XCBuildConfiguration section */
+		F122C6A9143E1D7000E2FFE8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = NO;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_DYNAMIC_NO_PIC = NO;
+				GCC_OPTIMIZATION_LEVEL = 0;
+				GCC_PREPROCESSOR_DEFINITIONS = (
+					"DEBUG=1",
+					"$(inherited)",
+				);
+				GCC_SYMBOLS_PRIVATE_EXTERN = NO;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+			};
+			name = Debug;
+		};
+		F122C6AA143E1D7000E2FFE8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				ALWAYS_SEARCH_USER_PATHS = NO;
+				ARCHS = "$(ARCHS_STANDARD_32_BIT)";
+				"CODE_SIGN_IDENTITY[sdk=iphoneos*]" = "iPhone Developer";
+				COPY_PHASE_STRIP = YES;
+				GCC_C_LANGUAGE_STANDARD = gnu99;
+				GCC_VERSION = com.apple.compilers.llvmgcc42;
+				GCC_WARN_ABOUT_MISSING_PROTOTYPES = YES;
+				GCC_WARN_ABOUT_RETURN_TYPE = YES;
+				GCC_WARN_UNUSED_VARIABLE = YES;
+				IPHONEOS_DEPLOYMENT_TARGET = 4.3;
+				OTHER_CFLAGS = "-DNS_BLOCK_ASSERTIONS=1";
+				SDKROOT = iphoneos;
+				TARGETED_DEVICE_FAMILY = "1,2";
+				VALIDATE_PRODUCT = YES;
+			};
+			name = Release;
+		};
+		F122C6AC143E1D7000E2FFE8 /* Debug */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BiometryCloud/BiometryCloud-Prefix.pch";
+				INFOPLIST_FILE = "BiometryCloud/BiometryCloud-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Debug;
+		};
+		F122C6AD143E1D7000E2FFE8 /* Release */ = {
+			isa = XCBuildConfiguration;
+			buildSettings = {
+				GCC_PRECOMPILE_PREFIX_HEADER = YES;
+				GCC_PREFIX_HEADER = "BiometryCloud/BiometryCloud-Prefix.pch";
+				INFOPLIST_FILE = "BiometryCloud/BiometryCloud-Info.plist";
+				PRODUCT_NAME = "$(TARGET_NAME)";
+				WRAPPER_EXTENSION = app;
+			};
+			name = Release;
+		};
+/* End XCBuildConfiguration section */
+
+/* Begin XCConfigurationList section */
+		F122C67F143E1D6F00E2FFE8 /* Build configuration list for PBXProject "BiometryCloud" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F122C6A9143E1D7000E2FFE8 /* Debug */,
+				F122C6AA143E1D7000E2FFE8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
+		};
+		F122C6AB143E1D7000E2FFE8 /* Build configuration list for PBXNativeTarget "BiometryCloud" */ = {
+			isa = XCConfigurationList;
+			buildConfigurations = (
+				F122C6AC143E1D7000E2FFE8 /* Debug */,
+				F122C6AD143E1D7000E2FFE8 /* Release */,
+			);
+			defaultConfigurationIsVisible = 0;
+		};
+/* End XCConfigurationList section */
+	};
+	rootObject = F122C67C143E1D6F00E2FFE8 /* Project object */;
+}
