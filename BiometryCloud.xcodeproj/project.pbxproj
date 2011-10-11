@@ -7,6 +7,10 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		6E0F4B3214449B5B0084080B /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E0F4B3114449B5B0084080B /* Accelerate.framework */; };
+		6E0F4B3514449FA20084080B /* libopencv_core.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E0F4B3414449FA20084080B /* libopencv_core.a */; };
+		6E0F4B3914449FE60084080B /* libopencv_imgproc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E0F4B3714449FE60084080B /* libopencv_imgproc.a */; };
+		6E0F4B3A14449FE60084080B /* libopencv_objdetect.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E0F4B3814449FE60084080B /* libopencv_objdetect.a */; };
 		F122C68A143E1D6F00E2FFE8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F122C689143E1D6F00E2FFE8 /* UIKit.framework */; };
 		F122C68C143E1D6F00E2FFE8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F122C68B143E1D6F00E2FFE8 /* Foundation.framework */; };
 		F122C694143E1D6F00E2FFE8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F122C692143E1D6F00E2FFE8 /* InfoPlist.strings */; };
@@ -29,6 +33,10 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		6E0F4B3114449B5B0084080B /* Accelerate.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Accelerate.framework; path = System/Library/Frameworks/Accelerate.framework; sourceTree = SDKROOT; };
+		6E0F4B3414449FA20084080B /* libopencv_core.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libopencv_core.a; path = opencv_device/lib/libopencv_core.a; sourceTree = SOURCE_ROOT; };
+		6E0F4B3714449FE60084080B /* libopencv_imgproc.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libopencv_imgproc.a; path = opencv_device/lib/libopencv_imgproc.a; sourceTree = SOURCE_ROOT; };
+		6E0F4B3814449FE60084080B /* libopencv_objdetect.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libopencv_objdetect.a; path = opencv_device/lib/libopencv_objdetect.a; sourceTree = SOURCE_ROOT; };
 		F122C685143E1D6F00E2FFE8 /* BiometryCloud.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BiometryCloud.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F122C689143E1D6F00E2FFE8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F122C68B143E1D6F00E2FFE8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -64,6 +72,7 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6E0F4B3214449B5B0084080B /* Accelerate.framework in Frameworks */,
 				F1F608AE143E36D600A6E0DC /* AVFoundation.framework in Frameworks */,
 				F122C68A143E1D6F00E2FFE8 /* UIKit.framework in Frameworks */,
 				F122C68C143E1D6F00E2FFE8 /* Foundation.framework in Frameworks */,
@@ -71,12 +80,25 @@
 				F1F608C8143E4F9E00A6E0DC /* CoreMedia.framework in Frameworks */,
 				F1F608C9143E4F9E00A6E0DC /* CoreVideo.framework in Frameworks */,
 				F1F608CA143E4F9E00A6E0DC /* QuartzCore.framework in Frameworks */,
+				6E0F4B3514449FA20084080B /* libopencv_core.a in Frameworks */,
+				6E0F4B3914449FE60084080B /* libopencv_imgproc.a in Frameworks */,
+				6E0F4B3A14449FE60084080B /* libopencv_objdetect.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		6E0F4B3614449FC00084080B /* Libraries */ = {
+			isa = PBXGroup;
+			children = (
+				6E0F4B3714449FE60084080B /* libopencv_imgproc.a */,
+				6E0F4B3814449FE60084080B /* libopencv_objdetect.a */,
+				6E0F4B3414449FA20084080B /* libopencv_core.a */,
+			);
+			name = Libraries;
+			sourceTree = "<group>";
+		};
 		F122C67A143E1D6F00E2FFE8 = {
 			isa = PBXGroup;
 			children = (
@@ -97,6 +119,7 @@
 		F122C688143E1D6F00E2FFE8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				6E0F4B3114449B5B0084080B /* Accelerate.framework */,
 				F1F608BF143E4F8B00A6E0DC /* CoreGraphics.framework */,
 				F1F608C0143E4F8B00A6E0DC /* CoreMedia.framework */,
 				F1F608C1143E4F8B00A6E0DC /* CoreVideo.framework */,
@@ -118,6 +141,7 @@
 				F122C69B143E1D6F00E2FFE8 /* iPhone */,
 				F122C6A2143E1D7000E2FFE8 /* iPad */,
 				F122C690143E1D6F00E2FFE8 /* Supporting Files */,
+				6E0F4B3614449FC00084080B /* Libraries */,
 			);
 			path = BiometryCloud;
 			sourceTree = "<group>";
@@ -311,7 +335,16 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BiometryCloud/BiometryCloud-Prefix.pch";
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/opencv_device/include";
 				INFOPLIST_FILE = "BiometryCloud/BiometryCloud-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/opencv_device/lib\"",
+				);
+				OTHER_LDFLAGS = (
+					"-lstdc++",
+					"-lz",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
@@ -322,7 +355,16 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BiometryCloud/BiometryCloud-Prefix.pch";
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/opencv_device/include";
 				INFOPLIST_FILE = "BiometryCloud/BiometryCloud-Info.plist";
+				LIBRARY_SEARCH_PATHS = (
+					"$(inherited)",
+					"\"$(SRCROOT)/opencv_device/lib\"",
+				);
+				OTHER_LDFLAGS = (
+					"-lstdc++",
+					"-lz",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				WRAPPER_EXTENSION = app;
 			};
