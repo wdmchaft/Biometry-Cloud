@@ -219,7 +219,7 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
 	CGImageRef newImage = CGBitmapContextCreateImage(newContext); 
 
 	//The next lines will be in the openCV class
-	//if (!copyingFrame) {
+	if (!copyingFrame) {
 		
     
         CGImageRef aux = currentShownFrame;
@@ -227,12 +227,11 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
         currentShownFrame = newImage;
         
         CGImageRelease(aux);
-	//}
-	//else {
-		//debugLog(@"Funciona!");
-        
-        //CGImageRelease(newImage);
-	//}
+	}
+	else {
+		        
+        CGImageRelease(newImage);
+	}
 	
 	
     /*We release some components*/
@@ -281,6 +280,16 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     if ([captureSession isRunning]) {
         [self setupCamera];
     }
+}
+
+//methods of the delegate
+-(UIImage *) getCurrentFrame 
+{
+    copyingFrame=TRUE;
+    UIImage	*frameImage = [[UIImage alloc] initWithCGImage:(CGImageRef)currentShownFrame scale:1.0f orientation:UIImageOrientationRight];
+    copyingFrame=FALSE;
+    return frameImage;
+    
 }
 
 @end
