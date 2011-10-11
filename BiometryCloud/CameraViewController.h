@@ -8,25 +8,32 @@
 
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
-//#import <CoreGraphics/CoreGraphics.h>
-//#import <CoreVideo/CoreVideo.h>
-//#import <CoreMedia/CoreMedia.h>
-//#import <QuartzCore/QuartzCore.h>
-//#import <AudioToolbox/AudioToolbox.h>
 
 #import "BiometryDetector.h"
 
 @interface CameraViewController : UIViewController <AVCaptureVideoDataOutputSampleBufferDelegate, BiometryDelegate>
 
 {
-    BOOL frontalCamera;
+    BOOL hasFrontalCamera;
     AVCaptureDeviceInput *captureInput;
     AVCaptureSession *captureSession;
     AVCaptureVideoPreviewLayer *previewLayer;
     IBOutlet UIView *cameraView;
     
     BiometryDetector *biometryDetector;
+    
+    CGImageRef currentShownFrame;
+    BOOL copyingFrame;
+    float _scale;
+    BOOL _needsAutoExposure;
+    BOOL _needsWhiteBalance;
+    CGPoint _pointOfExposure;
 }
+
+@property (nonatomic, assign, setter = setNeedsAutoExposure:) BOOL needsAutoExposure;
+@property (nonatomic, assign, setter = setNeedsWhiteBalance:) BOOL needsWhiteBalance;
+@property (nonatomic, assign, setter = setPointOfExposure:) CGPoint pointOfExposure;
+@property (nonatomic, assign, setter = setScale:) float scale;
 
 -(void)initCapture;
 -(void)startCapture;
