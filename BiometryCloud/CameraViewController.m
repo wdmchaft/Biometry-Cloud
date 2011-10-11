@@ -53,6 +53,7 @@
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    [self initCapture];
     
     biometryDetector.viewSize = self.view.frame.size;
     biometryDetector.validROI = self.view.frame; //MASK
@@ -216,6 +217,11 @@
     
     previewLayer = [AVCaptureVideoPreviewLayer layerWithSession:captureSession];
     previewLayer.frame=cameraView.bounds;
+    
+    [self performSelectorOnMainThread:@selector(setPreviewLayer) withObject:nil waitUntilDone:YES];    
+	/*We start the capture*/
+	[self startCapture];
+	[cameraView performSelectorOnMainThread:@selector(setNeedsDisplay) withObject:nil waitUntilDone:YES];
 }
 
 //method for extracting the image
@@ -307,6 +313,14 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     {
         [self setupCamera];
     }
+}
+-(void) setPreviewLayer
+{
+    previewLayer.transform = CATransform3DMakeScale(_scale, _scale, 0);
+    
+    previewLayer.contentsGravity = kCAGravityResizeAspectFill;
+    
+    [cameraView.layer addSublayer:previewLayer];
 }
 
 #pragma mark - Biometry Delegate methods
