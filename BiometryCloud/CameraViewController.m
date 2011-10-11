@@ -10,13 +10,16 @@
 
 @implementation CameraViewController
 
-@synthesize _needsAutoExposure=needsAutoExposure, _needsWhiteBalance=needsWhiteBalance;
+@synthesize needsAutoExposure=_needsAutoExposure, needsWhiteBalance=_needsWhiteBalance, pointOfExposure=_pointOfExposure;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
-        // Custom initialization
+        //start with initial params
+        [self setPointOfExposure:CGPointMake(0.8f, 0.5f)];
+        [self setNeedsWhiteBalance:YES];
+        [self setNeedsAutoExposure:NO];
     }
     return self;
 }
@@ -78,15 +81,14 @@
     //lock the device for configuration
     if ([captureInput.device lockForConfiguration:nil]) 
     {
-        //this method needs a bool that comes as a param from the server: (bool)enableAutoExposure
         //it also needs a param of a point of exposure, for now, we won't use params
-        if ([captureInput.device isExposureModeSupported:AVCaptureExposureModeContinuousAutoExposure]) {
+        if ([captureInput.device isExposureModeSupported:AVCaptureExposureModeContinuousAutoExposure]&&_needsAutoExposure) {
             captureInput.device.exposurePointOfInterest = CGPointMake(0.8f, 0.5f);
             [captureInput.device setExposureMode:AVCaptureExposureModeContinuousAutoExposure];
         }
         
         //also needed param (bool)enableWhiteBalance
-        if ([captureInput.device isWhiteBalanceModeSupported:AVCaptureWhiteBalanceModeContinuousAutoWhiteBalance]) {
+        if ([captureInput.device isWhiteBalanceModeSupported:AVCaptureWhiteBalanceModeContinuousAutoWhiteBalance]&&_needsWhiteBalance) {
             [captureInput.device setWhiteBalanceMode:AVCaptureWhiteBalanceModeContinuousAutoWhiteBalance];
         } 
         //Unlock the device once the configuration is finished
@@ -190,19 +192,27 @@
 
 //setting of params for the cammera.
 
--(void) setNeedsAutoExposure:(BOOL)_needsAutoExposure 
+-(void) setNeedsAutoExposure:(BOOL)needsAutoExposure 
 {
-    needsAutoExposure=_needsAutoExposure;
+    _needsAutoExposure=needsAutoExposure;
     if ([captureSession isRunning]) {
         [self setupCamera];
     }
     
 }
--(void) setNeedsWhiteBalance:(BOOL)_needsWhiteBalance 
+-(void) setNeedsWhiteBalance:(BOOL)needsWhiteBalance 
 {
-    needsWhiteBalance=_needsWhiteBalance;
+    _needsWhiteBalance=needsWhiteBalance;
     if ([captureSession isRunning]) {
         [self setupCamera];
     }
 }
+-(void) setPointOfExposure:(CGPoint)pointOfExposure
+{
+    _pointOfExposure=pointOfExposure;
+    if ([captureSession isRunning]) {
+        [self setupCamera];
+    }
+}
+
 @end

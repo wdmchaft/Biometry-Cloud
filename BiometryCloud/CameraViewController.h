@@ -23,12 +23,14 @@
     AVCaptureSession *captureSession;
     AVCaptureVideoPreviewLayer *previewLayer;
     IBOutlet UIView *cameraView;
-    BOOL needsAutoExposure;
-    BOOL needsWhiteBalance;
+//    BOOL needsAutoExposure;
+//    BOOL needsWhiteBalance;
+//    CGPoint pointOfExposure;
 }
 
-@property (nonatomic, assign, setter = setNeedsAutoExposure:) BOOL _needsAutoExposure;
-@property (nonatomic, assign, setter = setNeedsWhiteBalance:) BOOL _needsWhiteBalance;
+@property (nonatomic, assign, setter = setNeedsAutoExposure:) BOOL needsAutoExposure;
+@property (nonatomic, assign, setter = setNeedsWhiteBalance:) BOOL needsWhiteBalance;
+@property (nonatomic, assign, setter = setPointOfExposure:) CGPoint pointOfExposure;
 
 -(void)initCapture;
 -(void)startCapture;
