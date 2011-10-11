@@ -10,6 +10,7 @@
 
 @implementation CameraViewController
 
+//create the setters and getters for the parameters of the cammera
 @synthesize needsAutoExposure=_needsAutoExposure, needsWhiteBalance=_needsWhiteBalance, pointOfExposure=_pointOfExposure;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -83,7 +84,7 @@
     {
         //it also needs a param of a point of exposure, for now, we won't use params
         if ([captureInput.device isExposureModeSupported:AVCaptureExposureModeContinuousAutoExposure]&&_needsAutoExposure) {
-            captureInput.device.exposurePointOfInterest = CGPointMake(0.8f, 0.5f);
+            captureInput.device.exposurePointOfInterest = _pointOfExposure;
             [captureInput.device setExposureMode:AVCaptureExposureModeContinuousAutoExposure];
         }
         
@@ -94,8 +95,6 @@
         //Unlock the device once the configuration is finished
         [captureInput.device unlockForConfiguration];
     }
-     
-
 }
 
 -(void)startCapture 
@@ -188,7 +187,7 @@
 }
 
 #pragma mark --
-#pragma mark - View lifecycle
+#pragma mark - Parameters setting
 
 //setting of params for the cammera.
 
