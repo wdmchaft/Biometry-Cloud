@@ -18,12 +18,17 @@
 @interface CameraViewController : UIViewController
 
 {
-    BOOL frontalCamera;
+    BOOL hasFrontalCamera;
     AVCaptureDeviceInput *captureInput;
     AVCaptureSession *captureSession;
     AVCaptureVideoPreviewLayer *previewLayer;
     IBOutlet UIView *cameraView;
+    BOOL needsAutoExposure;
+    BOOL needsWhiteBalance;
 }
+
+@property (nonatomic, assign, setter = setNeedsAutoExposure:) BOOL _needsAutoExposure;
+@property (nonatomic, assign, setter = setNeedsWhiteBalance:) BOOL _needsWhiteBalance;
 
 -(void)initCapture;
 -(void)startCapture;
