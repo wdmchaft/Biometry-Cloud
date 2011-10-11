@@ -78,4 +78,9 @@
 
 }
 
+-(void)setScale:(float)scale 
+{
+    _scale=scale;
+}
+
 @end
