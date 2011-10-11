@@ -9,7 +9,6 @@
 /* Begin PBXBuildFile section */
 		F122C68A143E1D6F00E2FFE8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F122C689143E1D6F00E2FFE8 /* UIKit.framework */; };
 		F122C68C143E1D6F00E2FFE8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F122C68B143E1D6F00E2FFE8 /* Foundation.framework */; };
-		F122C68E143E1D6F00E2FFE8 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F122C68D143E1D6F00E2FFE8 /* CoreGraphics.framework */; };
 		F122C694143E1D6F00E2FFE8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F122C692143E1D6F00E2FFE8 /* InfoPlist.strings */; };
 		F122C696143E1D6F00E2FFE8 /* main.m in Sources */ = {isa = PBXBuildFile; fileRef = F122C695143E1D6F00E2FFE8 /* main.m */; };
 		F122C69A143E1D6F00E2FFE8 /* BiometryCloudAppDelegate.m in Sources */ = {isa = PBXBuildFile; fileRef = F122C699143E1D6F00E2FFE8 /* BiometryCloudAppDelegate.m */; };
@@ -17,25 +16,47 @@
 		F122C6A1143E1D7000E2FFE8 /* MainWindow_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = F122C69F143E1D7000E2FFE8 /* MainWindow_iPhone.xib */; };
 		F122C6A5143E1D7000E2FFE8 /* BiometryCloudAppDelegate_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = F122C6A4143E1D7000E2FFE8 /* BiometryCloudAppDelegate_iPad.m */; };
 		F122C6A8143E1D7000E2FFE8 /* MainWindow_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = F122C6A6143E1D7000E2FFE8 /* MainWindow_iPad.xib */; };
+		F122C6B6143E1E4400E2FFE8 /* CameraViewController_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = F122C6B4143E1E4400E2FFE8 /* CameraViewController_iPad.m */; };
+		F122C6B7143E1E4400E2FFE8 /* CameraViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = F122C6B5143E1E4400E2FFE8 /* CameraViewController_iPad.xib */; };
+		F122C6BE143E265600E2FFE8 /* CameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F122C6BD143E265600E2FFE8 /* CameraViewController.m */; };
+		F122C6C2143E26BA00E2FFE8 /* CameraViewController_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = F122C6C0143E26BA00E2FFE8 /* CameraViewController_iPhone.m */; };
+		F122C6C3143E26BA00E2FFE8 /* CameraViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = F122C6C1143E26BA00E2FFE8 /* CameraViewController_iPhone.xib */; };
+		F1F608AE143E36D600A6E0DC /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1F608AD143E36D600A6E0DC /* AVFoundation.framework */; };
+		F1F608C7143E4F9E00A6E0DC /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1F608BF143E4F8B00A6E0DC /* CoreGraphics.framework */; };
+		F1F608C8143E4F9E00A6E0DC /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1F608C0143E4F8B00A6E0DC /* CoreMedia.framework */; };
+		F1F608C9143E4F9E00A6E0DC /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1F608C1143E4F8B00A6E0DC /* CoreVideo.framework */; };
+		F1F608CA143E4F9E00A6E0DC /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1F608C2143E4F8C00A6E0DC /* QuartzCore.framework */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		F122C685143E1D6F00E2FFE8 /* BiometryCloud.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BiometryCloud.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F122C689143E1D6F00E2FFE8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F122C68B143E1D6F00E2FFE8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		F122C68D143E1D6F00E2FFE8 /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
-		F122C691143E1D6F00E2FFE8 /* BiometryCloud-Info.plist */ = {isa = PBXFileReference; path = "BiometryCloud-Info.plist"; sourceTree = "<group>"; };
+		F122C691143E1D6F00E2FFE8 /* BiometryCloud-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BiometryCloud-Info.plist"; sourceTree = "<group>"; };
 		F122C693143E1D6F00E2FFE8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F122C695143E1D6F00E2FFE8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		F122C697143E1D6F00E2FFE8 /* BiometryCloud-Prefix.pch */ = {isa = PBXFileReference; path = "BiometryCloud-Prefix.pch"; sourceTree = "<group>"; };
-		F122C698143E1D6F00E2FFE8 /* BiometryCloudAppDelegate.h */ = {isa = PBXFileReference; path = BiometryCloudAppDelegate.h; sourceTree = "<group>"; };
+		F122C697143E1D6F00E2FFE8 /* BiometryCloud-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BiometryCloud-Prefix.pch"; sourceTree = "<group>"; };
+		F122C698143E1D6F00E2FFE8 /* BiometryCloudAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BiometryCloudAppDelegate.h; sourceTree = "<group>"; };
 		F122C699143E1D6F00E2FFE8 /* BiometryCloudAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BiometryCloudAppDelegate.m; sourceTree = "<group>"; };
-		F122C69C143E1D6F00E2FFE8 /* BiometryCloudAppDelegate_iPhone.h */ = {isa = PBXFileReference; name = BiometryCloudAppDelegate_iPhone.h; path = iPhone/BiometryCloudAppDelegate_iPhone.h; sourceTree = "<group>"; };
+		F122C69C143E1D6F00E2FFE8 /* BiometryCloudAppDelegate_iPhone.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BiometryCloudAppDelegate_iPhone.h; path = iPhone/BiometryCloudAppDelegate_iPhone.h; sourceTree = "<group>"; };
 		F122C69D143E1D7000E2FFE8 /* BiometryCloudAppDelegate_iPhone.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = BiometryCloudAppDelegate_iPhone.m; path = iPhone/BiometryCloudAppDelegate_iPhone.m; sourceTree = "<group>"; };
 		F122C6A0143E1D7000E2FFE8 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = iPhone/en.lproj/MainWindow_iPhone.xib; sourceTree = "<group>"; };
-		F122C6A3143E1D7000E2FFE8 /* BiometryCloudAppDelegate_iPad.h */ = {isa = PBXFileReference; name = BiometryCloudAppDelegate_iPad.h; path = iPad/BiometryCloudAppDelegate_iPad.h; sourceTree = "<group>"; };
+		F122C6A3143E1D7000E2FFE8 /* BiometryCloudAppDelegate_iPad.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BiometryCloudAppDelegate_iPad.h; path = iPad/BiometryCloudAppDelegate_iPad.h; sourceTree = "<group>"; };
 		F122C6A4143E1D7000E2FFE8 /* BiometryCloudAppDelegate_iPad.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; name = BiometryCloudAppDelegate_iPad.m; path = iPad/BiometryCloudAppDelegate_iPad.m; sourceTree = "<group>"; };
 		F122C6A7143E1D7000E2FFE8 /* en */ = {isa = PBXFileReference; lastKnownFileType = file.xib; name = en; path = iPad/en.lproj/MainWindow_iPad.xib; sourceTree = "<group>"; };
+		F122C6B3143E1E4400E2FFE8 /* CameraViewController_iPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = CameraViewController_iPad.h; path = iPad/CameraViewController_iPad.h; sourceTree = "<group>"; };
+		F122C6B4143E1E4400E2FFE8 /* CameraViewController_iPad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = CameraViewController_iPad.m; path = iPad/CameraViewController_iPad.m; sourceTree = "<group>"; };
+		F122C6B5143E1E4400E2FFE8 /* CameraViewController_iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = CameraViewController_iPad.xib; path = iPad/CameraViewController_iPad.xib; sourceTree = "<group>"; };
+		F122C6BC143E265600E2FFE8 /* CameraViewController.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraViewController.h; sourceTree = "<group>"; };
+		F122C6BD143E265600E2FFE8 /* CameraViewController.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraViewController.m; sourceTree = "<group>"; };
+		F122C6BF143E26BA00E2FFE8 /* CameraViewController_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraViewController_iPhone.h; sourceTree = "<group>"; };
+		F122C6C0143E26BA00E2FFE8 /* CameraViewController_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraViewController_iPhone.m; sourceTree = "<group>"; };
+		F122C6C1143E26BA00E2FFE8 /* CameraViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CameraViewController_iPhone.xib; sourceTree = "<group>"; };
+		F1F608AD143E36D600A6E0DC /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
+		F1F608BF143E4F8B00A6E0DC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
+		F1F608C0143E4F8B00A6E0DC /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
+		F1F608C1143E4F8B00A6E0DC /* CoreVideo.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreVideo.framework; path = System/Library/Frameworks/CoreVideo.framework; sourceTree = SDKROOT; };
+		F1F608C2143E4F8C00A6E0DC /* QuartzCore.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = QuartzCore.framework; path = System/Library/Frameworks/QuartzCore.framework; sourceTree = SDKROOT; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -43,9 +64,13 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				F1F608AE143E36D600A6E0DC /* AVFoundation.framework in Frameworks */,
 				F122C68A143E1D6F00E2FFE8 /* UIKit.framework in Frameworks */,
 				F122C68C143E1D6F00E2FFE8 /* Foundation.framework in Frameworks */,
-				F122C68E143E1D6F00E2FFE8 /* CoreGraphics.framework in Frameworks */,
+				F1F608C7143E4F9E00A6E0DC /* CoreGraphics.framework in Frameworks */,
+				F1F608C8143E4F9E00A6E0DC /* CoreMedia.framework in Frameworks */,
+				F1F608C9143E4F9E00A6E0DC /* CoreVideo.framework in Frameworks */,
+				F1F608CA143E4F9E00A6E0DC /* QuartzCore.framework in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -72,9 +97,13 @@
 		F122C688143E1D6F00E2FFE8 /* Frameworks */ = {
 			isa = PBXGroup;
 			children = (
+				F1F608BF143E4F8B00A6E0DC /* CoreGraphics.framework */,
+				F1F608C0143E4F8B00A6E0DC /* CoreMedia.framework */,
+				F1F608C1143E4F8B00A6E0DC /* CoreVideo.framework */,
+				F1F608C2143E4F8C00A6E0DC /* QuartzCore.framework */,
+				F1F608AD143E36D600A6E0DC /* AVFoundation.framework */,
 				F122C689143E1D6F00E2FFE8 /* UIKit.framework */,
 				F122C68B143E1D6F00E2FFE8 /* Foundation.framework */,
-				F122C68D143E1D6F00E2FFE8 /* CoreGraphics.framework */,
 			);
 			name = Frameworks;
 			sourceTree = "<group>";
@@ -84,6 +113,8 @@
 			children = (
 				F122C698143E1D6F00E2FFE8 /* BiometryCloudAppDelegate.h */,
 				F122C699143E1D6F00E2FFE8 /* BiometryCloudAppDelegate.m */,
+				F122C6BC143E265600E2FFE8 /* CameraViewController.h */,
+				F122C6BD143E265600E2FFE8 /* CameraViewController.m */,
 				F122C69B143E1D6F00E2FFE8 /* iPhone */,
 				F122C6A2143E1D7000E2FFE8 /* iPad */,
 				F122C690143E1D6F00E2FFE8 /* Supporting Files */,
@@ -107,6 +138,9 @@
 			children = (
 				F122C69C143E1D6F00E2FFE8 /* BiometryCloudAppDelegate_iPhone.h */,
 				F122C69D143E1D7000E2FFE8 /* BiometryCloudAppDelegate_iPhone.m */,
+				F122C6BF143E26BA00E2FFE8 /* CameraViewController_iPhone.h */,
+				F122C6C0143E26BA00E2FFE8 /* CameraViewController_iPhone.m */,
+				F122C6C1143E26BA00E2FFE8 /* CameraViewController_iPhone.xib */,
 				F122C69F143E1D7000E2FFE8 /* MainWindow_iPhone.xib */,
 			);
 			name = iPhone;
@@ -117,6 +151,9 @@
 			children = (
 				F122C6A3143E1D7000E2FFE8 /* BiometryCloudAppDelegate_iPad.h */,
 				F122C6A4143E1D7000E2FFE8 /* BiometryCloudAppDelegate_iPad.m */,
+				F122C6B3143E1E4400E2FFE8 /* CameraViewController_iPad.h */,
+				F122C6B4143E1E4400E2FFE8 /* CameraViewController_iPad.m */,
+				F122C6B5143E1E4400E2FFE8 /* CameraViewController_iPad.xib */,
 				F122C6A6143E1D7000E2FFE8 /* MainWindow_iPad.xib */,
 			);
 			name = iPad;
@@ -172,6 +209,8 @@
 				F122C694143E1D6F00E2FFE8 /* InfoPlist.strings in Resources */,
 				F122C6A1143E1D7000E2FFE8 /* MainWindow_iPhone.xib in Resources */,
 				F122C6A8143E1D7000E2FFE8 /* MainWindow_iPad.xib in Resources */,
+				F122C6B7143E1E4400E2FFE8 /* CameraViewController_iPad.xib in Resources */,
+				F122C6C3143E26BA00E2FFE8 /* CameraViewController_iPhone.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -186,6 +225,9 @@
 				F122C69A143E1D6F00E2FFE8 /* BiometryCloudAppDelegate.m in Sources */,
 				F122C69E143E1D7000E2FFE8 /* BiometryCloudAppDelegate_iPhone.m in Sources */,
 				F122C6A5143E1D7000E2FFE8 /* BiometryCloudAppDelegate_iPad.m in Sources */,
+				F122C6B6143E1E4400E2FFE8 /* CameraViewController_iPad.m in Sources */,
+				F122C6BE143E265600E2FFE8 /* CameraViewController.m in Sources */,
+				F122C6C2143E26BA00E2FFE8 /* CameraViewController_iPhone.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -305,6 +347,7 @@
 				F122C6AD143E1D7000E2FFE8 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
 	};
