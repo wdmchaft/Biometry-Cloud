@@ -12,6 +12,7 @@
 @implementation BiometryDetector
 
 @synthesize delegate;
+@synthesize detectionROI, validROI, viewSize;
 
 #pragma mark - Object Lifecycle
 
@@ -35,7 +36,7 @@
     [super dealloc];
 }
 
-#pragma mark - Methods
+#pragma mark - Rects Methods
 
 - (void) addRectToList:(CGRect) rect {
     
@@ -72,6 +73,23 @@
     }
     
     return ret;
+}
+
+#pragma mark - Detection Methods
+
+- (void) startFaceDetection {
+
+    detecting = TRUE;
+    
+    NSInvocationOperation *faceDetection = [[NSInvocationOperation alloc] initWithTarget:self selector:@selector(doFaceDetection) object:nil];
+    [threadQueue addOperation:faceDetection];
+    
+    [faceDetection release];
+}
+
+- (void) stopFaceDetection {
+
+    detecting = FALSE;
 }
 
 - (void) doFaceDetection

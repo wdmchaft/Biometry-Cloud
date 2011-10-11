@@ -19,6 +19,8 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         
+        biometryDetector = [[BiometryDetector alloc] init];
+        
         //start with initial params
         
         [self setPointOfExposure:CGPointMake(0.8f, 0.5f)];
@@ -52,6 +54,11 @@
 {
     [super viewDidLoad];
     
+    biometryDetector.viewSize = self.view.frame.size;
+    biometryDetector.validROI = self.view.frame; //MASK
+    biometryDetector.detectionROI = CGRectMake(-previewLayer.frame.origin.x/scale, -previewLayer.frame.origin.y/scale, previewLayer.bounds.size.width/scale, previewLayer.bounds.size.height/scale);
+    
+    [biometryDetector startFaceDetection];
 }
 
 - (void)viewDidUnload
@@ -209,7 +216,6 @@
     
     previewLayer = [AVCaptureVideoPreviewLayer layerWithSession:captureSession];
     previewLayer.frame=cameraView.bounds;
-    
 }
 
 //method for extracting the image
@@ -303,11 +309,9 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     }
 }
 
-#pragma mark - Delegate methods
+#pragma mark - Biometry Delegate methods
 
-//methods of the delegate
-
--(UIImage *) getCurrentFrame 
+- (UIImage *) getCurrentFrame 
 {
     //set the bool copying frame to true to "lock" the CGImage
 
@@ -318,6 +322,16 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     //after "unlocking" the CGImage, return 
     
     return frameImage;
+}
+
+- (void) faceDetectedInRect: (CGRect) rect centered: (BOOL) centered close: (BOOL) close light: (BOOL) light aligned: (BOOL) aligned{
+
+    NSLog(@"Face detected!");
+}
+
+- (void) noFaceDetected{
+    
+    NSLog(@"No face detected!");
 }
 
 @end

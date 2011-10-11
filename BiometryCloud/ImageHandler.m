@@ -29,8 +29,8 @@
         //path = [[NSBundle mainBundle] pathForResource:@"haarcascade_mouth" ofType:@"xml"];
         //mouthCascade = (CvHaarClassifierCascade*)cvLoad([path cStringUsingEncoding:NSASCIIStringEncoding], NULL, NULL, NULL);
         
-        path = [[NSBundle mainBundle] pathForResource:@"haarcascade_profileface" ofType:@"xml"];
-        profileCascade = (CvHaarClassifierCascade*)cvLoad([path cStringUsingEncoding:NSASCIIStringEncoding], NULL, NULL, NULL);
+        //path = [[NSBundle mainBundle] pathForResource:@"haarcascade_profileface" ofType:@"xml"];
+        //profileCascade = (CvHaarClassifierCascade*)cvLoad([path cStringUsingEncoding:NSASCIIStringEncoding], NULL, NULL, NULL);
 		
     }    
     return self;

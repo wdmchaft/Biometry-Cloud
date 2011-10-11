@@ -44,4 +44,11 @@
 
 @property (nonatomic, retain) id<BiometryDelegate> delegate;
 
+@property (nonatomic, assign) CGRect detectionROI;
+@property (nonatomic, assign) CGRect validROI;
+@property (nonatomic, assign) CGSize viewSize;
+
+- (void) startFaceDetection;
+- (void) stioFaceDetection;
+
 @end
