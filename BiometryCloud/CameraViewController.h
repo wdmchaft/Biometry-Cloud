@@ -34,5 +34,6 @@
 -(void)initCapture;
 -(void)startCapture;
 -(void)stopCapture;
+-(void)setPreviewLayer;
 
 @end
