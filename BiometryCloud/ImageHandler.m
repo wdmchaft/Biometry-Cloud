@@ -141,13 +141,13 @@
         scale = 2;
         
         // Detect faces
-        faces = cvHaarDetectObjects(small_image, faceCascade, storage, 1.1f, 3, CV_HAAR_DO_CANNY_PRUNING, cvSize(25, 25));//35
+        faces = cvHaarDetectObjects(small_image, faceCascade, storage, 1.1f, 3, CV_HAAR_DO_CANNY_PRUNING, cvSize(25, 25), cvSize(100, 100));
         cvReleaseImage(&small_image);
     }
     else {
     
         // Detect faces
-        faces = cvHaarDetectObjects(image, faceCascade, storage, 1.1f, 3, CV_HAAR_DO_CANNY_PRUNING, cvSize(10, 10));
+        faces = cvHaarDetectObjects(image, faceCascade, storage, 1.1f, 3, CV_HAAR_DO_CANNY_PRUNING, cvSize(10, 10), cvSize(100, 100));
         scale = 1;
     }
     
@@ -231,7 +231,7 @@
 	 */
 	
 	// Detect faces and draw rectangle on them
-	CvSeq* faces = cvHaarDetectObjects(small_image, profileCascade, storage, 1.1f, 3, CV_HAAR_DO_CANNY_PRUNING, cvSize(20, 20));
+	CvSeq* faces = cvHaarDetectObjects(small_image, profileCascade, storage, 1.1f, 3, CV_HAAR_DO_CANNY_PRUNING, cvSize(20, 20), cvSize(100, 100));
 
 	
 	//opencvRunningFace = NO;
@@ -272,7 +272,7 @@
         
         cvFlip(small_image, mirr_image, 1);
         
-        CvSeq* faces2 = cvHaarDetectObjects(mirr_image, profileCascade, storage2, 1.1f, 3, CV_HAAR_DO_CANNY_PRUNING, cvSize(20, 20));
+        CvSeq* faces2 = cvHaarDetectObjects(mirr_image, profileCascade, storage2, 1.1f, 3, CV_HAAR_DO_CANNY_PRUNING, cvSize(20, 20), cvSize(100, 100));
         
         if (faces2->total) {
             
@@ -328,14 +328,10 @@
     // Convert to other space (HLS)
     cvCvtColor(src, img, CV_BGR2HLS);
     
-    //Red plane
-    //IplImage* r_plane = cvCreateImage( cvGetSize(src), IPL_DEPTH_8U, 1 );
-    //cvCvtPixToPlane(src, NULL, NULL, r_plane, NULL);
-    
     //Luminosity plane
     IplImage* l_plane = cvCreateImage( cvGetSize(src), IPL_DEPTH_8U, 1 );
     
-    cvCvtPixToPlane(img, NULL, l_plane, NULL, NULL);
+    cvSplit(img, NULL, l_plane, NULL, NULL);
     
     int bins = 256;
     
@@ -367,7 +363,7 @@
     
     for (int i = 0; i < 256; i++) {
         
-        bins = cvGetHistValue_1D(hist,i);
+        bins = ((float*)(cvPtr1D( (hist)->bins, i, 0 )));
         
         mean += bins[0]*i;
         
@@ -481,7 +477,7 @@
 	 */
 	
 	// Detect eyes and draw rectangle on them
-	CvSeq* eyes = cvHaarDetectObjects(image, eyeCascade, storage, 1.1f, 3, CV_HAAR_DO_CANNY_PRUNING, cvSize(40, 10));
+	CvSeq* eyes = cvHaarDetectObjects(image, eyeCascade, storage, 1.1f, 3, CV_HAAR_DO_CANNY_PRUNING, cvSize(40, 10), cvSize(160, 40));
 	//cvReleaseImage(&small_image);
 	cvReleaseImage(&image);
 	
@@ -552,7 +548,7 @@
 	 */
 	
 	// Detect eyes and draw rectangle on them
-	CvSeq* mouth = cvHaarDetectObjects(image, mouthCascade, storage, 1.1f, 3, CV_HAAR_DO_CANNY_PRUNING, cvSize(25, 15));
+	CvSeq* mouth = cvHaarDetectObjects(image, mouthCascade, storage, 1.1f, 3, CV_HAAR_DO_CANNY_PRUNING, cvSize(25, 15), cvSize(100, 60));
 	//cvReleaseImage(&small_image);
 	cvReleaseImage(&image);
 	
@@ -643,7 +639,7 @@
     return CGRectMake(uiSize.height - rect.origin.y - rect.size.height, rect.origin.x, rect.size.height, rect.size.width);
 }
 
-- (CGRect) convertRect:(CGRect) rect fromContextSize:(CGSize) fromSize toContextSize:(CGSize)toSize {
+- (CGRect) convertRect:(CGRect) rect fromContextSize:(CGSize) fromSize toContextSize:(CGSize) toSize {
     
     double xresize = toSize.width/fromSize.width;
     double yresize = toSize.height/fromSize.height;

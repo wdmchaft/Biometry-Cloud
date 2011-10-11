@@ -8,7 +8,8 @@
 
 #import <Foundation/Foundation.h>
 
-#import <opencv/cv.h>
+#import <opencv2/imgproc/imgproc_c.h> 
+#import <opencv2/objdetect/objdetect.hpp>
 
 /*!
  @class

@@ -11,6 +11,8 @@
 		6E0F4B3514449FA20084080B /* libopencv_core.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E0F4B3414449FA20084080B /* libopencv_core.a */; };
 		6E0F4B3914449FE60084080B /* libopencv_imgproc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E0F4B3714449FE60084080B /* libopencv_imgproc.a */; };
 		6E0F4B3A14449FE60084080B /* libopencv_objdetect.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E0F4B3814449FE60084080B /* libopencv_objdetect.a */; };
+		6E0F4B4F1444A2FD0084080B /* BiometryDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E0F4B4E1444A2FD0084080B /* BiometryDetector.m */; };
+		6E0F4B521444A4DA0084080B /* ImageHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E0F4B511444A4D90084080B /* ImageHandler.m */; };
 		F122C68A143E1D6F00E2FFE8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F122C689143E1D6F00E2FFE8 /* UIKit.framework */; };
 		F122C68C143E1D6F00E2FFE8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F122C68B143E1D6F00E2FFE8 /* Foundation.framework */; };
 		F122C694143E1D6F00E2FFE8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F122C692143E1D6F00E2FFE8 /* InfoPlist.strings */; };
@@ -37,6 +39,10 @@
 		6E0F4B3414449FA20084080B /* libopencv_core.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libopencv_core.a; path = opencv_device/lib/libopencv_core.a; sourceTree = SOURCE_ROOT; };
 		6E0F4B3714449FE60084080B /* libopencv_imgproc.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libopencv_imgproc.a; path = opencv_device/lib/libopencv_imgproc.a; sourceTree = SOURCE_ROOT; };
 		6E0F4B3814449FE60084080B /* libopencv_objdetect.a */ = {isa = PBXFileReference; lastKnownFileType = archive.ar; name = libopencv_objdetect.a; path = opencv_device/lib/libopencv_objdetect.a; sourceTree = SOURCE_ROOT; };
+		6E0F4B4D1444A2FD0084080B /* BiometryDetector.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BiometryDetector.h; sourceTree = "<group>"; };
+		6E0F4B4E1444A2FD0084080B /* BiometryDetector.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = BiometryDetector.m; sourceTree = "<group>"; };
+		6E0F4B501444A4D90084080B /* ImageHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = ImageHandler.h; sourceTree = "<group>"; };
+		6E0F4B511444A4D90084080B /* ImageHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = ImageHandler.m; sourceTree = "<group>"; };
 		F122C685143E1D6F00E2FFE8 /* BiometryCloud.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BiometryCloud.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F122C689143E1D6F00E2FFE8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F122C68B143E1D6F00E2FFE8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -138,6 +144,10 @@
 				F122C699143E1D6F00E2FFE8 /* BiometryCloudAppDelegate.m */,
 				F122C6BC143E265600E2FFE8 /* CameraViewController.h */,
 				F122C6BD143E265600E2FFE8 /* CameraViewController.m */,
+				6E0F4B4D1444A2FD0084080B /* BiometryDetector.h */,
+				6E0F4B4E1444A2FD0084080B /* BiometryDetector.m */,
+				6E0F4B501444A4D90084080B /* ImageHandler.h */,
+				6E0F4B511444A4D90084080B /* ImageHandler.m */,
 				F122C69B143E1D6F00E2FFE8 /* iPhone */,
 				F122C6A2143E1D7000E2FFE8 /* iPad */,
 				F122C690143E1D6F00E2FFE8 /* Supporting Files */,
@@ -252,6 +262,8 @@
 				F122C6B6143E1E4400E2FFE8 /* CameraViewController_iPad.m in Sources */,
 				F122C6BE143E265600E2FFE8 /* CameraViewController.m in Sources */,
 				F122C6C2143E26BA00E2FFE8 /* CameraViewController_iPhone.m in Sources */,
+				6E0F4B4F1444A2FD0084080B /* BiometryDetector.m in Sources */,
+				6E0F4B521444A4DA0084080B /* ImageHandler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
