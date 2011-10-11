@@ -186,6 +186,75 @@
     
 }
 
+//method for extracting the image
+- (void)captureOutput:(AVCaptureOutput *)captureOutput 
+didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer 
+	   fromConnection:(AVCaptureConnection *)connection 
+{ 
+	/*We create an autorelease pool because as we are not in the main_queue our code is
+	 not executed in the main thread. So we have to create an autorelease pool for the thread we are in*/
+	
+	NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
+	
+    CVImageBufferRef imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer); 
+    /*Lock the image buffer*/
+    CVPixelBufferLockBaseAddress(imageBuffer,0); 
+	
+    /*Get information about the image*/
+    uint8_t *baseAddress = (uint8_t *)CVPixelBufferGetBaseAddress(imageBuffer);
+	
+    size_t bytesPerRow = CVPixelBufferGetBytesPerRow(imageBuffer); 
+	
+    size_t width = CVPixelBufferGetWidth(imageBuffer); 
+	
+    size_t height = CVPixelBufferGetHeight(imageBuffer);  
+    
+    /*Create a CGImageRef from the CVImageBufferRef*/
+    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB(); 
+	
+    CGContextRef newContext = CGBitmapContextCreate(baseAddress, width, height, 8, bytesPerRow, colorSpace, 
+													kCGBitmapByteOrder32Little | kCGImageAlphaPremultipliedFirst);
+	
+	
+	CGImageRef newImage = CGBitmapContextCreateImage(newContext); 
+
+	//The next lines will be in the openCV class
+	//if (!copyingFrame) {
+		
+    
+        CGImageRef aux = currentShownFrame;
+        
+        currentShownFrame = newImage;
+        
+        CGImageRelease(aux);
+	//}
+	//else {
+		//debugLog(@"Funciona!");
+        
+        //CGImageRelease(newImage);
+	//}
+	
+	
+    /*We release some components*/
+    CGContextRelease(newContext); 
+	
+    CGColorSpaceRelease(colorSpace);
+    
+    /*We display the result on the custom layer. All the display stuff must be done in the main thread because
+	 UIKit is no thread safe, and as we are not in the main thread (remember we didn't use the main_queue)
+	 we use performSelectorOnMainThread to call our CALayer and tell it to display the CGImage.*/
+	//[customLayer performSelectorOnMainThread:@selector(setContents:) withObject: (id) shownFrame waitUntilDone:YES];
+	
+	/*We relase the CGImageRefs*/
+	//CGImageRelease(shownFrame);
+    //CGImageRelease(newImage);
+	
+	/*We unlock the  image buffer*/
+	CVPixelBufferUnlockBaseAddress(imageBuffer,0);
+	
+	[pool drain];
+} 
+
 #pragma mark --
 #pragma mark - Parameters setting
 
