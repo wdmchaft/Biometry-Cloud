@@ -14,8 +14,9 @@
 //#import <QuartzCore/QuartzCore.h>
 //#import <AudioToolbox/AudioToolbox.h>
 
+#import "BiometryDetector.h"
 
-@interface CameraViewController : UIViewController
+@interface CameraViewController : UIViewController <AVCaptureVideoDataOutputSampleBufferDelegate, BiometryDelegate>
 
 {
     BOOL frontalCamera;
@@ -23,6 +24,8 @@
     AVCaptureSession *captureSession;
     AVCaptureVideoPreviewLayer *previewLayer;
     IBOutlet UIView *cameraView;
+    
+    BiometryDetector *biometryDetector;
 }
 
 -(void)initCapture;
