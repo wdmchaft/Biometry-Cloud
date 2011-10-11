@@ -6,8 +6,8 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "CameraViewController.h"
 
-@interface CameraViewController_iPad : UIViewController
+@interface CameraViewController_iPad : CameraViewController
 
 @end

@@ -8,6 +8,7 @@
 
 #import "CameraViewController_iPhone.h"
 
+
 @implementation CameraViewController_iPhone
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
@@ -33,6 +34,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    [self initCapture];
 }
 
 - (void)viewDidUnload
@@ -46,6 +48,34 @@
 {
     // Return YES for supported orientations
     return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
+
+-(void)startCapture 
+{
+    [super startCapture];
+}
+
+-(void) initCapture 
+{
+    [super initCapture];
+    //CHANGE THIS TO SEE YOUR IMAGE BIGGER OR SMALLER ON THE SCREEN .. MIRROR EFFECT
+    // con frameSize > viewSize / 2.5
+    // 1.4 =  75cm en iPad
+    // 1.6 =  90cm en iPad 
+    // 1.7 = 105cm en iPad
+    
+    float scale = 1.3; //This var should be parametrisable
+    
+    previewLayer.transform = CATransform3DMakeScale(scale, scale, 0);
+    
+    previewLayer.contentsGravity = kCAGravityResizeAspectFill;
+    
+    [cameraView.layer addSublayer:previewLayer];
+    
+	/*We start the capture*/
+	[self startCapture];
+	[cameraView performSelectorOnMainThread:@selector(setNeedsDisplay) withObject:nil waitUntilDone:YES];
+
 }
 
 @end

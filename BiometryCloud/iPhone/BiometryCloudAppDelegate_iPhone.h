@@ -8,6 +8,12 @@
 
 #import "BiometryCloudAppDelegate.h"
 
+@class CameraViewController_iPhone;
 @interface BiometryCloudAppDelegate_iPhone : BiometryCloudAppDelegate
+{
+    CameraViewController_iPhone *viewController;
+}
+
+@property (nonatomic, retain) IBOutlet CameraViewController_iPhone *viewController;
 
 @end
