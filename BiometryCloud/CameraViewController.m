@@ -10,6 +10,8 @@
 
 @implementation CameraViewController
 
+@synthesize _needsAutoExposure=needsAutoExposure, _needsWhiteBalance=needsWhiteBalance;
+
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
@@ -111,7 +113,7 @@
     if ([self hasFrontalCamera]) 
     {
         
-        frontalCamera=TRUE;
+        hasFrontalCamera=TRUE;
         
         //Set the capture device to be the frontal camera
         NSArray *videoDevices = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
@@ -183,5 +185,24 @@
     
 }
 
+#pragma mark --
+#pragma mark - View lifecycle
 
+//setting of params for the cammera.
+
+-(void) setNeedsAutoExposure:(BOOL)_needsAutoExposure 
+{
+    needsAutoExposure=_needsAutoExposure;
+    if ([captureSession isRunning]) {
+        [self setupCamera];
+    }
+    
+}
+-(void) setNeedsWhiteBalance:(BOOL)_needsWhiteBalance 
+{
+    needsWhiteBalance=_needsWhiteBalance;
+    if ([captureSession isRunning]) {
+        [self setupCamera];
+    }
+}
 @end
