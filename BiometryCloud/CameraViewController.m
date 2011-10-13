@@ -61,7 +61,22 @@
     biometryDetector.validROI = self.view.frame; //MASK
     biometryDetector.detectionROI = CGRectMake(-previewLayer.frame.origin.x/_scale, -previewLayer.frame.origin.y/_scale, previewLayer.bounds.size.width/_scale, previewLayer.bounds.size.height/_scale);
     
+}
+
+-(void) viewWillAppear:(BOOL)animated 
+{
+    if (![captureSession isRunning]) 
+    {
+        [self startCapture];
+    }
     [biometryDetector startFaceDetection];
+}
+
+-(void)viewWillDisappear:(BOOL)animated 
+{
+    [biometryDetector stopFaceDetection];
+    
+    [self stopCapture];
 }
 
 - (void)viewDidUnload
