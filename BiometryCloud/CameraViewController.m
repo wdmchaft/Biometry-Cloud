@@ -20,6 +20,7 @@
     if (self) {
         
         biometryDetector = [[BiometryDetector alloc] init];
+        biometryDetector.delegate = self;
         
         //start with initial params
         
@@ -55,9 +56,10 @@
     [super viewDidLoad];
     [self initCapture];
     
+    //Biometry detector parameters
     biometryDetector.viewSize = self.view.frame.size;
     biometryDetector.validROI = self.view.frame; //MASK
-    biometryDetector.detectionROI = CGRectMake(-previewLayer.frame.origin.x/scale, -previewLayer.frame.origin.y/scale, previewLayer.bounds.size.width/scale, previewLayer.bounds.size.height/scale);
+    biometryDetector.detectionROI = CGRectMake(-previewLayer.frame.origin.x/_scale, -previewLayer.frame.origin.y/_scale, previewLayer.bounds.size.width/_scale, previewLayer.bounds.size.height/_scale);
     
     [biometryDetector startFaceDetection];
 }
@@ -330,7 +332,9 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     //set the bool copying frame to true to "lock" the CGImage
 
     copyingFrame=TRUE;
+    
     UIImage	*frameImage = [[UIImage alloc] initWithCGImage:(CGImageRef)currentShownFrame scale:1.0f orientation:UIImageOrientationRight];
+    
     copyingFrame=FALSE;
     
     //after "unlocking" the CGImage, return 

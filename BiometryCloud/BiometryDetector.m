@@ -23,6 +23,7 @@
         nRects = 3;
         lastRects = [[NSMutableArray alloc] init];
         imageHandler = [[ImageHandler alloc] init];
+        threadQueue = [[NSOperationQueue alloc] init];
     }
     
     return self;
@@ -30,6 +31,7 @@
 
 - (void) dealloc {
 
+    [threadQueue release];
     [lastRects release];
     [imageHandler release];
     
@@ -96,6 +98,7 @@
 {
     
 	if (imageHandler.opencvRunningFace) {
+        
 		return;
 	}
 	else if (detecting)
@@ -188,6 +191,7 @@
                     double hist_mean = [imageHandler opencvGetHistMean:scaledImg inFace:auxRect];
                     
                     if (hist_mean > histThreshold) {
+                        
                         detecting = FALSE;
                         
                         //Don´t use rect --> convert in CAMERA VIEW

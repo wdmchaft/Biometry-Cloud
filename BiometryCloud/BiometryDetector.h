@@ -49,6 +49,6 @@
 @property (nonatomic, assign) CGSize viewSize;
 
 - (void) startFaceDetection;
-- (void) stioFaceDetection;
+- (void) stopFaceDetection;
 
 @end
