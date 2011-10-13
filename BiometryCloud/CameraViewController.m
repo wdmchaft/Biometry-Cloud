@@ -316,6 +316,19 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     [cameraView.layer addSublayer:previewLayer];
 }
 
+
+-(void)setScale:(float)scale 
+{
+    //CHANGE THIS TO SEE YOUR IMAGE BIGGER OR SMALLER ON THE SCREEN .. MIRROR EFFECT
+    // con frameSize > viewSize / 2.5
+    // 1.4 =  75cm en iPad
+    // 1.6 =  90cm en iPad 
+    // 1.7 = 105cm en iPad
+    _scale=scale;
+    cameraView.layer.transform =CATransform3DMakeScale(_scale, _scale, 0);
+    [cameraView performSelectorOnMainThread:@selector(setNeedsDisplay) withObject:nil waitUntilDone:YES];
+}
+
 #pragma mark - Delegate methods
 
 //methods of the delegate

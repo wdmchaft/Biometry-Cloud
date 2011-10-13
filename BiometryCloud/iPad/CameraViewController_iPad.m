@@ -15,6 +15,7 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
+        [self setScale:1.6];
     }
     return self;
 }
