@@ -19,6 +19,9 @@
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         
+        biometryDetector = [[BiometryDetector alloc] init];
+        biometryDetector.delegate = self;
+        
         //start with initial params
         
         [self setPointOfExposure:CGPointMake(0.8f, 0.5f)];
@@ -53,6 +56,12 @@
     [super viewDidLoad];
     [self initCapture];
     
+    //Biometry detector parameters
+    biometryDetector.viewSize = self.view.frame.size;
+    biometryDetector.validROI = self.view.frame; //MASK
+    biometryDetector.detectionROI = CGRectMake(-previewLayer.frame.origin.x/_scale, -previewLayer.frame.origin.y/_scale, previewLayer.bounds.size.width/_scale, previewLayer.bounds.size.height/_scale);
+    
+    [biometryDetector startFaceDetection];
 }
 
 - (void)viewDidUnload
@@ -210,11 +219,11 @@
     
     previewLayer = [AVCaptureVideoPreviewLayer layerWithSession:captureSession];
     previewLayer.frame=cameraView.bounds;
+    
     [self performSelectorOnMainThread:@selector(setPreviewLayer) withObject:nil waitUntilDone:YES];    
 	/*We start the capture*/
 	[self startCapture];
 	[cameraView performSelectorOnMainThread:@selector(setNeedsDisplay) withObject:nil waitUntilDone:YES];
-    
 }
 
 //method for extracting the image
@@ -316,7 +325,6 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     [cameraView.layer addSublayer:previewLayer];
 }
 
-
 -(void)setScale:(float)scale 
 {
     //CHANGE THIS TO SEE YOUR IMAGE BIGGER OR SMALLER ON THE SCREEN .. MIRROR EFFECT
@@ -329,21 +337,31 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     [cameraView performSelectorOnMainThread:@selector(setNeedsDisplay) withObject:nil waitUntilDone:YES];
 }
 
-#pragma mark - Delegate methods
+#pragma mark - Biometry Delegate methods
 
-//methods of the delegate
-
--(UIImage *) getCurrentFrame 
+- (UIImage *) getCurrentFrame 
 {
     //set the bool copying frame to true to "lock" the CGImage
 
     copyingFrame=TRUE;
+    
     UIImage	*frameImage = [[UIImage alloc] initWithCGImage:(CGImageRef)currentShownFrame scale:1.0f orientation:UIImageOrientationRight];
+    
     copyingFrame=FALSE;
     
     //after "unlocking" the CGImage, return 
     
     return frameImage;
+}
+
+- (void) faceDetectedInRect: (CGRect) rect centered: (BOOL) centered close: (BOOL) close light: (BOOL) light aligned: (BOOL) aligned{
+
+    NSLog(@"Face detected!");
+}
+
+- (void) noFaceDetected{
+    
+    NSLog(@"No face detected!");
 }
 
 @end

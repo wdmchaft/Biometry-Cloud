@@ -9,8 +9,9 @@
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
 
+#import "BiometryDetector.h"
 
-@interface CameraViewController : UIViewController
+@interface CameraViewController : UIViewController <AVCaptureVideoDataOutputSampleBufferDelegate, BiometryDelegate>
 
 {
     BOOL hasFrontalCamera;
@@ -18,6 +19,9 @@
     AVCaptureSession *captureSession;
     AVCaptureVideoPreviewLayer *previewLayer;
     IBOutlet UIView *cameraView;
+    
+    BiometryDetector *biometryDetector;
+    
     CGImageRef currentShownFrame;
     BOOL copyingFrame;
     float _scale;
