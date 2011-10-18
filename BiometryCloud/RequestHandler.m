@@ -99,18 +99,19 @@
 	[request setData:[NSData dataWithData:UIImageJPEGRepresentation(face, 0.9)]
 		withFileName:@"photo.jpg"
 	  andContentType:@"image/jpeg"
-			  forKey:@"face"];
+			  forKey:@"data"];
     
     [request setPostValue:[[UIDevice currentDevice] uniqueIdentifier] forKey:@"device"];
     [request setPostValue:[NSNumber numberWithDouble:request.lat] forKey:@"lat"];
     [request setPostValue:[NSNumber numberWithDouble:request.lng] forKey:@"lng"];
-    //[request setPostValue:[NSString stringWithString:request.time] forKey:@"time"];
-    //[request setPostValue:[NSString stringWithString:request.legal_id] forKey:@"legal_id"];
+    //--> ESTOS 2 PARAMETROS NO SON TOMADOS EN CUENTA POR BIOMETRYCLOUD
+    [request setPostValue:[NSString stringWithString:request.time] forKey:@"time"];
+    [request setPostValue:[NSString stringWithString:request.legal_id] forKey:@"legal_id"];
     
     //PARAMS
     [request setPostValue:@"1" forKey:@"distanceType"];
     [request setPostValue:@"LBP" forKey:@"algorithm"];
-    [request setPostValue:@"CW" forKey:@"app"];
+    [request setPostValue:@"CW" forKey:@"app"]; //--> CW POR MIENTRAS
     
 	[request setRequestMethod:@"POST"];
 	[request setDelegate:self];

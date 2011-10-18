@@ -25,6 +25,7 @@
         
         requestHandler = [[RequestHandler alloc] init];
         requestHandler.delegate = self;
+        [requestHandler setAnswerRequired:YES];
         
         //start with initial params
         
@@ -341,6 +342,9 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     [cameraView performSelectorOnMainThread:@selector(setNeedsDisplay) withObject:nil waitUntilDone:YES];
 }
 
+//ESTO PODRIA IR EN UNA CLASE APARTE SIESQUE HAY MAS METODOS DEL ESTILO, SI NO NO CREO QUE SE JUSTIFIQUE
+#pragma mark - Utilities
+
 -(NSString *) currentTime
 {
 	char buffer[80];
@@ -381,7 +385,7 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
 
 - (void) successfullFaceDetection:(UIImage*) face {
 
-    debugLog(@"Face redy to send!");
+    debugLog(@"Face raedy to send!");
     
     [requestHandler sendCheckingRequestWithFace:face legalId:@"" atTimeStamp:[self currentTime]];
 }

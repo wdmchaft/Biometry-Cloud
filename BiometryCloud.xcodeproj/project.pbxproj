@@ -36,6 +36,7 @@
 		6E9BE8A3144DC43100821C4C /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E9BE89E144DC36B00821C4C /* MobileCoreServices.framework */; };
 		6E9BE8A4144DC43400821C4C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E9BE89C144DC35500821C4C /* SystemConfiguration.framework */; };
 		6E9BE8B1144DC4A000821C4C /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E9BE8AF144DC49400821C4C /* libsqlite3.dylib */; };
+		6E9BE8BA144DDD0D00821C4C /* BiometryCloud.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 6E9BE8B9144DDD0D00821C4C /* BiometryCloud.sqlite */; };
 		F122C68A143E1D6F00E2FFE8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F122C689143E1D6F00E2FFE8 /* UIKit.framework */; };
 		F122C68C143E1D6F00E2FFE8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F122C68B143E1D6F00E2FFE8 /* Foundation.framework */; };
 		F122C694143E1D6F00E2FFE8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F122C692143E1D6F00E2FFE8 /* InfoPlist.strings */; };
@@ -110,7 +111,8 @@
 		6E9BE89E144DC36B00821C4C /* MobileCoreServices.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = MobileCoreServices.framework; path = System/Library/Frameworks/MobileCoreServices.framework; sourceTree = SDKROOT; };
 		6E9BE8A0144DC3F500821C4C /* libz.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libz.dylib; path = usr/lib/libz.dylib; sourceTree = SDKROOT; };
 		6E9BE8AF144DC49400821C4C /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
-		6E9BE8B2144DC55900821C4C /* BiometryCloudConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; path = BiometryCloudConfiguration.h; sourceTree = "<group>"; };
+		6E9BE8B2144DC55900821C4C /* BiometryCloudConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BiometryCloudConfiguration.h; sourceTree = "<group>"; };
+		6E9BE8B9144DDD0D00821C4C /* BiometryCloud.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = BiometryCloud.sqlite; sourceTree = "<group>"; };
 		F122C685143E1D6F00E2FFE8 /* BiometryCloud.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BiometryCloud.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F122C689143E1D6F00E2FFE8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F122C68B143E1D6F00E2FFE8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -184,6 +186,7 @@
 		6E0F4B6E1444C23C0084080B /* Resources */ = {
 			isa = PBXGroup;
 			children = (
+				6E9BE8B9144DDD0D00821C4C /* BiometryCloud.sqlite */,
 				6E0F4B6B1444C2310084080B /* haarcascade_frontalface_alt2.xml */,
 			);
 			name = Resources;
@@ -397,6 +400,7 @@
 				F122C6B7143E1E4400E2FFE8 /* CameraViewController_iPad.xib in Resources */,
 				F122C6C3143E26BA00E2FFE8 /* CameraViewController_iPhone.xib in Resources */,
 				6E0F4B6C1444C2310084080B /* haarcascade_frontalface_alt2.xml in Resources */,
+				6E9BE8BA144DDD0D00821C4C /* BiometryCloud.sqlite in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
