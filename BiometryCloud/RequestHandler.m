@@ -21,7 +21,8 @@
 
 - (id) init {
 
-    if (self = [super init]) {
+    self = [super init];
+    if (self) {
         
         //GPS Initialization
         locationManager = [[CLLocationManager alloc] init];
@@ -32,6 +33,13 @@
         
         //Data Handler initialization
         dataHandler = [[DataHandler alloc] init];
+        
+        //Reachability initialization
+        reachability = [[Reachability reachabilityForInternetConnection] retain];
+        [reachability startNotifier];
+        
+        //Register to reachability notifications 
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reachabilityChanged:) name:kReachabilityChangedNotification object:nil];
         
         //Default URL
         checkingURL = @"http://www.biometrycloud.com:80/srv/face/getFaceId/";
@@ -45,6 +53,7 @@
     [locationManager release];
     [currentLocation release];
     [dataHandler release];
+    [reachability release];
     
     [super dealloc];
 }
@@ -62,7 +71,7 @@
 	
 	if (dataDict == nil) {
 		
-		NSLog(@"JSON parsing failed");
+		debugLog(@"JSON parsing failed");
 	}
     
     return dataDict;
@@ -95,8 +104,13 @@
     [request setPostValue:[[UIDevice currentDevice] uniqueIdentifier] forKey:@"device"];
     [request setPostValue:[NSNumber numberWithDouble:request.lat] forKey:@"lat"];
     [request setPostValue:[NSNumber numberWithDouble:request.lng] forKey:@"lng"];
-    [request setPostValue:[NSString stringWithString:request.time] forKey:@"time"];
-    [request setPostValue:[NSString stringWithString:request.legal_id] forKey:@"legal_id"];
+    //[request setPostValue:[NSString stringWithString:request.time] forKey:@"time"];
+    //[request setPostValue:[NSString stringWithString:request.legal_id] forKey:@"legal_id"];
+    
+    //PARAMS
+    [request setPostValue:@"1" forKey:@"distanceType"];
+    [request setPostValue:@"LBP" forKey:@"algorithm"];
+    [request setPostValue:@"CW" forKey:@"app"];
     
 	[request setRequestMethod:@"POST"];
 	[request setDelegate:self];
@@ -166,10 +180,9 @@
         
         [delegate checkingRequestAnswerReceived:answer];
     }
-    /*
-    else if([clockwiseAppDelegate networkAvailable]) { // --> ARREGLAR ESTE CASO
+    else if([reachability currentReachabilityStatus] != NotReachable) {
         
-        CheckingRequest *request2 = [[CheckingRequest alloc] initWithURL:[NSURL URLWithString:[clockwiseAppDelegate checkingURL]]];
+        CheckingRequest *request2 = [[CheckingRequest alloc] initWithURL:[NSURL URLWithString:checkingURL]];
         
         request2.face = request.face;
         request2.time = request.time;
@@ -178,41 +191,34 @@
         
         [self performSelector:@selector(sendStoredCheckingRequest:) withObject:request2];
     }
-    */
     else if ([request isCancelled]) {
         
-        NSLog(@"Checking request cancelled");
+        debugLog(@"Checking request cancelled");
     }
     else {
         
-        NSLog(@"Checking request failed");
+        debugLog(@"Checking request failed");
     }
     
     [request release];
 }
 
-- (void) resendCheckingRequests:(NSNotification *) notification {
+- (void) resendCheckingRequests {
     
     if ([dataHandler areCheckingRequestsQueued]) {
         
         NSMutableArray *array = [dataHandler getCheckingRequests];
         
-        NSLog(@"%d stored checking requests", [array count]);
+        debugLog(@"%d stored checking requests", [array count]);
         
         for (CheckingRequest *request in array) {
             
-            /*
-            NSInvocationOperation *operation = [[NSInvocationOperation alloc] initWithTarget:self selector:@selector(sendStoredCheckingRequest:) object:request];
-            
-            [[clockwiseAppDelegate threadQueue] addOperation:operation];
-            
-            [operation release];
-             */
+            [self sendStoredCheckingRequest:request];
         }
     }
     else {
         
-        NSLog(@"No stored checking requests to send");
+        debugLog(@"No stored checking requests to send");
     }
 }
 
@@ -222,8 +228,34 @@
     didUpdateToLocation:(CLLocation *)newLocation
            fromLocation:(CLLocation *)oldLocation
 {
+    CLLocation *aux = currentLocation;
     
-    currentLocation = newLocation;
+    currentLocation = [newLocation copy];
+    
+    [aux release];
 }
+
+#pragma mark - Reachability Notification Handling
+
+- (void)reachabilityChanged:(NSNotification *)note
+{
+    BOOL newNetworkStatus = [reachability currentReachabilityStatus] != NotReachable;
+    
+    //Do action if there's a change
+    if (!isNetworkAvailable && newNetworkStatus) {
+        
+        debugLog(@"Connection Found");
+        
+        //
+        [self resendCheckingRequests];
+    }
+    else if (isNetworkAvailable && !newNetworkStatus) {
+        
+        debugLog(@"Connection Lost");
+    }
+    
+    isNetworkAvailable = newNetworkStatus;
+}
+
 
 @end

@@ -101,7 +101,7 @@
 		sqlite3_finalize(compiledStatement);
 	}
 	else {
-		NSLog(@"Error while opening database. '%s'", sqlite3_errmsg(database));
+		debugLog(@"Error while opening database. '%s'", sqlite3_errmsg(database));
 	}
 	
 	sqlite3_close(database);
@@ -134,14 +134,14 @@
 				}
 			}
 			else {
-				NSLog(@"Error while reading data. '%s'", sqlite3_errmsg(database));
+				debugLog(@"Error while reading data. '%s'", sqlite3_errmsg(database));
 			}
 			
 			// Release the compiled statement from memory
 			sqlite3_finalize(compiledStatement);
 		}
 		else {
-			NSLog(@"Error while opening database. '%s'", sqlite3_errmsg(database));
+			debugLog(@"Error while opening database. '%s'", sqlite3_errmsg(database));
 		}
 		
 		sqlite3_close(database);
@@ -200,7 +200,7 @@
 				}
 			}
 			else {
-				NSLog(@"Error while reading data. '%s'", sqlite3_errmsg(database));
+				debugLog(@"Error while reading data. '%s'", sqlite3_errmsg(database));
 			}
             
             			
@@ -208,7 +208,7 @@
 			sqlite3_finalize(compiledStatement);
 		}
 		else {
-			NSLog(@"Error while opening database. '%s'", sqlite3_errmsg(database));
+			debugLog(@"Error while opening database. '%s'", sqlite3_errmsg(database));
 		}
 		
 		sqlite3_close(database);
