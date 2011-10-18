@@ -7,7 +7,7 @@
 //
 
 #import "BiometryDetector.h"
-
+#import "BiometryCloudConfiguration.h"
 
 @implementation BiometryDetector
 

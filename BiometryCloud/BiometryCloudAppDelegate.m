@@ -7,6 +7,7 @@
 //
 
 #import "BiometryCloudAppDelegate.h"
+#import "BiometryCloudConfiguration.h"
 
 @implementation BiometryCloudAppDelegate
 

@@ -1,6 +1,6 @@
 //
-//  EnrollRequest.h
-//  SPF
+//  CheckingRequest.h
+//  BiometryCloud
 //
 //  Created by Pablo Mandiola on 4/4/11.
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
@@ -9,7 +9,6 @@
 #import <Foundation/Foundation.h>
 
 #import "ASIFormDataRequest.h"
-
 
 @interface CheckingRequest : ASIFormDataRequest {
     

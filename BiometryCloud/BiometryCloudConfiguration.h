@@ -1,11 +1,13 @@
 //
-//  MainHeader.h
-//  SPF
+//  BiometryCloudConfiguration.h
+//  BiometryCloud
 //
 //  Created by Pablo Mandiola on 4/4/11.
 //  Copyright 2011 Clockwise. All rights reserved.
 //
 
-#import "ClockwiseAppDelegate.h"
-
-#define clockwiseAppDelegate (ClockwiseAppDelegate *)[[UIApplication sharedApplication] delegate]
+#ifdef DEBUG
+#define debugLog(...) NSLog(__VA_ARGS__)
+#else
+#define debugLog(...)		// Nothing
+#endif

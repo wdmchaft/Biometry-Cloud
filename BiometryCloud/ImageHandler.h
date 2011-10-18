@@ -1,6 +1,6 @@
 //
 //  ImageHandler.h
-//  ControlApplication
+//  BiometryCloud
 //
 //  Created by Pablo Mandiola on 10-01-11.
 //  Copyright 2011 Clockwise. All rights reserved.

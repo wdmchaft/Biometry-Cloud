@@ -7,6 +7,7 @@
 //
 
 #import "CameraViewController.h"
+#import "BiometryCloudConfiguration.h"
 
 @implementation CameraViewController
 
