@@ -7,7 +7,7 @@
 //
 
 #import "BiometryDetector.h"
-
+#import "BiometryCloudConfiguration.h"
 
 @implementation BiometryDetector
 
@@ -203,7 +203,7 @@
                         [self performSelectorOnMainThread:@selector(faceDetectedWithParams:) withObject:params waitUntilDone:NO];
                          */
                         
-                        [delegate faceDetectedInRect:mirroredRect centered:centered close:close light:TRUE aligned:rectsAligned];
+                        [delegate successfullFaceDetection:img];
                         
                         //Erase rects
                         faceRect = CGRectZero;

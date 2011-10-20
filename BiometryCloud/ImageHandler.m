@@ -1,12 +1,13 @@
 //
 //  ImageHandler.m
-//  ControlApplication
+//  BiometryCloud
 //
 //  Created by Pablo Mandiola on 10-01-11.
 //  Copyright 2011 Clockwise. All rights reserved.
 //
 
 #import "ImageHandler.h"
+#import "BiometryCloudConfiguration.h"
 
 @implementation ImageHandler;
 
@@ -63,11 +64,6 @@
 	IplImage *ret = cvCreateImage(cvGetSize(iplimage), IPL_DEPTH_8U, 3);
 	cvCvtColor(iplimage, ret, CV_RGBA2BGR);
 	cvReleaseImage(&iplimage);
-#ifdef DEBUG
-#define debugLog(...) NSLog(__VA_ARGS__)
-#else
-#define debugLog(...)		// Nothing
-#endif
 	
 	return ret;
 }
@@ -120,6 +116,10 @@
 }
 
 - (CGRect ) opencvFaceDetect:(UIImage *)imageToProcess  {
+    
+    if (opencvRunningFace) {
+        return CGRectZero;
+    }
     
 	opencvRunningFace = YES;
 	

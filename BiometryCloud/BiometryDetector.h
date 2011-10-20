@@ -13,6 +13,7 @@
 
 - (UIImage *) getCurrentFrame;
 - (void) faceDetectedInRect: (CGRect) rect centered: (BOOL) centered close: (BOOL) close light: (BOOL) light aligned: (BOOL) aligned;
+- (void) successfullFaceDetection:(UIImage*) face;
 - (void) noFaceDetected;
 
 @end

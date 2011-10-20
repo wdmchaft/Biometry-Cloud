@@ -7,6 +7,7 @@
 //
 
 #import "CameraViewController.h"
+#import "BiometryCloudConfiguration.h"
 
 @implementation CameraViewController
 
@@ -21,6 +22,9 @@
         
         biometryDetector = [[BiometryDetector alloc] init];
         biometryDetector.delegate = self;
+        
+        requestHandler = [[RequestHandler alloc] init];
+        requestHandler.delegate = self;
         
         //start with initial params
         
@@ -337,7 +341,31 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     [cameraView performSelectorOnMainThread:@selector(setNeedsDisplay) withObject:nil waitUntilDone:YES];
 }
 
-#pragma mark - Biometry Delegate methods
+//ESTO PODRIA IR EN UNA CLASE APARTE SIESQUE HAY MAS METODOS DEL ESTILO, SI NO NO CREO QUE SE JUSTIFIQUE
+#pragma mark - Utilities
+
+-(NSString *) currentTime
+{
+	char buffer[80];
+	
+    NSString *timeFormat = @"%Y-%m-%d %H:%M:%S";
+    
+	const char *format = [timeFormat UTF8String];
+	
+	time_t rawtime;
+	
+	struct tm * timeinfo;
+	
+	time(&rawtime);
+	
+	timeinfo = localtime(&rawtime);
+	
+	strftime(buffer, 80, format, timeinfo);
+	
+	return [NSString stringWithCString:buffer encoding:NSUTF8StringEncoding];
+}
+
+#pragma mark - BiometryDelegate methods
 
 - (UIImage *) getCurrentFrame 
 {
@@ -354,14 +382,40 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     return frameImage;
 }
 
+- (void) successfullFaceDetection:(UIImage*) face {
+
+    debugLog(@"Face ready to send!");
+    
+    [requestHandler sendCheckingRequestWithFace:face legalId:@"hola" atTimeStamp:[self currentTime]];
+    
+    if (!requestAnswerRequired) {
+        
+        [biometryDetector startFaceDetection];
+    }
+}
+
 - (void) faceDetectedInRect: (CGRect) rect centered: (BOOL) centered close: (BOOL) close light: (BOOL) light aligned: (BOOL) aligned{
 
-    NSLog(@"Face detected!");
+    debugLog(@"Face detected!");
 }
 
 - (void) noFaceDetected{
     
-    NSLog(@"No face detected!");
+    debugLog(@"No face detected!");
+}
+
+#pragma mark - RequestHandlerDelegate methods
+
+- (void) checkingRequestAnswerReceived: (NSDictionary *) response {
+
+    debugLog(@"Checking request answer received");
+    
+    [biometryDetector startFaceDetection];
+}
+
+- (BOOL) isRequestAnswerRequired {
+
+    return requestAnswerRequired;
 }
 
 @end

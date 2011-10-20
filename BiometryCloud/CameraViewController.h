@@ -10,8 +10,9 @@
 #import <AVFoundation/AVFoundation.h>
 
 #import "BiometryDetector.h"
+#import "RequestHandler.h"
 
-@interface CameraViewController : UIViewController <AVCaptureVideoDataOutputSampleBufferDelegate, BiometryDelegate>
+@interface CameraViewController : UIViewController <AVCaptureVideoDataOutputSampleBufferDelegate, BiometryDelegate, RequestHandlerDelegate>
 
 {
     BOOL hasFrontalCamera;
@@ -20,7 +21,11 @@
     AVCaptureVideoPreviewLayer *previewLayer;
     IBOutlet UIView *cameraView;
     
+    //Handles the detection process
     BiometryDetector *biometryDetector;
+    
+    //Handles everything related to sending requests
+    RequestHandler *requestHandler;
     
     CGImageRef currentShownFrame;
     BOOL copyingFrame;
@@ -28,6 +33,9 @@
     BOOL _needsAutoExposure;
     BOOL _needsWhiteBalance;
     CGPoint _pointOfExposure;
+    
+    //Flag to set if answer from webservice is required
+    BOOL requestAnswerRequired;
 }
 
 @property (nonatomic, assign, setter = setNeedsAutoExposure:) BOOL needsAutoExposure;
