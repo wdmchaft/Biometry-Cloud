@@ -117,6 +117,10 @@
 
 - (CGRect ) opencvFaceDetect:(UIImage *)imageToProcess  {
     
+    if (opencvRunningFace) {
+        return CGRectZero;
+    }
+    
 	opencvRunningFace = YES;
 	
 	cvSetErrMode(CV_ErrModeParent);

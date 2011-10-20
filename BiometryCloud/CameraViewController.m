@@ -25,7 +25,6 @@
         
         requestHandler = [[RequestHandler alloc] init];
         requestHandler.delegate = self;
-        [requestHandler setAnswerRequired:YES];
         
         //start with initial params
         
@@ -385,9 +384,14 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
 
 - (void) successfullFaceDetection:(UIImage*) face {
 
-    debugLog(@"Face raedy to send!");
+    debugLog(@"Face ready to send!");
     
-    [requestHandler sendCheckingRequestWithFace:face legalId:@"" atTimeStamp:[self currentTime]];
+    [requestHandler sendCheckingRequestWithFace:face legalId:@"hola" atTimeStamp:[self currentTime]];
+    
+    if (!requestAnswerRequired) {
+        
+        [biometryDetector startFaceDetection];
+    }
 }
 
 - (void) faceDetectedInRect: (CGRect) rect centered: (BOOL) centered close: (BOOL) close light: (BOOL) light aligned: (BOOL) aligned{
@@ -404,7 +408,14 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
 
 - (void) checkingRequestAnswerReceived: (NSDictionary *) response {
 
-    debugLog(@"%@",[response description]);
+    debugLog(@"Checking request answer received");
+    
+    [biometryDetector startFaceDetection];
+}
+
+- (BOOL) isRequestAnswerRequired {
+
+    return requestAnswerRequired;
 }
 
 @end

@@ -33,6 +33,9 @@
     BOOL _needsAutoExposure;
     BOOL _needsWhiteBalance;
     CGPoint _pointOfExposure;
+    
+    //Flag to set if answer from webservice is required
+    BOOL requestAnswerRequired;
 }
 
 @property (nonatomic, assign, setter = setNeedsAutoExposure:) BOOL needsAutoExposure;

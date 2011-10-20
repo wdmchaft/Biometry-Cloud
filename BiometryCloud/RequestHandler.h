@@ -15,6 +15,7 @@
 @protocol RequestHandlerDelegate
 
 - (void) checkingRequestAnswerReceived: (NSDictionary *) response;
+- (BOOL) isRequestAnswerRequired;
 
 @end
 
@@ -25,9 +26,6 @@
     
     //WebService's URL
     NSString *checkingURL;
-    
-    //Flag to set if the delegate needs the request answer or not
-    BOOL answerRequired;
     
     //GPS manager to add lat and lng to requests
     CLLocationManager *locationManager;
@@ -44,8 +42,7 @@
 @property (nonatomic, retain) id<RequestHandlerDelegate> delegate;
 
 @property (nonatomic, retain) NSString *checkingURL;
-@property (nonatomic, assign) BOOL answerRequired;
 
--(void) sendCheckingRequestWithFace: (UIImage *) face legalId: (NSString *) legal_id atTimeStamp: (NSString *) time;
+- (void) sendCheckingRequestWithFace: (UIImage *) face legalId: (NSString *) legal_id atTimeStamp: (NSString *) time;
 
 @end

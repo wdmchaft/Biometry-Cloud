@@ -14,49 +14,8 @@
 
 @implementation RequestHandler
 
-@synthesize checkingURL, answerRequired;
+@synthesize checkingURL;
 @synthesize delegate;
-
-#pragma mark - Object Lifecycle
-
-- (id) init {
-
-    self = [super init];
-    if (self) {
-        
-        //GPS Initialization
-        locationManager = [[CLLocationManager alloc] init];
-        [locationManager startUpdatingLocation];
-        locationManager.delegate = self;
-        
-        currentLocation = [[CLLocation alloc] init];
-        
-        //Data Handler initialization
-        dataHandler = [[DataHandler alloc] init];
-        
-        //Reachability initialization
-        reachability = [[Reachability reachabilityForInternetConnection] retain];
-        [reachability startNotifier];
-        
-        //Register to reachability notifications 
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reachabilityChanged:) name:kReachabilityChangedNotification object:nil];
-        
-        //Default URL
-        checkingURL = @"http://www.biometrycloud.com:80/srv/face/getFaceId/";
-    }
-    
-    return self;
-}
-
-- (void) dealloc {
-
-    [locationManager release];
-    [currentLocation release];
-    [dataHandler release];
-    [reachability release];
-    
-    [super dealloc];
-}
 
 #pragma mark - Checking Request
 
@@ -77,26 +36,15 @@
     return dataDict;
 }
 
--(void) sendCheckingRequestWithFace: (UIImage *) face legalId: (NSString *) legal_id atTimeStamp: (NSString *) time
-{	
-	CheckingRequest  *request = [[CheckingRequest alloc] initWithURL:[NSURL URLWithString:checkingURL]];
+- (void) setCheckingRequestParams: (CheckingRequest *) request {
+
+    [request setURL:[NSURL URLWithString:checkingURL]];
     
 	[request setDidFinishSelector:@selector(checkingRequestFinished:)];
 	[request setDidFailSelector:@selector(checkingRequestFailed:)];
     [request setDidStartSelector:@selector(checkingRequestStarted:)];
     
-    request.legal_id = legal_id;
-    request.face = [UIImage imageWithCGImage:[face CGImage]];
-    request.lat = currentLocation.coordinate.latitude;
-    request.lng = currentLocation.coordinate.longitude;
-    request.time = time;
-    
-    if (!answerRequired) {
-        
-        [dataHandler storeCheckingRequest:request];
-    }
-    
-	[request setData:[NSData dataWithData:UIImageJPEGRepresentation(face, 0.9)]
+	[request setData:[NSData dataWithData:UIImageJPEGRepresentation(request.face, 0.9)]
 		withFileName:@"photo.jpg"
 	  andContentType:@"image/jpeg"
 			  forKey:@"data"];
@@ -111,10 +59,28 @@
     //PARAMS
     [request setPostValue:@"1" forKey:@"distanceType"];
     [request setPostValue:@"LBP" forKey:@"algorithm"];
-    [request setPostValue:@"CW" forKey:@"app"]; //--> CW POR MIENTRAS
+    [request setPostValue:@"DEMO" forKey:@"app"]; //--> DEMO POR MIENTRAS
     
 	[request setRequestMethod:@"POST"];
 	[request setDelegate:self];
+}
+
+- (void) sendCheckingRequestWithFace: (UIImage *) face legalId: (NSString *) legal_id atTimeStamp: (NSString *) time
+{	
+	CheckingRequest  *request = [[CheckingRequest alloc] init];
+    
+    request.legal_id = legal_id;
+    request.face = [UIImage imageWithCGImage:[face CGImage]];
+    request.lat = currentLocation.coordinate.latitude;
+    request.lng = currentLocation.coordinate.longitude;
+    request.time = time;
+    
+    if (![delegate isRequestAnswerRequired]) {
+        
+        [dataHandler storeCheckingRequest:request];
+    }
+    
+	[self setCheckingRequestParams:request];
     
     [request startAsynchronous];
     
@@ -123,25 +89,7 @@
 
 -(void) sendStoredCheckingRequest:(CheckingRequest *) request
 {	
-    [request setURL:[NSURL URLWithString:checkingURL]];
-    
-	[request setDidFinishSelector:@selector(checkingRequestFinished:)];
-	[request setDidFailSelector:@selector(checkingRequestFailed:)];
-    [request setDidStartSelector:@selector(checkingRequestStarted:)];
-    
-	[request setData:[NSData dataWithData:UIImageJPEGRepresentation(request.face, 0.9)]
-		withFileName:@"photo.jpg"
-	  andContentType:@"image/jpeg"
-			  forKey:@"face"];
-    
-    [request setPostValue:[[UIDevice currentDevice] uniqueIdentifier] forKey:@"device"];
-    [request setPostValue:[NSNumber numberWithDouble:request.lat] forKey:@"lat"];
-    [request setPostValue:[NSNumber numberWithDouble:request.lng] forKey:@"lng"];
-    [request setPostValue:[NSString stringWithString:request.time] forKey:@"time"];
-    [request setPostValue:[NSString stringWithString:request.legal_id] forKey:@"legal_id"];
-    
-	[request setRequestMethod:@"POST"];
-	[request setDelegate:self];
+    [self setCheckingRequestParams:request];
     
     [request startAsynchronous];
     
@@ -159,7 +107,7 @@
     
     debugLog(@"Checking reply received: %@", response);
     
-    if (answerRequired) {
+    if ([delegate isRequestAnswerRequired]) {
         
         NSDictionary *answerDict = [self parseJSONCheckingData:[request responseData]];
         
@@ -175,7 +123,7 @@
 
 - (void) checkingRequestFailed:(CheckingRequest *)request {
 	
-    if (answerRequired) {
+    if ([delegate isRequestAnswerRequired]) {
         
         NSDictionary *answer = [[NSDictionary alloc] initWithObjects:[NSArray arrayWithObject:@"2"] forKeys:[NSArray arrayWithObject:@"status"]];
         
@@ -192,6 +140,7 @@
         
         [self performSelector:@selector(sendStoredCheckingRequest:) withObject:request2];
     }
+    //If no answer required and there's no internet connection, the request isn't deleted from database
     else if ([request isCancelled]) {
         
         debugLog(@"Checking request cancelled");
@@ -216,6 +165,8 @@
             
             [self sendStoredCheckingRequest:request];
         }
+        
+        [array release];
     }
     else {
         
@@ -247,7 +198,7 @@
         
         debugLog(@"Connection Found");
         
-        //
+        //Resend stored checking requests
         [self resendCheckingRequests];
     }
     else if (isNetworkAvailable && !newNetworkStatus) {
@@ -258,5 +209,50 @@
     isNetworkAvailable = newNetworkStatus;
 }
 
+#pragma mark - Object Lifecycle
+
+- (id) init {
+    
+    self = [super init];
+    if (self) {
+        
+        //GPS Initialization
+        locationManager = [[CLLocationManager alloc] init];
+        [locationManager startUpdatingLocation];
+        locationManager.delegate = self;
+        
+        currentLocation = [[CLLocation alloc] init];
+        
+        //Data Handler initialization
+        dataHandler = [[DataHandler alloc] init];
+        
+        //Reachability initialization
+        reachability = [[Reachability reachabilityForInternetConnection] retain];
+        [reachability startNotifier];
+        
+        //Register to reachability notifications 
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reachabilityChanged:) name:kReachabilityChangedNotification object:nil];
+        
+        //Default URL
+        checkingURL = @"http://www.biometrycloud.com:80/srv/face/getFaceId/";
+        
+        if ([reachability currentReachabilityStatus] != NotReachable) {
+            
+            [self resendCheckingRequests];
+        }
+    }
+    
+    return self;
+}
+
+- (void) dealloc {
+    
+    [locationManager release];
+    [currentLocation release];
+    [dataHandler release];
+    [reachability release];
+    
+    [super dealloc];
+}
 
 @end
