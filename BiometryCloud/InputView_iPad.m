@@ -16,6 +16,12 @@
     self = [super initWithCoder:aDecoder];
     if (self) {
         // Initialization code
+        
+        NSArray *array = [[NSBundle mainBundle] loadNibNamed:@"InputView_iPad" owner:self options:nil];
+        [self addSubview:[array objectAtIndex:0]];
+        
+        //Hide inputView
+        [super hideAnimated:FALSE];
     }
     return self;
 }

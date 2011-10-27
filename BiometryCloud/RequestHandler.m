@@ -67,10 +67,10 @@
 
 - (void) sendCheckingRequestWithFace: (UIImage *) face legalId: (NSString *) legal_id atTimeStamp: (NSString *) time
 {	
-	CheckingRequest  *request = [[CheckingRequest alloc] init];
+	CheckingRequest  *request = [[CheckingRequest alloc] initWithURL:nil];
     
     request.legal_id = legal_id;
-    request.face = [UIImage imageWithCGImage:[face CGImage]];
+    request.face = [UIImage imageWithCGImage:[face CGImage] scale:1.0 orientation:UIImageOrientationRight];
     request.lat = currentLocation.coordinate.latitude;
     request.lng = currentLocation.coordinate.longitude;
     request.time = time;
@@ -83,8 +83,6 @@
 	[self setCheckingRequestParams:request];
     
     [request startAsynchronous];
-    
-    //debugLog(@"Checking request #%d created", ++count);
 }
 
 -(void) sendStoredCheckingRequest:(CheckingRequest *) request

@@ -15,14 +15,27 @@
 
 @end
 
-@interface InputView : UIView {
+@interface InputView : UIView <UITextFieldDelegate> {
     
-    id<InputViewDelegate> *delegate;
+    IBOutlet id<InputViewDelegate> delegate;
     
     //String to give format to input
-    NSString *inputFormat;
+    NSString *_inputFormat;
+    
+    //IBOutlets
+    IBOutlet UIButton *_cancelButton;
+    IBOutlet UIButton *_confirmButton;
+    IBOutlet UIView *_inputSubView;
+    IBOutlet UILabel *_textLabel;
+    IBOutlet UILabel *_inputLabel;
+    IBOutlet UITextField *_dummyField;
 }
 
-@property (nonatomic, assign) id<InputViewDelegate> *delegate;
+@property (nonatomic, assign) id<InputViewDelegate> delegate;
+
+@property (nonatomic, retain, setter = setInputFormat:) NSString *inputFormat;
+
+- (void) showAnimated:(BOOL) animated;
+- (void) hideAnimated:(BOOL) animated;
 
 @end

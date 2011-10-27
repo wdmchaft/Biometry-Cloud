@@ -32,6 +32,8 @@
         [self setNeedsWhiteBalance:YES];
         [self setNeedsAutoExposure:NO];
         
+        //test
+        inputRequired = TRUE;
         
     }
     return self;
@@ -457,7 +459,6 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
 
 #pragma mark - Biometry Delegate methods
 
-
 - (UIImage *) getCurrentFrame 
 {
     //set the bool copying frame to true to "lock" the CGImage
@@ -477,11 +478,23 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
 
     debugLog(@"Face ready to send!");
     
-    [requestHandler sendCheckingRequestWithFace:face legalId:@"hola" atTimeStamp:[self currentTime]];
-    
-    if (!requestAnswerRequired) {
+    if (inputRequired) {
         
-        [biometryDetector startFaceDetection];
+        [_inputView performSelectorOnMainThread:@selector(showAnimated:) withObject:[NSNumber numberWithBool:TRUE] waitUntilDone:NO];
+        
+        detectedFaceImage = face;
+        [detectedFaceImage retain];
+        
+        [self stopCapture];
+    }
+    else {
+    
+        [requestHandler sendCheckingRequestWithFace:face legalId:@"" atTimeStamp:[self currentTime]];
+        
+        if (!requestAnswerRequired) {
+            
+            [biometryDetector startFaceDetection];
+        } 
     }
 }
 
@@ -521,7 +534,32 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     return requestAnswerRequired;
 }
 
+#pragma mark - InputViewDelegate Methods
 
+- (void) legalIdAccepted:(NSString *) legal_id
+{
 
+    //Send request with detected face and legal_id
+    [requestHandler sendCheckingRequestWithFace:detectedFaceImage legalId:legal_id atTimeStamp:[self currentTime]];
+    
+    [detectedFaceImage release];
+    
+    //Start over again if the response is not required
+    if (!requestAnswerRequired) {
+        
+        [self startCapture];
+        
+        [biometryDetector startFaceDetection];
+    }
+}
+
+- (void) legalIdCancelled
+{
+
+    //Start over again
+    [self startCapture];
+    
+    [biometryDetector startFaceDetection];
+}
 
 @end

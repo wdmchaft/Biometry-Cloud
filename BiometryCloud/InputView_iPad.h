@@ -10,6 +10,7 @@
 
 @interface InputView_iPad : InputView {
     
+    
 }
 
 @end

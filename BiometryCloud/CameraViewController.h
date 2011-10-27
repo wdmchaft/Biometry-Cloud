@@ -12,8 +12,9 @@
 #import "DrawingView.h"
 #import "BiometryDetector.h"
 #import "RequestHandler.h"
+#import "InputView.h"
 
-@interface CameraViewController : UIViewController <AVCaptureVideoDataOutputSampleBufferDelegate, BiometryDelegate, RequestHandlerDelegate>
+@interface CameraViewController : UIViewController <AVCaptureVideoDataOutputSampleBufferDelegate, BiometryDelegate, RequestHandlerDelegate, InputViewDelegate>
 
 {
     BOOL hasFrontalCamera;
@@ -39,6 +40,15 @@
     
     //Flag to set if answer from webservice is required
     BOOL requestAnswerRequired;
+    
+    //Flag to set if input is required
+    BOOL inputRequired;
+    
+    //Last found face to store it while entering input
+    UIImage *detectedFaceImage;
+    
+    //Input View
+    IBOutlet InputView *_inputView;
     
     IBOutlet DrawingView *_drawingView;
     
