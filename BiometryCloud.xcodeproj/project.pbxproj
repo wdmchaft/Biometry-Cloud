@@ -56,6 +56,30 @@
 		F122C6BE143E265600E2FFE8 /* CameraViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F122C6BD143E265600E2FFE8 /* CameraViewController.m */; };
 		F122C6C2143E26BA00E2FFE8 /* CameraViewController_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = F122C6C0143E26BA00E2FFE8 /* CameraViewController_iPhone.m */; };
 		F122C6C3143E26BA00E2FFE8 /* CameraViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = F122C6C1143E26BA00E2FFE8 /* CameraViewController_iPhone.xib */; };
+		F14477A21450506400103ADA /* DrawingView.m in Sources */ = {isa = PBXBuildFile; fileRef = F14477A11450506400103ADA /* DrawingView.m */; };
+		F14477A51450508D00103ADA /* DrawingView_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = F14477A41450508D00103ADA /* DrawingView_iPhone.xib */; };
+		F14477A7145050A600103ADA /* DrawingView_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = F14477A6145050A600103ADA /* DrawingView_iPad.xib */; };
+		F14477AA14506E4700103ADA /* DrawingView_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = F14477A914506E4700103ADA /* DrawingView_iPhone.m */; };
+		F14477AD14506F4900103ADA /* DrawingView_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = F14477AC14506F4900103ADA /* DrawingView_iPad.m */; };
+		F14477B9145079F800103ADA /* flecha1.png in Resources */ = {isa = PBXBuildFile; fileRef = F14477AE145079F800103ADA /* flecha1.png */; };
+		F14477BA145079F800103ADA /* flecha2.png in Resources */ = {isa = PBXBuildFile; fileRef = F14477AF145079F800103ADA /* flecha2.png */; };
+		F14477BB145079F800103ADA /* flecha3.png in Resources */ = {isa = PBXBuildFile; fileRef = F14477B0145079F800103ADA /* flecha3.png */; };
+		F14477BC145079F800103ADA /* flecha4.png in Resources */ = {isa = PBXBuildFile; fileRef = F14477B1145079F800103ADA /* flecha4.png */; };
+		F14477BD145079F800103ADA /* flecha5.png in Resources */ = {isa = PBXBuildFile; fileRef = F14477B2145079F800103ADA /* flecha5.png */; };
+		F14477BE145079F800103ADA /* flecha6.png in Resources */ = {isa = PBXBuildFile; fileRef = F14477B3145079F800103ADA /* flecha6.png */; };
+		F14477BF145079F800103ADA /* flecha7.png in Resources */ = {isa = PBXBuildFile; fileRef = F14477B4145079F800103ADA /* flecha7.png */; };
+		F14477C0145079F800103ADA /* flecha8.png in Resources */ = {isa = PBXBuildFile; fileRef = F14477B5145079F800103ADA /* flecha8.png */; };
+		F14477C1145079F800103ADA /* flecha9.png in Resources */ = {isa = PBXBuildFile; fileRef = F14477B6145079F800103ADA /* flecha9.png */; };
+		F14477C2145079F800103ADA /* flecha10.png in Resources */ = {isa = PBXBuildFile; fileRef = F14477B7145079F800103ADA /* flecha10.png */; };
+		F14477C3145079F800103ADA /* flecha11.png in Resources */ = {isa = PBXBuildFile; fileRef = F14477B8145079F800103ADA /* flecha11.png */; };
+		F14477E214507A7300103ADA /* centerface1.png in Resources */ = {isa = PBXBuildFile; fileRef = F14477E014507A7200103ADA /* centerface1.png */; };
+		F14477E314507A7300103ADA /* centerface0.png in Resources */ = {isa = PBXBuildFile; fileRef = F14477E114507A7200103ADA /* centerface0.png */; };
+		F16C8797145641E600EC9B85 /* changeCamaraButtonIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = F16C8795145641E600EC9B85 /* changeCamaraButtonIcon.png */; };
+		F16C8798145641E600EC9B85 /* changeCamaraButtonIconPressed.png in Resources */ = {isa = PBXBuildFile; fileRef = F16C8796145641E600EC9B85 /* changeCamaraButtonIconPressed.png */; };
+		F16C879E145722CD00EC9B85 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F16C879A145722CD00EC9B85 /* InfoPlist.strings */; };
+		F16C879F145722CD00EC9B85 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F16C879C145722CD00EC9B85 /* Localizable.strings */; };
+		F16C87A51457239E00EC9B85 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F16C87A11457239E00EC9B85 /* InfoPlist.strings */; };
+		F16C87A61457239E00EC9B85 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F16C87A31457239E00EC9B85 /* Localizable.strings */; };
 		F1E786801444AD3C008672C4 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1F608C0143E4F8B00A6E0DC /* CoreMedia.framework */; };
 		F1E786811444AD4E008672C4 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1F608C1143E4F8B00A6E0DC /* CoreVideo.framework */; };
 		F1F608AE143E36D600A6E0DC /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1F608AD143E36D600A6E0DC /* AVFoundation.framework */; };
@@ -149,6 +173,33 @@
 		F122C6BF143E26BA00E2FFE8 /* CameraViewController_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = CameraViewController_iPhone.h; sourceTree = "<group>"; };
 		F122C6C0143E26BA00E2FFE8 /* CameraViewController_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = CameraViewController_iPhone.m; sourceTree = "<group>"; };
 		F122C6C1143E26BA00E2FFE8 /* CameraViewController_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = CameraViewController_iPhone.xib; sourceTree = "<group>"; };
+		F14477A01450506400103ADA /* DrawingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = DrawingView.h; sourceTree = "<group>"; };
+		F14477A11450506400103ADA /* DrawingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = DrawingView.m; sourceTree = "<group>"; };
+		F14477A41450508D00103ADA /* DrawingView_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DrawingView_iPhone.xib; path = iPhone/DrawingView_iPhone.xib; sourceTree = "<group>"; };
+		F14477A6145050A600103ADA /* DrawingView_iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; name = DrawingView_iPad.xib; path = iPad/DrawingView_iPad.xib; sourceTree = "<group>"; };
+		F14477A814506E4700103ADA /* DrawingView_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DrawingView_iPhone.h; path = iPhone/DrawingView_iPhone.h; sourceTree = "<group>"; };
+		F14477A914506E4700103ADA /* DrawingView_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DrawingView_iPhone.m; path = iPhone/DrawingView_iPhone.m; sourceTree = "<group>"; };
+		F14477AB14506F4900103ADA /* DrawingView_iPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; name = DrawingView_iPad.h; path = iPad/DrawingView_iPad.h; sourceTree = "<group>"; };
+		F14477AC14506F4900103ADA /* DrawingView_iPad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; name = DrawingView_iPad.m; path = iPad/DrawingView_iPad.m; sourceTree = "<group>"; };
+		F14477AE145079F800103ADA /* flecha1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flecha1.png; sourceTree = "<group>"; };
+		F14477AF145079F800103ADA /* flecha2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flecha2.png; sourceTree = "<group>"; };
+		F14477B0145079F800103ADA /* flecha3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flecha3.png; sourceTree = "<group>"; };
+		F14477B1145079F800103ADA /* flecha4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flecha4.png; sourceTree = "<group>"; };
+		F14477B2145079F800103ADA /* flecha5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flecha5.png; sourceTree = "<group>"; };
+		F14477B3145079F800103ADA /* flecha6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flecha6.png; sourceTree = "<group>"; };
+		F14477B4145079F800103ADA /* flecha7.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flecha7.png; sourceTree = "<group>"; };
+		F14477B5145079F800103ADA /* flecha8.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flecha8.png; sourceTree = "<group>"; };
+		F14477B6145079F800103ADA /* flecha9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flecha9.png; sourceTree = "<group>"; };
+		F14477B7145079F800103ADA /* flecha10.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flecha10.png; sourceTree = "<group>"; };
+		F14477B8145079F800103ADA /* flecha11.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = flecha11.png; sourceTree = "<group>"; };
+		F14477E014507A7200103ADA /* centerface1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = centerface1.png; sourceTree = "<group>"; };
+		F14477E114507A7200103ADA /* centerface0.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = centerface0.png; sourceTree = "<group>"; };
+		F16C8795145641E600EC9B85 /* changeCamaraButtonIcon.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = changeCamaraButtonIcon.png; sourceTree = "<group>"; };
+		F16C8796145641E600EC9B85 /* changeCamaraButtonIconPressed.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = changeCamaraButtonIconPressed.png; sourceTree = "<group>"; };
+		F16C879B145722CD00EC9B85 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = InfoPlist.strings; sourceTree = "<group>"; };
+		F16C879D145722CD00EC9B85 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = Localizable.strings; sourceTree = "<group>"; };
+		F16C87A21457239E00EC9B85 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = InfoPlist.strings; sourceTree = "<group>"; };
+		F16C87A41457239E00EC9B85 /* es */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = es; path = Localizable.strings; sourceTree = "<group>"; };
 		F1F608AD143E36D600A6E0DC /* AVFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = AVFoundation.framework; path = System/Library/Frameworks/AVFoundation.framework; sourceTree = SDKROOT; };
 		F1F608BF143E4F8B00A6E0DC /* CoreGraphics.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreGraphics.framework; path = System/Library/Frameworks/CoreGraphics.framework; sourceTree = SDKROOT; };
 		F1F608C0143E4F8B00A6E0DC /* CoreMedia.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreMedia.framework; path = System/Library/Frameworks/CoreMedia.framework; sourceTree = SDKROOT; };
@@ -201,6 +252,9 @@
 			children = (
 				6E9BE8B9144DDD0D00821C4C /* BiometryCloud.sqlite */,
 				6E0F4B6B1444C2310084080B /* haarcascade_frontalface_alt2.xml */,
+				F16C87A01457239E00EC9B85 /* es.lproj */,
+				F16C8799145722CD00EC9B85 /* en.lproj */,
+				F16C8793145641B100EC9B85 /* Images */,
 			);
 			name = Resources;
 			sourceTree = "<group>";
@@ -306,6 +360,8 @@
 				F122C6BD143E265600E2FFE8 /* CameraViewController.m */,
 				6E0F4B4D1444A2FD0084080B /* BiometryDetector.h */,
 				6E0F4B4E1444A2FD0084080B /* BiometryDetector.m */,
+				F14477A01450506400103ADA /* DrawingView.h */,
+				F14477A11450506400103ADA /* DrawingView.m */,
 				6E0F4B501444A4D90084080B /* ImageHandler.h */,
 				6E0F4B511444A4D90084080B /* ImageHandler.m */,
 				6E9BE851144730BF00821C4C /* RequestHandler.h */,
@@ -343,10 +399,13 @@
 				F122C69D143E1D7000E2FFE8 /* BiometryCloudAppDelegate_iPhone.m */,
 				F122C6BF143E26BA00E2FFE8 /* CameraViewController_iPhone.h */,
 				F122C6C0143E26BA00E2FFE8 /* CameraViewController_iPhone.m */,
+				F14477A814506E4700103ADA /* DrawingView_iPhone.h */,
+				F14477A914506E4700103ADA /* DrawingView_iPhone.m */,
 				F122C6C1143E26BA00E2FFE8 /* CameraViewController_iPhone.xib */,
 				6E9BE8D91450BC6E00821C4C /* InputView_iPhone.h */,
 				6E9BE8DA1450BC6F00821C4C /* InputView_iPhone.m */,
 				6E9BE8D71450BBEF00821C4C /* InputView_iPhone.xib */,
+				F14477A41450508D00103ADA /* DrawingView_iPhone.xib */,
 				F122C69F143E1D7000E2FFE8 /* MainWindow_iPhone.xib */,
 			);
 			name = iPhone;
@@ -359,13 +418,80 @@
 				F122C6A4143E1D7000E2FFE8 /* BiometryCloudAppDelegate_iPad.m */,
 				F122C6B3143E1E4400E2FFE8 /* CameraViewController_iPad.h */,
 				F122C6B4143E1E4400E2FFE8 /* CameraViewController_iPad.m */,
+				F14477AB14506F4900103ADA /* DrawingView_iPad.h */,
+				F14477AC14506F4900103ADA /* DrawingView_iPad.m */,
 				F122C6B5143E1E4400E2FFE8 /* CameraViewController_iPad.xib */,
 				6E9BE8DE1450BD1E00821C4C /* InputView_iPad.h */,
 				6E9BE8DF1450BD1E00821C4C /* InputView_iPad.m */,
 				6E9BE8DC1450BCFF00821C4C /* InputView_iPad.xib */,
+				F14477A6145050A600103ADA /* DrawingView_iPad.xib */,
 				F122C6A6143E1D7000E2FFE8 /* MainWindow_iPad.xib */,
 			);
 			name = iPad;
+			sourceTree = "<group>";
+		};
+		F14477C414507A0000103ADA /* GetCloserFeedback */ = {
+			isa = PBXGroup;
+			children = (
+				F14477AE145079F800103ADA /* flecha1.png */,
+				F14477AF145079F800103ADA /* flecha2.png */,
+				F14477B0145079F800103ADA /* flecha3.png */,
+				F14477B1145079F800103ADA /* flecha4.png */,
+				F14477B2145079F800103ADA /* flecha5.png */,
+				F14477B3145079F800103ADA /* flecha6.png */,
+				F14477B4145079F800103ADA /* flecha7.png */,
+				F14477B5145079F800103ADA /* flecha8.png */,
+				F14477B6145079F800103ADA /* flecha9.png */,
+				F14477B7145079F800103ADA /* flecha10.png */,
+				F14477B8145079F800103ADA /* flecha11.png */,
+			);
+			name = GetCloserFeedback;
+			sourceTree = "<group>";
+		};
+		F14477DF14507A3000103ADA /* CenterFaceFeedback */ = {
+			isa = PBXGroup;
+			children = (
+				F14477E014507A7200103ADA /* centerface1.png */,
+				F14477E114507A7200103ADA /* centerface0.png */,
+			);
+			name = CenterFaceFeedback;
+			sourceTree = "<group>";
+		};
+		F16C8793145641B100EC9B85 /* Images */ = {
+			isa = PBXGroup;
+			children = (
+				F16C8794145641D300EC9B85 /* Buttons */,
+				F14477DF14507A3000103ADA /* CenterFaceFeedback */,
+				F14477C414507A0000103ADA /* GetCloserFeedback */,
+			);
+			name = Images;
+			sourceTree = "<group>";
+		};
+		F16C8794145641D300EC9B85 /* Buttons */ = {
+			isa = PBXGroup;
+			children = (
+				F16C8795145641E600EC9B85 /* changeCamaraButtonIcon.png */,
+				F16C8796145641E600EC9B85 /* changeCamaraButtonIconPressed.png */,
+			);
+			name = Buttons;
+			sourceTree = "<group>";
+		};
+		F16C8799145722CD00EC9B85 /* en.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				F16C879A145722CD00EC9B85 /* InfoPlist.strings */,
+				F16C879C145722CD00EC9B85 /* Localizable.strings */,
+			);
+			path = en.lproj;
+			sourceTree = "<group>";
+		};
+		F16C87A01457239E00EC9B85 /* es.lproj */ = {
+			isa = PBXGroup;
+			children = (
+				F16C87A11457239E00EC9B85 /* InfoPlist.strings */,
+				F16C87A31457239E00EC9B85 /* Localizable.strings */,
+			);
+			path = es.lproj;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -393,12 +519,16 @@
 /* Begin PBXProject section */
 		F122C67C143E1D6F00E2FFE8 /* Project object */ = {
 			isa = PBXProject;
+			attributes = {
+				LastUpgradeCheck = 0420;
+			};
 			buildConfigurationList = F122C67F143E1D6F00E2FFE8 /* Build configuration list for PBXProject "BiometryCloud" */;
 			compatibilityVersion = "Xcode 3.2";
 			developmentRegion = English;
 			hasScannedForEncodings = 0;
 			knownRegions = (
 				en,
+				es,
 			);
 			mainGroup = F122C67A143E1D6F00E2FFE8;
 			productRefGroup = F122C686143E1D6F00E2FFE8 /* Products */;
@@ -424,6 +554,27 @@
 				6E9BE8BA144DDD0D00821C4C /* BiometryCloud.sqlite in Resources */,
 				6E9BE8D81450BBEF00821C4C /* InputView_iPhone.xib in Resources */,
 				6E9BE8DD1450BD0000821C4C /* InputView_iPad.xib in Resources */,
+				F14477A51450508D00103ADA /* DrawingView_iPhone.xib in Resources */,
+				F14477A7145050A600103ADA /* DrawingView_iPad.xib in Resources */,
+				F14477B9145079F800103ADA /* flecha1.png in Resources */,
+				F14477BA145079F800103ADA /* flecha2.png in Resources */,
+				F14477BB145079F800103ADA /* flecha3.png in Resources */,
+				F14477BC145079F800103ADA /* flecha4.png in Resources */,
+				F14477BD145079F800103ADA /* flecha5.png in Resources */,
+				F14477BE145079F800103ADA /* flecha6.png in Resources */,
+				F14477BF145079F800103ADA /* flecha7.png in Resources */,
+				F14477C0145079F800103ADA /* flecha8.png in Resources */,
+				F14477C1145079F800103ADA /* flecha9.png in Resources */,
+				F14477C2145079F800103ADA /* flecha10.png in Resources */,
+				F14477C3145079F800103ADA /* flecha11.png in Resources */,
+				F14477E214507A7300103ADA /* centerface1.png in Resources */,
+				F14477E314507A7300103ADA /* centerface0.png in Resources */,
+				F16C8797145641E600EC9B85 /* changeCamaraButtonIcon.png in Resources */,
+				F16C8798145641E600EC9B85 /* changeCamaraButtonIconPressed.png in Resources */,
+				F16C879E145722CD00EC9B85 /* InfoPlist.strings in Resources */,
+				F16C879F145722CD00EC9B85 /* Localizable.strings in Resources */,
+				F16C87A51457239E00EC9B85 /* InfoPlist.strings in Resources */,
+				F16C87A61457239E00EC9B85 /* Localizable.strings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -462,6 +613,9 @@
 				6E9BE8D51450BB4B00821C4C /* InputView.m in Sources */,
 				6E9BE8DB1450BC7000821C4C /* InputView_iPhone.m in Sources */,
 				6E9BE8E01450BD1F00821C4C /* InputView_iPad.m in Sources */,
+				F14477A21450506400103ADA /* DrawingView.m in Sources */,
+				F14477AA14506E4700103ADA /* DrawingView_iPhone.m in Sources */,
+				F14477AD14506F4900103ADA /* DrawingView_iPad.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -490,6 +644,38 @@
 				F122C6A7143E1D7000E2FFE8 /* en */,
 			);
 			name = MainWindow_iPad.xib;
+			sourceTree = "<group>";
+		};
+		F16C879A145722CD00EC9B85 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F16C879B145722CD00EC9B85 /* en */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		F16C879C145722CD00EC9B85 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F16C879D145722CD00EC9B85 /* en */,
+			);
+			name = Localizable.strings;
+			sourceTree = "<group>";
+		};
+		F16C87A11457239E00EC9B85 /* InfoPlist.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F16C87A21457239E00EC9B85 /* es */,
+			);
+			name = InfoPlist.strings;
+			sourceTree = "<group>";
+		};
+		F16C87A31457239E00EC9B85 /* Localizable.strings */ = {
+			isa = PBXVariantGroup;
+			children = (
+				F16C87A41457239E00EC9B85 /* es */,
+			);
+			name = Localizable.strings;
 			sourceTree = "<group>";
 		};
 /* End PBXVariantGroup section */
@@ -545,6 +731,7 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BiometryCloud/BiometryCloud-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = "$(SRCROOT)/opencv_device/include";
 				INFOPLIST_FILE = "BiometryCloud/BiometryCloud-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
@@ -565,6 +752,7 @@
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BiometryCloud/BiometryCloud-Prefix.pch";
+				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = "$(SRCROOT)/opencv_device/include";
 				INFOPLIST_FILE = "BiometryCloud/BiometryCloud-Info.plist";
 				LIBRARY_SEARCH_PATHS = (

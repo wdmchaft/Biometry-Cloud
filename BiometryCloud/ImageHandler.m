@@ -3,7 +3,7 @@
 //  BiometryCloud
 //
 //  Created by Pablo Mandiola on 10-01-11.
-//  Copyright 2011 Clockwise. All rights reserved.
+//  Copyright 2011 Biometry Cloud. All rights reserved.
 //
 
 #import "ImageHandler.h"

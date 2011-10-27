@@ -3,7 +3,7 @@
 //  BiometryCloud
 //
 //  Created by Andrés Munita Irarrázaval on 06-10-11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 Biometry Cloud. All rights reserved.
 //
 
 #import "CameraViewController_iPhone.h"
@@ -17,6 +17,8 @@
     if (self) {
         // Custom initialization
         [self setScale:1.3];
+        
+        
     }
     return self;
 }
@@ -35,6 +37,7 @@
 {
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
+    
  
 }
 
