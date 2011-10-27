@@ -39,7 +39,7 @@
     BOOL isNetworkAvailable;
 }
 
-@property (nonatomic, retain) id<RequestHandlerDelegate> delegate;
+@property (nonatomic, assign) id<RequestHandlerDelegate> delegate;
 
 @property (nonatomic, retain) NSString *checkingURL;
 

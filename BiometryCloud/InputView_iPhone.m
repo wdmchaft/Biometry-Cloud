@@ -11,4 +11,13 @@
 
 @implementation InputView_iPhone
 
+- (id) initWithCoder:(NSCoder *)aDecoder {
+
+    self = [super initWithCoder:aDecoder];
+    if (self) {
+        // Initialization code
+    }
+    return self;
+}
+
 @end

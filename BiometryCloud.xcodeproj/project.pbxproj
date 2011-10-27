@@ -37,6 +37,11 @@
 		6E9BE8A4144DC43400821C4C /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E9BE89C144DC35500821C4C /* SystemConfiguration.framework */; };
 		6E9BE8B1144DC4A000821C4C /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E9BE8AF144DC49400821C4C /* libsqlite3.dylib */; };
 		6E9BE8BA144DDD0D00821C4C /* BiometryCloud.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 6E9BE8B9144DDD0D00821C4C /* BiometryCloud.sqlite */; };
+		6E9BE8D51450BB4B00821C4C /* InputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E9BE8D41450BB4A00821C4C /* InputView.m */; };
+		6E9BE8D81450BBEF00821C4C /* InputView_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E9BE8D71450BBEF00821C4C /* InputView_iPhone.xib */; };
+		6E9BE8DB1450BC7000821C4C /* InputView_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E9BE8DA1450BC6F00821C4C /* InputView_iPhone.m */; };
+		6E9BE8DD1450BD0000821C4C /* InputView_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E9BE8DC1450BCFF00821C4C /* InputView_iPad.xib */; };
+		6E9BE8E01450BD1F00821C4C /* InputView_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E9BE8DF1450BD1E00821C4C /* InputView_iPad.m */; };
 		F122C68A143E1D6F00E2FFE8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F122C689143E1D6F00E2FFE8 /* UIKit.framework */; };
 		F122C68C143E1D6F00E2FFE8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F122C68B143E1D6F00E2FFE8 /* Foundation.framework */; };
 		F122C694143E1D6F00E2FFE8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F122C692143E1D6F00E2FFE8 /* InfoPlist.strings */; };
@@ -113,6 +118,14 @@
 		6E9BE8AF144DC49400821C4C /* libsqlite3.dylib */ = {isa = PBXFileReference; lastKnownFileType = "compiled.mach-o.dylib"; name = libsqlite3.dylib; path = usr/lib/libsqlite3.dylib; sourceTree = SDKROOT; };
 		6E9BE8B2144DC55900821C4C /* BiometryCloudConfiguration.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BiometryCloudConfiguration.h; sourceTree = "<group>"; };
 		6E9BE8B9144DDD0D00821C4C /* BiometryCloud.sqlite */ = {isa = PBXFileReference; lastKnownFileType = file; path = BiometryCloud.sqlite; sourceTree = "<group>"; };
+		6E9BE8D31450BB4A00821C4C /* InputView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputView.h; sourceTree = "<group>"; };
+		6E9BE8D41450BB4A00821C4C /* InputView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputView.m; sourceTree = "<group>"; };
+		6E9BE8D71450BBEF00821C4C /* InputView_iPhone.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InputView_iPhone.xib; sourceTree = "<group>"; };
+		6E9BE8D91450BC6E00821C4C /* InputView_iPhone.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputView_iPhone.h; sourceTree = "<group>"; };
+		6E9BE8DA1450BC6F00821C4C /* InputView_iPhone.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputView_iPhone.m; sourceTree = "<group>"; };
+		6E9BE8DC1450BCFF00821C4C /* InputView_iPad.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = InputView_iPad.xib; sourceTree = "<group>"; };
+		6E9BE8DE1450BD1E00821C4C /* InputView_iPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputView_iPad.h; sourceTree = "<group>"; };
+		6E9BE8DF1450BD1E00821C4C /* InputView_iPad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputView_iPad.m; sourceTree = "<group>"; };
 		F122C685143E1D6F00E2FFE8 /* BiometryCloud.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BiometryCloud.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F122C689143E1D6F00E2FFE8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F122C68B143E1D6F00E2FFE8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
@@ -297,6 +310,8 @@
 				6E0F4B511444A4D90084080B /* ImageHandler.m */,
 				6E9BE851144730BF00821C4C /* RequestHandler.h */,
 				6E9BE852144730BF00821C4C /* RequestHandler.m */,
+				6E9BE8D31450BB4A00821C4C /* InputView.h */,
+				6E9BE8D41450BB4A00821C4C /* InputView.m */,
 				6E9BE867144758FF00821C4C /* DataHandler.h */,
 				6E9BE868144758FF00821C4C /* DataHandler.m */,
 				6E9BE84314472FA000821C4C /* CheckingRequest.h */,
@@ -329,6 +344,9 @@
 				F122C6BF143E26BA00E2FFE8 /* CameraViewController_iPhone.h */,
 				F122C6C0143E26BA00E2FFE8 /* CameraViewController_iPhone.m */,
 				F122C6C1143E26BA00E2FFE8 /* CameraViewController_iPhone.xib */,
+				6E9BE8D91450BC6E00821C4C /* InputView_iPhone.h */,
+				6E9BE8DA1450BC6F00821C4C /* InputView_iPhone.m */,
+				6E9BE8D71450BBEF00821C4C /* InputView_iPhone.xib */,
 				F122C69F143E1D7000E2FFE8 /* MainWindow_iPhone.xib */,
 			);
 			name = iPhone;
@@ -342,6 +360,9 @@
 				F122C6B3143E1E4400E2FFE8 /* CameraViewController_iPad.h */,
 				F122C6B4143E1E4400E2FFE8 /* CameraViewController_iPad.m */,
 				F122C6B5143E1E4400E2FFE8 /* CameraViewController_iPad.xib */,
+				6E9BE8DE1450BD1E00821C4C /* InputView_iPad.h */,
+				6E9BE8DF1450BD1E00821C4C /* InputView_iPad.m */,
+				6E9BE8DC1450BCFF00821C4C /* InputView_iPad.xib */,
 				F122C6A6143E1D7000E2FFE8 /* MainWindow_iPad.xib */,
 			);
 			name = iPad;
@@ -401,6 +422,8 @@
 				F122C6C3143E26BA00E2FFE8 /* CameraViewController_iPhone.xib in Resources */,
 				6E0F4B6C1444C2310084080B /* haarcascade_frontalface_alt2.xml in Resources */,
 				6E9BE8BA144DDD0D00821C4C /* BiometryCloud.sqlite in Resources */,
+				6E9BE8D81450BBEF00821C4C /* InputView_iPhone.xib in Resources */,
+				6E9BE8DD1450BD0000821C4C /* InputView_iPad.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -436,6 +459,9 @@
 				6E9BE88F144DC21600821C4C /* ASIDownloadCache.m in Sources */,
 				6E9BE892144DC23500821C4C /* ASIInputStream.m in Sources */,
 				6E9BE895144DC25900821C4C /* Reachability.m in Sources */,
+				6E9BE8D51450BB4B00821C4C /* InputView.m in Sources */,
+				6E9BE8DB1450BC7000821C4C /* InputView_iPhone.m in Sources */,
+				6E9BE8E01450BD1F00821C4C /* InputView_iPad.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

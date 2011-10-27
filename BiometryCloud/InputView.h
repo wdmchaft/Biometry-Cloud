@@ -8,9 +8,21 @@
 
 #import <UIKit/UIKit.h>
 
+@protocol InputViewDelegate
+
+- (void) legalIdAccepted:(NSString *) legal_id;
+- (void) legalIdCancelled;
+
+@end
 
 @interface InputView : UIView {
     
+    id<InputViewDelegate> *delegate;
+    
+    //String to give format to input
+    NSString *inputFormat;
 }
+
+@property (nonatomic, assign) id<InputViewDelegate> *delegate;
 
 @end

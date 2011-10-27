@@ -43,7 +43,7 @@
     int histThreshold;
 }
 
-@property (nonatomic, retain) id<BiometryDelegate> delegate;
+@property (nonatomic, assign) id<BiometryDelegate> delegate;
 
 @property (nonatomic, assign) CGRect detectionROI;
 @property (nonatomic, assign) CGRect validROI;
