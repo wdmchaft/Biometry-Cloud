@@ -12,7 +12,7 @@
 
 //create the setters and getters for the parameters of the cammera
 
-@synthesize needsAutoExposure=_needsAutoExposure, needsWhiteBalance=_needsWhiteBalance, pointOfExposure=_pointOfExposure, scale=_scale;
+@synthesize needsAutoExposure=_needsAutoExposure, needsWhiteBalance=_needsWhiteBalance, pointOfExposure=_pointOfExposure, scale=_scale, canSwitchCamera=_canSwitchCamera;
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -27,6 +27,8 @@
         [self setPointOfExposure:CGPointMake(0.8f, 0.5f)];
         [self setNeedsWhiteBalance:YES];
         [self setNeedsAutoExposure:NO];
+        
+        
     }
     return self;
 }
@@ -58,8 +60,9 @@
     
     //Biometry detector parameters
     biometryDetector.viewSize = self.view.frame.size;
-    biometryDetector.validROI = self.view.frame; //MASK
+    biometryDetector.validROI = _drawingView.maskRect; //MASK
     biometryDetector.detectionROI = CGRectMake(-previewLayer.frame.origin.x/_scale, -previewLayer.frame.origin.y/_scale, previewLayer.bounds.size.width/_scale, previewLayer.bounds.size.height/_scale);
+    
     
 }
 
@@ -70,6 +73,10 @@
         [self startCapture];
     }
     [biometryDetector startFaceDetection];
+    
+    if (!switchCameraButton.enabled) {
+        [switchCameraButton performSelectorOnMainThread:@selector(setHidden:) withObject:[NSNumber numberWithBool:YES] waitUntilDone:NO];
+    }
 }
 
 -(void)viewWillDisappear:(BOOL)animated 
@@ -106,6 +113,61 @@
         }
     }
 	return FALSE;
+}
+
+- (IBAction) switchCamera {
+	
+    //use front or back camera
+    
+	[captureSession beginConfiguration];
+    AVCaptureDevice *captureDevice=nil;
+	
+	if (frontalCamera) 
+	{
+		captureDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+        
+		AVCaptureDeviceInput* newInput= [[[AVCaptureDeviceInput alloc] 
+										  initWithDevice:captureDevice error:nil] autorelease];
+		[captureSession removeInput:captureInput];
+		captureInput=newInput;
+		if ([captureSession canAddInput:newInput]) 
+		{
+			[captureSession addInput:newInput];
+		}
+		frontalCamera=FALSE;
+	}
+	else 
+	{
+        if (hasFrontalCamera) {
+            NSArray *videoDevices = [AVCaptureDevice devicesWithMediaType:AVMediaTypeVideo];
+            
+            for (AVCaptureDevice *device in videoDevices)
+            {
+                if (device.position == AVCaptureDevicePositionFront)
+                {
+                    captureDevice = device;
+                    break;
+                }
+            }
+            
+            
+            AVCaptureDeviceInput* newInput= [[[AVCaptureDeviceInput alloc] 
+                                              initWithDevice:captureDevice error:nil] autorelease];
+            [captureSession removeInput:captureInput];
+            captureInput=newInput;
+            
+            if ([captureSession canAddInput:newInput]) 
+            {
+                [captureSession addInput:newInput];
+            }
+            frontalCamera=TRUE;
+        }
+		
+	}
+    
+    [_drawingView setMirroredRect:!frontalCamera];
+	
+	[captureSession commitConfiguration];
 }
 
 - (void) setupCamera
@@ -152,6 +214,7 @@
     {
         
         hasFrontalCamera=TRUE;
+        frontalCamera=TRUE;
         
         //Set the capture device to be the frontal camera
     
@@ -172,7 +235,11 @@
     else 
 	{
 		captureDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
+        frontalCamera=FALSE;
+        hasFrontalCamera=FALSE;
 	}
+    
+    [_drawingView setMirroredRect:!frontalCamera];
     
     //now we have to setup the capture input: it needs to be like this so we can change the input device or it's configuration
     
@@ -234,7 +301,6 @@
     
     previewLayer = [AVCaptureVideoPreviewLayer layerWithSession:captureSession];
     previewLayer.frame=cameraView.bounds;
-    
     [self performSelectorOnMainThread:@selector(setPreviewLayer) withObject:nil waitUntilDone:YES];    
 	/*We start the capture*/
 	[self startCapture];
@@ -344,12 +410,18 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
 {
     //CHANGE THIS TO SEE YOUR IMAGE BIGGER OR SMALLER ON THE SCREEN .. MIRROR EFFECT
     // con frameSize > viewSize / 2.5
-    // 1.4 =  75cm en iPad
-    // 1.6 =  90cm en iPad 
-    // 1.7 = 105cm en iPad
+    // 1.4 =  75cm in iPad
+    // 1.6 =  90cm in iPad 
+    // 1.7 = 105cm in iPad
     _scale=scale;
     cameraView.layer.transform =CATransform3DMakeScale(_scale, _scale, 0);
     [cameraView performSelectorOnMainThread:@selector(setNeedsDisplay) withObject:nil waitUntilDone:YES];
+}
+
+-(void)setCanSwitchCamera:(BOOL)canSwitchCamera
+{
+    [switchCameraButton performSelectorOnMainThread:@selector(setHidden:) withObject:[NSNumber numberWithBool:!canSwitchCamera] waitUntilDone:NO];
+    [switchCameraButton performSelectorOnMainThread:@selector(setEnabled:) withObject:[NSNumber numberWithBool:canSwitchCamera] waitUntilDone:NO];
 }
 
 #pragma mark - Biometry Delegate methods
@@ -372,10 +444,17 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
 - (void) faceDetectedInRect: (CGRect) rect centered: (BOOL) centered close: (BOOL) close light: (BOOL) light aligned: (BOOL) aligned{
 
     NSLog(@"Face detected!");
+    _drawingView.positionOK=centered;
+    _drawingView.distanceOK=close;
+
+    
+    [_drawingView drawFaceRect:rect];
+    [_drawingView performSelectorOnMainThread: @selector(showFeedback) withObject:nil waitUntilDone:NO];
 }
 
 - (void) noFaceDetected{
-    
+    [_drawingView eraseRects];
+    [_drawingView performSelectorOnMainThread:@selector(hideFeedbackWithDelay) withObject:nil waitUntilDone:NO];
     NSLog(@"No face detected!");
 }
 

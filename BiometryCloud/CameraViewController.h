@@ -3,12 +3,13 @@
 //  BiometryCloud
 //
 //  Created by Andrés Munita Irarrázaval on 06-10-11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 Biometry Cloud. All rights reserved.
 //
 
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
 
+#import "DrawingView.h"
 #import "BiometryDetector.h"
 
 @interface CameraViewController : UIViewController <AVCaptureVideoDataOutputSampleBufferDelegate, BiometryDelegate>
@@ -27,17 +28,26 @@
     float _scale;
     BOOL _needsAutoExposure;
     BOOL _needsWhiteBalance;
+    BOOL _canSwitchCamera;
+    BOOL frontalCamera;
     CGPoint _pointOfExposure;
+    
+    IBOutlet DrawingView *_drawingView;
+    
+    IBOutlet UIButton *switchCameraButton;
 }
 
 @property (nonatomic, assign, setter = setNeedsAutoExposure:) BOOL needsAutoExposure;
 @property (nonatomic, assign, setter = setNeedsWhiteBalance:) BOOL needsWhiteBalance;
+@property (nonatomic, assign, setter = setCanSwitchCamera:) BOOL canSwitchCamera;
 @property (nonatomic, assign, setter = setPointOfExposure:) CGPoint pointOfExposure;
 @property (nonatomic, assign, setter = setScale:) float scale;
+//@property (nonatomic, retain) IBOutlet DrawingView *drawingView;
 
 -(void)initCapture;
 -(void)startCapture;
 -(void)stopCapture;
 -(void)setPreviewLayer;
+-(IBAction)switchCamera;
 
 @end

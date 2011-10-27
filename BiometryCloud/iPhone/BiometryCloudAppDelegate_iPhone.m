@@ -3,14 +3,14 @@
 //  BiometryCloud
 //
 //  Created by Andrés Munita Irarrázaval on 06-10-11.
-//  Copyright 2011 __MyCompanyName__. All rights reserved.
+//  Copyright 2011 Biometry Cloud. All rights reserved.
 //
 
 #import "BiometryCloudAppDelegate_iPhone.h"
 #import "CameraViewController_iPhone.h"
 
 @implementation BiometryCloudAppDelegate_iPhone
-@synthesize viewController;
+@synthesize viewController=_viewController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
 {
@@ -18,10 +18,9 @@
     [super application:application didFinishLaunchingWithOptions:launchOptions];
     
 //Create the camera view 
-    CameraViewController_iPhone *cameraView = [[CameraViewController_iPhone alloc]init];
-    
-//Add the cameraView to the window and make the window visible
-    [self.window addSubview:cameraView.view];
+    //CameraViewController_iPhone *cameraView = [[CameraViewController_iPhone alloc]init];
+    _viewController= [[CameraViewController_iPhone alloc]init];
+    [self.window addSubview:_viewController.view];
     [self.window makeKeyAndVisible];
 
 //return when finished
