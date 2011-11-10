@@ -544,7 +544,7 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     
     [detectedFaceImage release];
     
-    //Start over again if the response is not required
+    //Start over again if the response is not required --> JUST FOR NOW, THIS SHOULD BE DECIDED BY THE MAIN DELEGATE
     if (!requestAnswerRequired) {
         
         [self startCapture];

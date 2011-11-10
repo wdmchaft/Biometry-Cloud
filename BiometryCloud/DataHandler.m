@@ -246,7 +246,11 @@
                     NSAssert1(0, @"Error while deleting data. '%s'", sqlite3_errmsg(database));
             }
             
+            // Release the compiled statement from memory
+			sqlite3_finalize(compiledStatement);
         }
+        
+        sqlite3_close(database);
     }
     else {
 		[NSThread sleepForTimeInterval:0.1];

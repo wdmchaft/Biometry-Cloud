@@ -8,6 +8,8 @@
 
 #import <UIKit/UIKit.h>
 
+#import "InputFormatterDelegate.h"
+
 @protocol InputViewDelegate
 
 - (void) legalIdAccepted:(NSString *) legal_id;
@@ -19,8 +21,15 @@
     
     IBOutlet id<InputViewDelegate> delegate;
     
+    //Validator delegate
+    id<InputFormatterDelegate> _formatterDelegate;
+    
     //String to give format to input
-    NSString *_inputFormat;
+    NSMutableString *_inputFormat;
+    //Fixed symbols in input
+    NSMutableString *_fixedSymbols;
+    //Raw input (without symbols)
+    NSMutableString *_input;
     
     //IBOutlets
     IBOutlet UIButton *_cancelButton;
@@ -32,8 +41,7 @@
 }
 
 @property (nonatomic, assign) id<InputViewDelegate> delegate;
-
-@property (nonatomic, retain, setter = setInputFormat:) NSString *inputFormat;
+@property (nonatomic, retain) id<InputFormatterDelegate> formatterDelegate;
 
 - (void) showAnimated:(BOOL) animated;
 - (void) hideAnimated:(BOOL) animated;

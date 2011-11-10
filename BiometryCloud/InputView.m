@@ -8,10 +8,11 @@
 
 #import "InputView.h"
 
+#import "RutFormatter.h"
 
 @implementation InputView
 
-@synthesize delegate, inputFormat=_inputFormat;
+@synthesize delegate, formatterDelegate = _formatterDelegate;
 
 - (id) initWithCoder:(NSCoder *)aDecoder {
     
@@ -19,15 +20,132 @@
     if (self) {
         // Initialization code
         
-        //Set default input format (passport number)
-        _inputFormat = @"NNNNNNNNN";
+        //Init strings
+        _inputFormat = [[NSMutableString alloc] init];
+        _fixedSymbols = [[NSMutableString alloc] init];
+        _input = [[NSMutableString alloc] init];
+        
+        //Assign default validator
+        [self setFormatterDelegate:[[RutFormatter alloc] init]];
     }
     return self;
 }
 
 - (void)dealloc
 {
+    
+    
     [super dealloc];
+}
+
+#pragma mark - Input Related Methods
+
+- (void) nextInputFormat{
+    
+    if ([_inputFormat isEqualToString:@"MAIL"]) {
+        
+        [_dummyField setKeyboardType:UIKeyboardTypeEmailAddress];
+        return;
+    }
+}
+
+- (void) inputReceived:(NSString *) string {
+    
+    //Backspace
+    if ([string isEqualToString:@""]) {
+        
+        if ([_input length]) {
+            
+            [_input setString:[_input substringToIndex:[_input length]-1]];
+            
+        }
+    }
+    //Anything else
+    else if ([_input length] < [_inputFormat length] || [_inputFormat isEqualToString:@"MAIL"]) {
+    
+        //Avoid rut with double k
+        if ([_input length]) {
+            
+            if (!([[_input substringFromIndex:[_input length]-1] isEqualToString:@"k"] && [[_formatterDelegate getInputName] isEqualToString:@"rut"])){
+            
+                [_input appendString:string];
+            }
+        }
+        else {
+        
+            [_input appendString:string];
+        }
+    }
+    
+    //MAIL special case
+    if ([_inputFormat isEqualToString:@"MAIL"]) {
+        
+        _inputLabel.text = _input;
+    }
+    else {
+    
+        //Clear input label
+        _inputLabel.text = @"";
+        
+        //Aux string
+        NSString *auxInput = _input;
+        
+        //Combine input with symbols
+        NSString *regex = @"[\\s]";   
+        NSPredicate *test = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
+        
+        for (int i = 1; i <= [_fixedSymbols length]; i++) {
+            
+            NSString *next = [NSString stringWithFormat:@"%c",[_fixedSymbols characterAtIndex:[_fixedSymbols length] - i]];
+            
+            if ([test evaluateWithObject:next] && [auxInput length]) {
+                
+                _inputLabel.text = [[NSString stringWithFormat:@"%c",[auxInput characterAtIndex:[auxInput length] -1]] stringByAppendingString:_inputLabel.text];
+                
+                if ([auxInput length] > 1) {
+                    
+                    auxInput = [auxInput substringToIndex:[auxInput length]-1];
+                }
+                else {
+                    
+                    auxInput = @"";
+                }
+                
+            }
+            else {
+                
+                _inputLabel.text = [next stringByAppendingString:_inputLabel.text];
+            }
+        }
+        
+        
+        if ([_input length] != [_inputFormat length]) {
+            
+            [self nextInputFormat];
+        }
+
+    }
+    
+}
+
+
+#pragma mark - UITextFieldDelegate
+
+- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
+{
+    //Handle the input
+    [self inputReceived:string];
+    
+    //Keep it always with something to catch backspace
+    _dummyField.text = @"n";
+    
+    return NO;
+}
+
+- (BOOL)textFieldShouldReturn:(UITextField *)textField
+{
+
+    return NO;
 }
 
 #pragma mark - Actions
@@ -36,22 +154,38 @@
 {
     
     [self hideAnimated:TRUE];
-
+    
     [delegate legalIdCancelled];
 }
 
 - (IBAction) confirmButtonPressed
 {
-
-    [self hideAnimated:TRUE];
+    if ([_formatterDelegate isInputValid:_inputLabel.text]) {
+        
+        [self hideAnimated:TRUE];
+        
+        [delegate legalIdAccepted:_inputLabel.text];
+    }
+    else {
     
-    [delegate legalIdAccepted:_inputLabel.text];
+        UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:[NSString stringWithFormat:@"El %@ ingresado es incorrecto", [_formatterDelegate getInputName]] delegate:self cancelButtonTitle:@"Aceptar" otherButtonTitles:nil];
+        
+        [alert show];
+        [alert release];
+    }
 }
 
 - (void) showAnimated:(BOOL) animated
 {
-    //Clear input
-    _inputLabel.text = @"";
+    //Reset input
+    [_inputLabel setText:_fixedSymbols];
+    [_input setString:@""];
+    
+    //Set textLabel
+    _textLabel.text = [NSString stringWithFormat:@"%@ %@:", NSLocalizedString(@"input_text", @"Input Instruction"), [_formatterDelegate getInputName]];
+    
+    //Set keyboard
+    [self nextInputFormat];
     
     if (animated) {
         
@@ -85,45 +219,47 @@
     }
 }
 
-#pragma mark - Input Methods
+#pragma mark - Getters and Setters
 
-- (void) inputReceived:(NSString *) string {
+- (void) setInputFormat:(NSString *)inputFormat {
 
-    //Backspace
-    if ([string isEqualToString:@""]) {
+    if ([inputFormat isEqualToString:@"MAIL"]) {
         
-        if ([_inputLabel.text length]) {
-            
-            [_inputLabel setText:[_inputLabel.text substringToIndex:[_inputLabel.text length]-1]];
-            
-        }
+        [_inputFormat setString:inputFormat];
+        [_fixedSymbols  setString:@""];
     }
-    //Anything else
     else {
     
-        [_inputLabel setText:[_inputLabel.text stringByAppendingString:string]];
+        [_inputFormat setString:@""];
+        [_fixedSymbols  setString:@""];
+        
+        NSString *regex = @"[A-Z0-9a-z]";   
+        NSPredicate *test = [NSPredicate predicateWithFormat:@"SELF MATCHES %@", regex];
+        
+        for (int i = 0; i < [inputFormat length]; i++) {
+            
+            NSString *next = [NSString stringWithFormat:@"%c",[inputFormat characterAtIndex:i]];
+            
+            if ([test evaluateWithObject:next]) {
+                
+                [_fixedSymbols appendString:@" "];
+                [_inputFormat appendString:next];
+            }
+            else {
+                
+                [_fixedSymbols appendString:next];
+            }
+        }
     }
-}
-
-
-#pragma mark - UITextFieldDelegate
-
-- (BOOL)textField:(UITextField *)textField shouldChangeCharactersInRange:(NSRange)range replacementString:(NSString *)string
-{
-    //Handle the input
-    [self inputReceived:string];
     
-    //Keep it always with something to catch backspace
-    _dummyField.text = @"n";
+    [_inputLabel setText:_fixedSymbols];
+}
+
+- (void) setFormatterDelegate:(id<InputFormatterDelegate>)formatterDelegate {
     
-    return NO;
+    [self setInputFormat:[formatterDelegate getInputFormat]];
+    
+    _formatterDelegate = formatterDelegate;
 }
-
-- (BOOL)textFieldShouldReturn:(UITextField *)textField
-{
-
-    return NO;
-}
-
 
 @end

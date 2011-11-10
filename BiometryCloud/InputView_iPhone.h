@@ -10,6 +10,7 @@
 
 @interface InputView_iPhone : InputView {
     
+    UIButton *kButton;
 }
 
 @end

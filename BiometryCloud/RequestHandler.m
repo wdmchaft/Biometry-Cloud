@@ -6,6 +6,8 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
+//CAMBIAR METODO DE REENVIO!
+
 #import "RequestHandler.h"
 #import "BiometryCloudConfiguration.h"
 
@@ -100,18 +102,16 @@
 }
 
 - (void) checkingRequestFinished:(CheckingRequest *)request {
-	
-	NSString *response = [request responseString];
     
-    debugLog(@"Checking reply received: %@", response);
+    debugLog(@"Checking reply received: %@", [request responseString]);
+    
+    NSDictionary *answerDict = [self parseJSONCheckingData:[request responseData]];
     
     if ([delegate isRequestAnswerRequired]) {
         
-        NSDictionary *answerDict = [self parseJSONCheckingData:[request responseData]];
-        
         [delegate checkingRequestAnswerReceived:answerDict];
     }
-    else {
+    else if (answerDict != nil) {
         
         [dataHandler deleteCheckingRequest:request];
     }
