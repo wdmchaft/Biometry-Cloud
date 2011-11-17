@@ -15,6 +15,10 @@
 		6E0F4B521444A4DA0084080B /* ImageHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E0F4B511444A4D90084080B /* ImageHandler.m */; };
 		6E0F4B6C1444C2310084080B /* haarcascade_frontalface_alt2.xml in Resources */ = {isa = PBXBuildFile; fileRef = 6E0F4B6B1444C2310084080B /* haarcascade_frontalface_alt2.xml */; };
 		6E2A32981472C53600974D21 /* wrong.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E2A32971472C53600974D21 /* wrong.png */; };
+		6E2A330014757F8D00974D21 /* access_denied.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6E2A32FE14757F8D00974D21 /* access_denied.wav */; };
+		6E2A330114757F8D00974D21 /* access_granted.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6E2A32FF14757F8D00974D21 /* access_granted.wav */; };
+		6E2A330314757FB800974D21 /* camera_shot.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6E2A330214757FB800974D21 /* camera_shot.wav */; };
+		6E2A3306147580D000974D21 /* AudioHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E2A3305147580C800974D21 /* AudioHandler.m */; };
 		6E976A6D146C1F6F00A2471A /* RutFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E976A6C146C1F6C00A2471A /* RutFormatter.m */; };
 		6E976A7B146C25C400A2471A /* MailFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E976A7A146C25C400A2471A /* MailFormatter.m */; };
 		6E976A7E146C265F00A2471A /* PassportFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E976A7D146C265E00A2471A /* PassportFormatter.m */; };
@@ -112,6 +116,11 @@
 		6E0F4B6B1444C2310084080B /* haarcascade_frontalface_alt2.xml */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.xml; name = haarcascade_frontalface_alt2.xml; path = opencv_device/share/opencv/haarcascades/haarcascade_frontalface_alt2.xml; sourceTree = SOURCE_ROOT; };
 		6E2A32821472AD3B00974D21 /* BiometryCloudDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = BiometryCloudDelegate.h; sourceTree = "<group>"; };
 		6E2A32971472C53600974D21 /* wrong.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = wrong.png; sourceTree = "<group>"; };
+		6E2A32FE14757F8D00974D21 /* access_denied.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = access_denied.wav; sourceTree = "<group>"; };
+		6E2A32FF14757F8D00974D21 /* access_granted.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = access_granted.wav; sourceTree = "<group>"; };
+		6E2A330214757FB800974D21 /* camera_shot.wav */ = {isa = PBXFileReference; lastKnownFileType = audio.wav; path = camera_shot.wav; sourceTree = "<group>"; };
+		6E2A3304147580C200974D21 /* AudioHandler.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = AudioHandler.h; sourceTree = "<group>"; };
+		6E2A3305147580C800974D21 /* AudioHandler.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = AudioHandler.m; sourceTree = "<group>"; };
 		6E976A6A146C1F1300A2471A /* InputFormatterDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputFormatterDelegate.h; sourceTree = "<group>"; };
 		6E976A6B146C1F6B00A2471A /* RutFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RutFormatter.h; sourceTree = "<group>"; };
 		6E976A6C146C1F6C00A2471A /* RutFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RutFormatter.m; sourceTree = "<group>"; };
@@ -290,8 +299,19 @@
 				F16C87A01457239E00EC9B85 /* es.lproj */,
 				F16C8799145722CD00EC9B85 /* en.lproj */,
 				F16C8793145641B100EC9B85 /* Images */,
+				6E2A32F614757EA700974D21 /* Sounds */,
 			);
 			name = Resources;
+			sourceTree = "<group>";
+		};
+		6E2A32F614757EA700974D21 /* Sounds */ = {
+			isa = PBXGroup;
+			children = (
+				6E2A32FE14757F8D00974D21 /* access_denied.wav */,
+				6E2A32FF14757F8D00974D21 /* access_granted.wav */,
+				6E2A330214757FB800974D21 /* camera_shot.wav */,
+			);
+			name = Sounds;
 			sourceTree = "<group>";
 		};
 		6E976A78146C259D00A2471A /* Input Formatters */ = {
@@ -410,6 +430,8 @@
 				F122C6BD143E265600E2FFE8 /* CameraViewController.m */,
 				6E0F4B4D1444A2FD0084080B /* BiometryDetector.h */,
 				6E0F4B4E1444A2FD0084080B /* BiometryDetector.m */,
+				6E2A3304147580C200974D21 /* AudioHandler.h */,
+				6E2A3305147580C800974D21 /* AudioHandler.m */,
 				F14477A01450506400103ADA /* DrawingView.h */,
 				F14477A11450506400103ADA /* DrawingView.m */,
 				6E0F4B501444A4D90084080B /* ImageHandler.h */,
@@ -645,6 +667,9 @@
 				6E976A9C146C563A00A2471A /* CheckView_iPad.xib in Resources */,
 				6E976AA8146C570F00A2471A /* check.png in Resources */,
 				6E2A32981472C53600974D21 /* wrong.png in Resources */,
+				6E2A330014757F8D00974D21 /* access_denied.wav in Resources */,
+				6E2A330114757F8D00974D21 /* access_granted.wav in Resources */,
+				6E2A330314757FB800974D21 /* camera_shot.wav in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -692,6 +717,7 @@
 				6E976A92146C54AD00A2471A /* CheckView.m in Sources */,
 				6E976A95146C54EB00A2471A /* CheckView_iPhone.m in Sources */,
 				6E976A98146C553000A2471A /* CheckView_iPad.m in Sources */,
+				6E2A3306147580D000974D21 /* AudioHandler.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

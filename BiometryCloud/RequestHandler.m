@@ -80,9 +80,17 @@
         [dataHandler storeCheckingRequest:request];
     }
     
-	[self setCheckingRequestParams:request];
+    //Queue only if there are no queued requests
+    if(!_storeRequests || [[ASIHTTPRequest sharedQueue] operationCount] < 1) {
     
-    [request startAsynchronous];
+        [self setCheckingRequestParams:request];
+        
+        [request startAsynchronous];
+    }
+    else {
+    
+        [request release];
+    }
 }
 
 -(void) sendStoredCheckingRequest:(CheckingRequest *) request
@@ -114,6 +122,13 @@
         [dataHandler deleteCheckingRequest:request];
     }
     
+    
+    if (_storeRequests) {
+        
+        //Try to send stored requests
+        [self performSelector:@selector(resendCheckingRequests) withObject:nil afterDelay:2];
+    }
+    
     [request release];
 }
 
@@ -121,20 +136,13 @@
 	
     if ([delegate isRequestAnswerRequired]) {
         
-        NSDictionary *answer = [[NSDictionary alloc] initWithObjects:[NSArray arrayWithObject:@"2"] forKeys:[NSArray arrayWithObject:@"status"]];
+        NSDictionary *answer = [[NSDictionary alloc] initWithObjects:[NSArray arrayWithObject:@"FAIL"] forKeys:[NSArray arrayWithObject:@"debug"]];
         
         [delegate checkingRequestAnswerReceived:answer];
     }
-    else if([reachability currentReachabilityStatus] != NotReachable) {
+    else if([reachability currentReachabilityStatus] != NotReachable && _storeRequests) {
         
-        CheckingRequest *request2 = [[CheckingRequest alloc] initWithURL:[NSURL URLWithString:checkingURL]];
-        
-        request2.face = request.face;
-        request2.time = request.time;
-        request2.lat = request.lat;
-        request2.lng = request.lng;
-        
-        [self performSelector:@selector(sendStoredCheckingRequest:) withObject:request2];
+        [self performSelector:@selector(resendCheckingRequests) withObject:nil afterDelay:2];
     }
     //If no answer required and there's no internet connection, the request isn't deleted from database
     else if ([request isCancelled]) {
@@ -151,11 +159,14 @@
 
 - (void) resendCheckingRequests {
     
-    if ([dataHandler areCheckingRequestsQueued]) {
+    int n = [dataHandler areCheckingRequestsQueued];
+    
+    //Queue next request only if there are no requests queued
+    if (n && [[ASIHTTPRequest sharedQueue] operationCount] < 1) {
         
-        NSMutableArray *array = [dataHandler getCheckingRequests];
+        NSMutableArray *array = [dataHandler getNCheckingRequests:1];
         
-        debugLog(@"%d stored checking requests", [array count]);
+        debugLog(@"%d stored checking requests, sending next", n);
         
         for (CheckingRequest *request in array) {
             
@@ -164,9 +175,13 @@
         
         [array release];
     }
-    else {
+    else if (!n) {
         
         debugLog(@"No stored checking requests to send");
+    }
+    else {
+    
+        debugLog(@"%d stored checking requests, one active", n);
     }
 }
 
@@ -195,7 +210,10 @@
         debugLog(@"Connection Found");
         
         //Resend stored checking requests
-        [self resendCheckingRequests];
+        if (_storeRequests) {
+            
+            [self resendCheckingRequests];
+        }
     }
     else if (isNetworkAvailable && !newNetworkStatus) {
         
@@ -222,20 +240,18 @@
         //Data Handler initialization
         dataHandler = [[DataHandler alloc] init];
         
+        //Register to reachability notifications 
+        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reachabilityChanged:) name:kReachabilityChangedNotification object:nil];
+        
         //Reachability initialization
         reachability = [[Reachability reachabilityForInternetConnection] retain];
         [reachability startNotifier];
         
-        //Register to reachability notifications 
-        [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reachabilityChanged:) name:kReachabilityChangedNotification object:nil];
-        
         //Default URL
         checkingURL = @"http://www.biometrycloud.com:80/srv/face/getFaceId/";
         
-        if ([reachability currentReachabilityStatus] != NotReachable && _storeRequests) {
-            
-            [self resendCheckingRequests];
-        }
+        //Resend stored checking requests
+        [self resendCheckingRequests];
     }
     
     return self;

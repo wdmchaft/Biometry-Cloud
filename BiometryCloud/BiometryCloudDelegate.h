@@ -11,9 +11,9 @@
 
 @protocol BiometryCloudDelegate
 
-- (void) personIdentified:(NSDictionary *) person;
+- (void) identificationProcessFinished:(NSDictionary *) answer;
 
-- (void) faceCaptured;
+- (void) faceCaptured:(UIImage *) face;
 
 - (BOOL) isAnswerHandledByDelegate;
 

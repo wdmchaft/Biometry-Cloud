@@ -16,6 +16,7 @@
 #import "RequestHandler.h"
 #import "InputView.h"
 #import "CheckView.h"
+#import "AudioHandler.h"
 
 @interface CameraViewController : UIViewController <AVCaptureVideoDataOutputSampleBufferDelegate, BiometryDetectorDelegate, RequestHandlerDelegate, InputViewDelegate, CheckViewDelegate>
 
@@ -34,6 +35,9 @@
     
     //Handles everything related to sending requests
     RequestHandler *requestHandler;
+    
+    //Sound
+    AudioHandler *audioHandler;
     
     CGImageRef currentShownFrame;
     BOOL copyingFrame;

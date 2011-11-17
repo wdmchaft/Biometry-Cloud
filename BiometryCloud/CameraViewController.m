@@ -282,12 +282,23 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
 
 -(void) doFlash
 {
+    //Flash sound
+    if (inputRequired || requestAnswerRequired || _consequentPhotos > 1) {
+        
+        [audioHandler playCameraSound];
+    }
+    //Access sound
+    else {
+    
+        [audioHandler playPassOrDenySound:YES];
+    }
+    
 	UIView *flashView = [[UIView alloc] initWithFrame:[cameraView frame]];
 	[flashView setBackgroundColor:[UIColor whiteColor]];
 	[flashView setAlpha:0.f];
 	[[[self view] window] addSubview:flashView];
 	
-	[UIView animateWithDuration:.4f
+	[UIView animateWithDuration:.5f
 					 animations:^{
 						 [flashView setAlpha:1.f];
 						 [flashView setAlpha:0.f];
@@ -308,7 +319,7 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
         [self startCapture];
     }
     
-    [biometryDetector performSelector:@selector(startFaceDetection) withObject:nil afterDelay:0.1];
+    [biometryDetector startFaceDetection];
 }
 
 #pragma mark - Parameters setting
@@ -395,6 +406,12 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
 //not in delegate but needed
 - (void) showCheckingView {
 
+    //play sound
+    if (!requestAnswerRequired) {
+        
+        [audioHandler playPassOrDenySound:YES];
+    }
+    
     //show checking view
     [_checkView showCheckViewForFace:detectedFaceImage inTimeStamp:[self currentTime] waitingForAnswer:requestAnswerRequired];
     
@@ -447,28 +464,37 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     if (inputRequired) {
         
         [_inputView performSelectorOnMainThread:@selector(showAnimated:) withObject:[NSNumber numberWithBool:TRUE] waitUntilDone:NO];
-        
-        //[self stopCapture];
     }
     else {
-        
-        //if consequentPhotos is set to 0, show checking view to continue
-        if (_consequentPhotos) _takenPhotos++;
-        else {
-            
-            [self performSelectorOnMainThread:@selector(showCheckingView) withObject:nil waitUntilDone:NO];
-        }
         
         //send the request
         [requestHandler sendCheckingRequestWithFace:face legalId:@"" atTimeStamp:[self currentTime]];
         
-        //if all photos needed have been taken, we must notify the library's delegate
-        if (_takenPhotos == _consequentPhotos) {
+        //If consequentPhotos is set to > 1, continue capturing (enroll mode)
+        if (_consequentPhotos > 1) {
             
-            _takenPhotos = 0;
+            _takenPhotos++;
             
-            [libraryDelegate faceCaptured];
+            //if all photos needed have been taken, we must notify the library's delegate
+            if (_takenPhotos == _consequentPhotos) {
+                
+                _takenPhotos = 0;
+                
+                [libraryDelegate identificationProcessFinished:nil];
+                
+                debugLog(@"Finishing, %d photos sent", _consequentPhotos);
+            }
+            else {
+            
+                [self startCaptureAndRecognize];
+            }
         }
+        //If consequentPhotos is set to 1 or 0, show checking view to continue
+        else {
+            
+            [self performSelectorOnMainThread:@selector(showCheckingView) withObject:nil waitUntilDone:NO];
+        }
+
     }
 }
 
@@ -501,16 +527,20 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     debugLog(@"Checking request answer received");
     
     
-    if (requestAnswerRequired) {
+    if ([libraryDelegate isAnswerHandledByDelegate]) {
+        
+        //Notify library's delegate identification is ready
+        [libraryDelegate identificationProcessFinished:response];
+    }
+    else {
+        
+        //Play sound
+        [audioHandler playPassOrDenySound:[(NSString *)[response objectForKey:@"debug"] isEqualToString:@"OK"]];
         
         //Update checking view controller if needed
         [_checkView answerReceived:response];
     }
-    else if ([libraryDelegate isAnswerHandledByDelegate]) {
-        
-        //Notify library's delegate identification is ready
-        [libraryDelegate personIdentified:response];
-    }
+    
 }
 
 - (BOOL) isRequestAnswerRequired {
@@ -524,30 +554,21 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
 {
 
     //Send request with detected face and legal_id
-    [requestHandler sendCheckingRequestWithFace:detectedFaceImage legalId:legal_id atTimeStamp:[self currentTime]];
+    [requestHandler sendCheckingRequestWithFace:[UIImage imageWithCGImage:[detectedFaceImage CGImage] scale:1.0 orientation:UIImageOrientationRight] legalId:legal_id atTimeStamp:[self currentTime]];
     
-    //release the face
-    if (!requestAnswerRequired) {
+    
+    if ([libraryDelegate isAnswerHandledByDelegate]) {
         
-        //Update checking view controller if needed
+        //Notify library's delegate face is captured
+        [libraryDelegate faceCaptured:[UIImage imageWithCGImage:[detectedFaceImage CGImage] scale:1.0 orientation:UIImageOrientationRight]];
+        
+        //release the face
         [detectedFaceImage release];
     }
-    
-    if (requestAnswerRequired) {
+    else {
         
         //Update checking view controller if needed
         [self performSelectorOnMainThread:@selector(showCheckingView) withObject:nil waitUntilDone:NO];
-    }
-    else if ([libraryDelegate isAnswerHandledByDelegate]) {
-        
-        //Notify library's delegate identification is ready
-        [libraryDelegate faceCaptured];
-    }
-    
-    //Start over again if the response is not required --> JUST FOR NOW, THIS SHOULD BE DECIDED BY THE MAIN DELEGATE
-    if (!requestAnswerRequired) {
-        
-        [self startCaptureAndRecognize];
     }
 }
 
@@ -571,6 +592,8 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
         requestHandler = [[RequestHandler alloc] init];
         requestHandler.delegate = self;
         
+        audioHandler = [[AudioHandler alloc] init];
+        
         //start with initial params
         
         [self setPointOfExposure:CGPointMake(0.8f, 0.5f)];
@@ -582,11 +605,11 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
         
         //test
         inputRequired = FALSE;
-        _consequentPhotos = 0; // --> Infinite (for clockwise)
+        _consequentPhotos = 5; // --> Infinite (for clockwise)
         requestAnswerRequired = FALSE;
         
-        //Store only if _consequentPhotos is set to 0 (clockwise behavior)
-        [requestHandler setStoreRequests:!_consequentPhotos]; 
+        //Store only if _consequentPhotos is set to 0 (clockwise behavior) and answe is not required
+        [requestHandler setStoreRequests:!_consequentPhotos && !requestAnswerRequired]; 
     }
     return self;
 }
