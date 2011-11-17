@@ -249,11 +249,6 @@
         if (isShowingFeedback) {
             [self performSelectorOnMainThread:@selector(hideFeedback) withObject:nil waitUntilDone:NO];
         }
-        
-        //erase the rectangles because the picture has been taken
-        
-        [self eraseRects];
-
     }
         
 }

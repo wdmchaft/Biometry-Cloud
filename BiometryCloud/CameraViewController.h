@@ -9,14 +9,20 @@
 #import <UIKit/UIKit.h>
 #import <AVFoundation/AVFoundation.h>
 
+#import "BiometryCloudDelegate.h"
+
 #import "DrawingView.h"
 #import "BiometryDetector.h"
 #import "RequestHandler.h"
 #import "InputView.h"
+#import "CheckView.h"
 
-@interface CameraViewController : UIViewController <AVCaptureVideoDataOutputSampleBufferDelegate, BiometryDelegate, RequestHandlerDelegate, InputViewDelegate>
+@interface CameraViewController : UIViewController <AVCaptureVideoDataOutputSampleBufferDelegate, BiometryDetectorDelegate, RequestHandlerDelegate, InputViewDelegate, CheckViewDelegate>
 
 {
+    //Library's delegate
+    id<BiometryCloudDelegate> libraryDelegate;
+    
     BOOL hasFrontalCamera;
     AVCaptureDeviceInput *captureInput;
     AVCaptureSession *captureSession;
@@ -38,6 +44,10 @@
     BOOL frontalCamera;
     CGPoint _pointOfExposure;
     
+    //Number of consequent photos (0 for infinite)
+    int _consequentPhotos;
+    int _takenPhotos;
+    
     //Flag to set if answer from webservice is required
     BOOL requestAnswerRequired;
     
@@ -47,14 +57,16 @@
     //Last found face to store it while entering input
     UIImage *detectedFaceImage;
     
-    //Input View
+    //SubView
     IBOutlet InputView *_inputView;
-    
     IBOutlet DrawingView *_drawingView;
+    IBOutlet CheckView *_checkView;
     
     IBOutlet UIButton *switchCameraButton;
 
 }
+
+@property (nonatomic, assign) id<BiometryCloudDelegate> libraryDelegate;
 
 @property (nonatomic, assign, setter = setNeedsAutoExposure:) BOOL needsAutoExposure;
 @property (nonatomic, assign, setter = setNeedsWhiteBalance:) BOOL needsWhiteBalance;
@@ -63,10 +75,14 @@
 @property (nonatomic, assign, setter = setScale:) float scale;
 //@property (nonatomic, retain) IBOutlet DrawingView *drawingView;
 
+@property (nonatomic, assign, setter = setConsequentPhotos:) int consequentPhotos;
+
+/*
 -(void)initCapture;
 -(void)startCapture;
 -(void)stopCapture;
 -(void)setPreviewLayer;
 -(IBAction)switchCamera;
+ */
 
 @end

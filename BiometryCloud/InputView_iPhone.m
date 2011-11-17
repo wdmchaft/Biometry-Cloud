@@ -81,9 +81,9 @@
 
 #pragma mark - Input Related Methods
 
-- (void) nextInputFormat
+- (void) nextCharacterType
 {
-    [super nextInputFormat];
+    [super nextCharacterType];
     
     //Set keyboard according to defined format and given input
     NSString *next = [NSString stringWithFormat:@"%c",[_inputFormat characterAtIndex:[_input length]]];

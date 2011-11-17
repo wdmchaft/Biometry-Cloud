@@ -40,7 +40,7 @@
 
 #pragma mark - Input Related Methods
 
-- (void) nextInputFormat{
+- (void) nextCharacterType{
     
     if ([_inputFormat isEqualToString:@"MAIL"]) {
         
@@ -60,7 +60,7 @@
             
         }
     }
-    //Anything else
+    //Anything else --> don't restrict lenght for mail
     else if ([_input length] < [_inputFormat length] || [_inputFormat isEqualToString:@"MAIL"]) {
     
         //Avoid rut with double k
@@ -77,7 +77,7 @@
         }
     }
     
-    //MAIL special case
+    //MAIL special case, direct input
     if ([_inputFormat isEqualToString:@"MAIL"]) {
         
         _inputLabel.text = _input;
@@ -121,7 +121,7 @@
         
         if ([_input length] != [_inputFormat length]) {
             
-            [self nextInputFormat];
+            [self nextCharacterType];
         }
 
     }
@@ -185,7 +185,7 @@
     _textLabel.text = [NSString stringWithFormat:@"%@ %@:", NSLocalizedString(@"input_text", @"Input Instruction"), [_formatterDelegate getInputName]];
     
     //Set keyboard
-    [self nextInputFormat];
+    [self nextCharacterType];
     
     if (animated) {
         

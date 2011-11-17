@@ -9,7 +9,7 @@
 #import <Foundation/Foundation.h>
 #import "ImageHandler.h"
 
-@protocol BiometryDelegate
+@protocol BiometryDetectorDelegate
 
 - (UIImage *) getCurrentFrame;
 - (void) faceDetectedInRect: (CGRect) rect centered: (BOOL) centered close: (BOOL) close light: (BOOL) light aligned: (BOOL) aligned;
@@ -20,7 +20,7 @@
 
 @interface BiometryDetector : NSObject {
     
-    id<BiometryDelegate> delegate;
+    id<BiometryDetectorDelegate> delegate;
     
     ImageHandler *imageHandler;
     
@@ -43,7 +43,7 @@
     int histThreshold;
 }
 
-@property (nonatomic, assign) id<BiometryDelegate> delegate;
+@property (nonatomic, assign) id<BiometryDetectorDelegate> delegate;
 
 @property (nonatomic, assign) CGRect detectionROI;
 @property (nonatomic, assign) CGRect validROI;

@@ -64,4 +64,17 @@
     [super dealloc];
 }
 
+#pragma mark - BiometryCloudDelegate
+
+- (void) personIdentified:(NSDictionary *)person {
+
+    debugLog(@"[TEST] Person identified:%@", [person description]);
+}
+
+- (void) faceCaptured {
+
+    debugLog(@"[TEST] Face captured!");
+    
+}
+
 @end

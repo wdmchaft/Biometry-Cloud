@@ -6,8 +6,6 @@
 //  Copyright 2011 __MyCompanyName__. All rights reserved.
 //
 
-//CAMBIAR METODO DE REENVIO!
-
 #import "RequestHandler.h"
 #import "BiometryCloudConfiguration.h"
 
@@ -16,7 +14,7 @@
 
 @implementation RequestHandler
 
-@synthesize checkingURL;
+@synthesize checkingURL, storeRequests = _storeRequests;
 @synthesize delegate;
 
 #pragma mark - Checking Request
@@ -77,7 +75,7 @@
     request.lng = currentLocation.coordinate.longitude;
     request.time = time;
     
-    if (![delegate isRequestAnswerRequired]) {
+    if (_storeRequests) {
         
         [dataHandler storeCheckingRequest:request];
     }
@@ -111,7 +109,7 @@
         
         [delegate checkingRequestAnswerReceived:answerDict];
     }
-    else if (answerDict != nil) {
+    else if (answerDict != nil && _storeRequests) {
         
         [dataHandler deleteCheckingRequest:request];
     }
@@ -192,7 +190,7 @@
     BOOL newNetworkStatus = [reachability currentReachabilityStatus] != NotReachable;
     
     //Do action if there's a change
-    if (!isNetworkAvailable && newNetworkStatus) {
+    if (!isNetworkAvailable && newNetworkStatus && _storeRequests) {
         
         debugLog(@"Connection Found");
         
@@ -234,7 +232,7 @@
         //Default URL
         checkingURL = @"http://www.biometrycloud.com:80/srv/face/getFaceId/";
         
-        if ([reachability currentReachabilityStatus] != NotReachable) {
+        if ([reachability currentReachabilityStatus] != NotReachable && _storeRequests) {
             
             [self resendCheckingRequests];
         }
