@@ -109,7 +109,7 @@
         if (frameImage.CGImage) {
             
             //Crop the image to ROI
-            UIImage *img = [imageHandler imageByCropping:frameImage toRect:[imageHandler convertRect:CGRectMake(detectionROI.origin.x - 20, detectionROI.origin.y - 20, detectionROI.size.width + 40, detectionROI.size.height + 40) fromContextSize:viewSize toContextSize:frameImage.size]];
+            UIImage *img = [imageHandler imageByCropping:frameImage toRect:[imageHandler convertRect:CGRectMake(detectionROI.origin.x, detectionROI.origin.y, detectionROI.size.width, detectionROI.size.height) fromContextSize:viewSize toContextSize:frameImage.size]];
             
             int scale = 3;
             

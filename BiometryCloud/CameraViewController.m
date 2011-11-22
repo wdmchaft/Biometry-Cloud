@@ -13,97 +13,9 @@
 
 //create the setters and getters for the parameters of the cammera
 
-@synthesize needsAutoExposure=_needsAutoExposure, needsWhiteBalance=_needsWhiteBalance, pointOfExposure=_pointOfExposure, scale=_scale, canSwitchCamera=_canSwitchCamera;
+@synthesize needsAutoExposure=_needsAutoExposure, needsWhiteBalance=_needsWhiteBalance, pointOfExposure=_pointOfExposure, scale=_scale, canSwitchCamera=_canSwitchCamera, consequentPhotos=_consequentPhotos, libraryDelegate;
 
-- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
-{
-    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
-    if (self) {
-        
-        biometryDetector = [[BiometryDetector alloc] init];
-        biometryDetector.delegate = self;
-        
-        requestHandler = [[RequestHandler alloc] init];
-        requestHandler.delegate = self;
-        
-        //start with initial params
-        
-        [self setPointOfExposure:CGPointMake(0.8f, 0.5f)];
-        [self setNeedsWhiteBalance:YES];
-        [self setNeedsAutoExposure:NO];
-        
-        
-    }
-    return self;
-}
-
-- (void)didReceiveMemoryWarning
-{
-    // Releases the view if it doesn't have a superview.
-    
-    [super didReceiveMemoryWarning];
-    
-    // Release any cached data, images, etc that aren't in use.
-}
-
-#pragma mark - View lifecycle
-
-/*
- // Implement loadView to create a view hierarchy programmatically, without using a nib.
- - (void)loadView
- {
- }
- */
-
-// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
-
-- (void)viewDidLoad
-{
-    [super viewDidLoad];
-    [self initCapture];
-    
-    //Biometry detector parameters
-    biometryDetector.viewSize = self.view.frame.size;
-    biometryDetector.validROI = _drawingView.maskRect; //MASK
-    biometryDetector.detectionROI = CGRectMake(-previewLayer.frame.origin.x/_scale, -previewLayer.frame.origin.y/_scale, previewLayer.bounds.size.width/_scale, previewLayer.bounds.size.height/_scale);
-    
-    
-}
-
--(void) viewWillAppear:(BOOL)animated 
-{
-    if (![captureSession isRunning]) 
-    {
-        [self startCapture];
-    }
-    [biometryDetector startFaceDetection];
-    
-    if (!switchCameraButton.enabled) {
-        [switchCameraButton performSelectorOnMainThread:@selector(setHidden:) withObject:[NSNumber numberWithBool:YES] waitUntilDone:NO];
-    }
-}
-
--(void)viewWillDisappear:(BOOL)animated 
-{
-    [biometryDetector stopFaceDetection];
-    
-    [self stopCapture];
-}
-
-- (void)viewDidUnload
-{
-    [super viewDidUnload];
-    
-    // Release any retained subviews of the main view.
-    // e.g. self.myOutlet = nil;
-}
-
-- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
-{
-    // Return YES for supported orientations
-    
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
-}
+#pragma mark - Camera Methods
 
 - (BOOL)hasFrontalCamera
 {
@@ -368,6 +280,47 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
 	[pool drain];
 } 
 
+-(void) doFlash
+{
+    //Flash sound
+    if (inputRequired || requestAnswerRequired || _consequentPhotos > 1) {
+        
+        [audioHandler playCameraSound];
+    }
+    //Access sound
+    else {
+    
+        [audioHandler playPassOrDenySound:YES];
+    }
+    
+	UIView *flashView = [[UIView alloc] initWithFrame:[cameraView frame]];
+	[flashView setBackgroundColor:[UIColor whiteColor]];
+	[flashView setAlpha:0.f];
+	[[[self view] window] addSubview:flashView];
+	
+	[UIView animateWithDuration:.5f
+					 animations:^{
+						 [flashView setAlpha:1.f];
+						 [flashView setAlpha:0.f];
+					 }
+					 completion:^(BOOL finished){
+						 [flashView removeFromSuperview];
+						 [flashView release];
+					 }
+	 ];
+}
+
+#pragma mark - Initialization Methods
+
+-(void)  startCaptureAndRecognize {
+
+    if (![captureSession isRunning]) 
+    {
+        [self startCapture];
+    }
+    
+    [biometryDetector startFaceDetection];
+}
 
 #pragma mark - Parameters setting
 
@@ -401,6 +354,7 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
         [self setupCamera];
     }
 }
+
 -(void) setPreviewLayer
 {
     previewLayer.transform = CATransform3DMakeScale(_scale, _scale, 0);
@@ -426,7 +380,7 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
 //ESTO PODRIA IR EN UNA CLASE APARTE SIESQUE HAY MAS METODOS DEL ESTILO, SI NO NO CREO QUE SE JUSTIFIQUE
 #pragma mark - Utilities
 
--(NSString *) currentTime
+- (NSString *) currentTime
 {
 	char buffer[80];
 	
@@ -447,6 +401,28 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
 	return [NSString stringWithCString:buffer encoding:NSUTF8StringEncoding];
 }
 
+#pragma mark - CheckingViewDelegate
+
+//not in delegate but needed
+- (void) showCheckView {
+
+    //play sound
+    if (!requestAnswerRequired) {
+        
+        [audioHandler playPassOrDenySound:YES];
+    }
+    
+    //show checking view
+    [_checkView showCheckViewForFace:detectedFaceImage inTimeStamp:[self currentTime] waitingForAnswer:requestAnswerRequired];
+    
+    [detectedFaceImage release];
+}
+
+- (void) checkViewDone {
+    
+    [self startCaptureAndRecognize];
+}
+
 #pragma mark - BiometryDelegate methods
 
 -(void)setCanSwitchCamera:(BOOL)canSwitchCamera
@@ -455,8 +431,7 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     [switchCameraButton performSelectorOnMainThread:@selector(setEnabled:) withObject:[NSNumber numberWithBool:canSwitchCamera] waitUntilDone:NO];
 }
 
-#pragma mark - Biometry Delegate methods
-
+#pragma mark - BiometryDetectorDelegate methods
 
 - (UIImage *) getCurrentFrame 
 {
@@ -477,11 +452,49 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
 
     debugLog(@"Face ready to send!");
     
-    [requestHandler sendCheckingRequestWithFace:face legalId:@"hola" atTimeStamp:[self currentTime]];
+    //Erase rects from drawing view
+    [_drawingView performSelectorOnMainThread:@selector(eraseRects) withObject:nil waitUntilDone:NO];
     
-    if (!requestAnswerRequired) {
+    [self performSelectorOnMainThread:@selector(doFlash) withObject:nil waitUntilDone:NO];
+    
+    detectedFaceImage = face;
+    [detectedFaceImage retain];
+    
+    //Show input view
+    if (inputRequired) {
         
-        [biometryDetector startFaceDetection];
+        [_inputView performSelectorOnMainThread:@selector(showAnimated:) withObject:[NSNumber numberWithBool:TRUE] waitUntilDone:NO];
+    }
+    else {
+        
+        //send the request
+        [requestHandler sendCheckingRequestWithFace:face legalId:@"" atTimeStamp:[self currentTime]];
+        
+        //If consequentPhotos is set to > 1, continue capturing (enroll mode)
+        if (_consequentPhotos > 1) {
+            
+            _takenPhotos++;
+            
+            //if all photos needed have been taken, we must notify the library's delegate
+            if (_takenPhotos == _consequentPhotos) {
+                
+                _takenPhotos = 0;
+                
+                [libraryDelegate identificationProcessFinished:nil];
+                
+                debugLog(@"Finishing, %d photos sent", _consequentPhotos);
+            }
+            else {
+            
+                [self startCaptureAndRecognize];
+            }
+        }
+        //If consequentPhotos is set to 1 or 0, show checking view to continue
+        else {
+            
+            [self performSelectorOnMainThread:@selector(showCheckView) withObject:nil waitUntilDone:NO];
+        }
+
     }
 }
 
@@ -513,7 +526,21 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
 
     debugLog(@"Checking request answer received");
     
-    [biometryDetector startFaceDetection];
+    
+    if ([libraryDelegate isAnswerHandledByDelegate]) {
+        
+        //Notify library's delegate identification is ready
+        [libraryDelegate identificationProcessFinished:response];
+    }
+    else {
+        
+        //Play sound
+        [audioHandler playPassOrDenySound:[(NSString *)[response objectForKey:@"debug"] isEqualToString:@"OK"]];
+        
+        //Update checking view controller if needed
+        [_checkView answerReceived:response];
+    }
+    
 }
 
 - (BOOL) isRequestAnswerRequired {
@@ -521,7 +548,136 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     return requestAnswerRequired;
 }
 
+#pragma mark - InputViewDelegate Methods
 
+- (void) legalIdAccepted:(NSString *) legal_id
+{
+
+    //Send request with detected face and legal_id
+    [requestHandler sendCheckingRequestWithFace:[UIImage imageWithCGImage:[detectedFaceImage CGImage] scale:1.0 orientation:UIImageOrientationRight] legalId:legal_id atTimeStamp:[self currentTime]];
+    
+    
+    if ([libraryDelegate isAnswerHandledByDelegate]) {
+        
+        //Notify library's delegate face is captured
+        [libraryDelegate faceCaptured:[UIImage imageWithCGImage:[detectedFaceImage CGImage] scale:1.0 orientation:UIImageOrientationRight]];
+        
+        //release the face
+        [detectedFaceImage release];
+    }
+    else {
+        
+        //Update checking view controller if needed
+        [self performSelectorOnMainThread:@selector(showCheckView) withObject:nil waitUntilDone:NO];
+    }
+}
+
+- (void) legalIdCancelled
+{
+
+    //Start over again
+    [self startCaptureAndRecognize];
+}
+
+#pragma mark - View lifecycle
+
+- (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
+{
+    self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
+    if (self) {
+        
+        biometryDetector = [[BiometryDetector alloc] init];
+        biometryDetector.delegate = self;
+        
+        requestHandler = [[RequestHandler alloc] init];
+        requestHandler.delegate = self;
+        
+        audioHandler = [[AudioHandler alloc] init];
+        
+        //start with initial params
+        
+        [self setPointOfExposure:CGPointMake(0.8f, 0.5f)];
+        [self setNeedsWhiteBalance:YES];
+        [self setNeedsAutoExposure:NO];
+        
+        //default to 1
+        _consequentPhotos = 1;
+        
+        //test
+        inputRequired = TRUE;
+        _consequentPhotos = 0; // --> Infinite (for clockwise)
+        requestAnswerRequired = TRUE;
+        
+        //Store only if _consequentPhotos is set to 0 (clockwise behavior) and answe is not required
+        [requestHandler setStoreRequests:!_consequentPhotos && !requestAnswerRequired]; 
+    }
+    return self;
+}
+
+- (void)didReceiveMemoryWarning
+{
+    // Releases the view if it doesn't have a superview.
+    
+    [super didReceiveMemoryWarning];
+    
+    // Release any cached data, images, etc that aren't in use.
+}
+
+/*
+ // Implement loadView to create a view hierarchy programmatically, without using a nib.
+ - (void)loadView
+ {
+ }
+ */
+
+// Implement viewDidLoad to do additional setup after loading the view, typically from a nib.
+
+- (void)viewDidLoad
+{
+    [super viewDidLoad];
+    [self initCapture];
+    
+    //Biometry detector parameters
+    biometryDetector.viewSize = self.view.frame.size;
+    biometryDetector.validROI = _drawingView.maskRect; //MASK
+    biometryDetector.detectionROI = CGRectMake(-previewLayer.frame.origin.x/_scale - 20, -previewLayer.frame.origin.y/_scale - 20, previewLayer.bounds.size.width/_scale + 40, previewLayer.bounds.size.height/_scale + 40);
+    
+    //CheckView transformation
+    _checkView.faceImage.layer.transform = CATransform3DConcat(CATransform3DMakeScale(_scale, _scale, 0), CATransform3DMakeRotation(M_PI, 0.0f, 1.0f, 0.0f));
+    _checkView.faceImage.layer.contentsGravity = kCAGravityResizeAspectFill;
+    _checkView.faceImage.bounds = biometryDetector.detectionROI;
+}
+
+-(void) viewWillAppear:(BOOL)animated 
+{
+    [self startCaptureAndRecognize];
+    
+    if (!switchCameraButton.enabled) {
+        [switchCameraButton performSelectorOnMainThread:@selector(setHidden:) withObject:[NSNumber numberWithBool:YES] waitUntilDone:NO];
+    }
+}
+
+-(void)viewWillDisappear:(BOOL)animated 
+{
+    [biometryDetector stopFaceDetection];
+    
+    [self stopCapture];
+}
+
+- (void)viewDidUnload
+{
+    [super viewDidUnload];
+    
+    // Release any retained subviews of the main view.
+    // e.g. self.myOutlet = nil;
+}
+
+- (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
+{
+    // Return YES for supported orientations
+    
+    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+}
 
 
 @end

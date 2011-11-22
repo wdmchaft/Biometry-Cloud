@@ -27,8 +27,9 @@
 }
 
 - (void) storeCheckingRequest:(CheckingRequest *) request;
-- (NSMutableArray *) getCheckingRequests;
-- (BOOL) areCheckingRequestsQueued;
+- (NSMutableArray *) getAllCheckingRequests;
+- (NSMutableArray *) getNCheckingRequests:(int) n;
+- (int) areCheckingRequestsQueued;
 - (void) deleteCheckingRequest:(CheckingRequest *) request;
 
 -(void)checkAndCreateDatabase;

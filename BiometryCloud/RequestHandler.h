@@ -34,14 +34,18 @@
     //Data Handler for storing requests when needed
     DataHandler *dataHandler;
     
+    //Flag to know if storing requests is needed
+    BOOL _storeRequests;
+    
     //Reachability to handle internet connection
     Reachability *reachability;
     BOOL isNetworkAvailable;
 }
 
-@property (nonatomic, retain) id<RequestHandlerDelegate> delegate;
+@property (nonatomic, assign) id<RequestHandlerDelegate> delegate;
 
 @property (nonatomic, retain) NSString *checkingURL;
+@property (nonatomic, assign) BOOL storeRequests;
 
 - (void) sendCheckingRequestWithFace: (UIImage *) face legalId: (NSString *) legal_id atTimeStamp: (NSString *) time;
 

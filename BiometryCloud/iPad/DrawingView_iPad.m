@@ -20,6 +20,8 @@
         [self addSubview:[array objectAtIndex:0]];
         
         maskRect=CGRectMake(self.frame.origin.x+50, self.frame.origin.y+70, 668, 904);
+        
+        initialFrame=animatingImage.frame;
     }
     return self;
 }

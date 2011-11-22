@@ -109,7 +109,7 @@
 	writing = FALSE;
 }
 
-- (BOOL) areCheckingRequestsQueued {
+- (int) areCheckingRequestsQueued {
 	
 	if (!writing) {
 		[databasePath retain];
@@ -157,7 +157,7 @@
 	}
 }
 
-- (NSMutableArray *) getCheckingRequests {
+- (NSMutableArray *) getAllCheckingRequests {
 	
 	if (!writing) {
 		[databasePath retain];
@@ -186,7 +186,7 @@
                     NSString *legal_id = [NSString stringWithUTF8String:(char *)sqlite3_column_text(compiledStatement, 5)];
 					
 					// Create a new request object with the data from the database
-					CheckingRequest *request = [[[CheckingRequest alloc] init] autorelease];
+					CheckingRequest *request = [[[CheckingRequest alloc] initWithURL:nil] autorelease];
                     
                     request.face = [UIImage imageWithData:face_data];
                     request.lat = lat;
@@ -218,10 +218,77 @@
 	else {
 		[NSThread sleepForTimeInterval:0.1];
 		
-		return [self getCheckingRequests];
+		return [self getAllCheckingRequests];
 	}
 	
 }
+
+- (NSMutableArray *) getNCheckingRequests:(int) n {
+	
+	if (!writing) {
+		[databasePath retain];
+		
+		NSMutableArray *array = [[NSMutableArray alloc] init];
+		
+		// Setup the database object
+		sqlite3 *database;
+		
+		// Open the database from the users filessytem
+		if(sqlite3_open([databasePath UTF8String], &database) == SQLITE_OK) {
+			
+			// Setup the SQL Statement and compile it for faster access
+			const char *sqlStatement = [[NSString stringWithFormat:@"select * from CheckingRequests LIMIT %d",n] UTF8String];
+			sqlite3_stmt *compiledStatement;
+			
+			if(sqlite3_prepare_v2(database, sqlStatement, -1, &compiledStatement, NULL) == SQLITE_OK) {
+				
+				while(sqlite3_step(compiledStatement) == SQLITE_ROW) {
+					// Read the data from the result row
+					
+                    NSData *face_data = [[NSData alloc] initWithBytes:sqlite3_column_blob(compiledStatement, 1) length:sqlite3_column_bytes(compiledStatement, 1)];
+                    double lat = sqlite3_column_double(compiledStatement, 2);
+                    double lng = sqlite3_column_double(compiledStatement, 3);
+					NSString *time = [NSString stringWithUTF8String:(char *)sqlite3_column_text(compiledStatement, 4)];
+                    NSString *legal_id = [NSString stringWithUTF8String:(char *)sqlite3_column_text(compiledStatement, 5)];
+					
+					// Create a new request object with the data from the database
+					CheckingRequest *request = [[[CheckingRequest alloc] initWithURL:nil] autorelease];
+                    
+                    request.face = [UIImage imageWithData:face_data];
+                    request.lat = lat;
+                    request.lng = lng;
+                    request.time = time;
+                    request.legal_id = legal_id;
+                    
+                    [array addObject:request];
+                    
+					[face_data release];
+				}
+			}
+			else {
+				debugLog(@"Error while reading data. '%s'", sqlite3_errmsg(database));
+			}
+            
+            
+			// Release the compiled statement from memory
+			sqlite3_finalize(compiledStatement);
+		}
+		else {
+			debugLog(@"Error while opening database. '%s'", sqlite3_errmsg(database));
+		}
+		
+		sqlite3_close(database);
+		
+		return array;//no leaks here, do not autorelease!!
+	}
+	else {
+		[NSThread sleepForTimeInterval:0.1];
+		
+		return [self getNCheckingRequests:n];
+	}
+	
+}
+
 
 - (void) deleteCheckingRequest:(CheckingRequest *) request {
 
@@ -246,7 +313,11 @@
                     NSAssert1(0, @"Error while deleting data. '%s'", sqlite3_errmsg(database));
             }
             
+            // Release the compiled statement from memory
+			sqlite3_finalize(compiledStatement);
         }
+        
+        sqlite3_close(database);
     }
     else {
 		[NSThread sleepForTimeInterval:0.1];

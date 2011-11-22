@@ -32,6 +32,8 @@
 
 - (void)viewDidLoad
 {
+    self.view.frame = [[UIScreen mainScreen] applicationFrame];
+    
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
 }
@@ -46,7 +48,7 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
-	return YES;
+	return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
 
 @end
