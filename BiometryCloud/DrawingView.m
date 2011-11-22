@@ -43,7 +43,6 @@
         
         currentFeedback=@"None";
         
-        initialFrame=animatingImage.frame;
         isShowingFeedback=FALSE;
         hideFeedbackInt=0;
     }
@@ -185,7 +184,7 @@
         if (!positionOK) {
             
             animatingImage.animationDuration = 1.3;
-            animatingImage.animationImages = centerFaceImages; 
+            animatingImage.animationImages = [NSArray arrayWithArray:centerFaceImages]; 
             feedbackLabel.backgroundColor = [UIColor yellowColor];
             feedbackLabel.textColor = [UIColor blackColor];
             feedbackLabel.textAlignment=UITextAlignmentCenter;

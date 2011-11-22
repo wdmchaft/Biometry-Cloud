@@ -105,16 +105,6 @@
 							<string key="NSResourceName">changeCamaraButtonIcon.png</string>
 						</object>
 					</object>
-					<object class="IBUIView" id="906998632">
-						<reference key="NSNextResponder" ref="191373211"/>
-						<int key="NSvFlags">274</int>
-						<string key="NSFrameSize">{320, 480}</string>
-						<reference key="NSSuperview" ref="191373211"/>
-						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="434817565"/>
-						<reference key="IBUIBackgroundColor" ref="270819559"/>
-						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
-					</object>
 					<object class="IBUIView" id="434817565">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">292</int>
@@ -124,6 +114,16 @@
 						<reference key="NSNextKeyView" ref="537718862"/>
 						<reference key="IBUIBackgroundColor" ref="270819559"/>
 						<float key="IBUIAlpha">0.0</float>
+						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+					</object>
+					<object class="IBUIView" id="906998632">
+						<reference key="NSNextResponder" ref="191373211"/>
+						<int key="NSvFlags">274</int>
+						<string key="NSFrameSize">{320, 480}</string>
+						<reference key="NSSuperview" ref="191373211"/>
+						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="434817565"/>
+						<reference key="IBUIBackgroundColor" ref="270819559"/>
 						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
 					</object>
 				</object>

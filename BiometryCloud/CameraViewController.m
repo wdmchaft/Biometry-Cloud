@@ -404,7 +404,7 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
 #pragma mark - CheckingViewDelegate
 
 //not in delegate but needed
-- (void) showCheckingView {
+- (void) showCheckView {
 
     //play sound
     if (!requestAnswerRequired) {
@@ -492,7 +492,7 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
         //If consequentPhotos is set to 1 or 0, show checking view to continue
         else {
             
-            [self performSelectorOnMainThread:@selector(showCheckingView) withObject:nil waitUntilDone:NO];
+            [self performSelectorOnMainThread:@selector(showCheckView) withObject:nil waitUntilDone:NO];
         }
 
     }
@@ -568,7 +568,7 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     else {
         
         //Update checking view controller if needed
-        [self performSelectorOnMainThread:@selector(showCheckingView) withObject:nil waitUntilDone:NO];
+        [self performSelectorOnMainThread:@selector(showCheckView) withObject:nil waitUntilDone:NO];
     }
 }
 
@@ -604,9 +604,9 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
         _consequentPhotos = 1;
         
         //test
-        inputRequired = FALSE;
-        _consequentPhotos = 5; // --> Infinite (for clockwise)
-        requestAnswerRequired = FALSE;
+        inputRequired = TRUE;
+        _consequentPhotos = 0; // --> Infinite (for clockwise)
+        requestAnswerRequired = TRUE;
         
         //Store only if _consequentPhotos is set to 0 (clockwise behavior) and answe is not required
         [requestHandler setStoreRequests:!_consequentPhotos && !requestAnswerRequired]; 

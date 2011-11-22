@@ -40,15 +40,6 @@
 
 #pragma mark - Input Related Methods
 
-- (void) nextCharacterType{
-    
-    if ([_inputFormat isEqualToString:@"MAIL"]) {
-        
-        [_dummyField setKeyboardType:UIKeyboardTypeEmailAddress];
-        return;
-    }
-}
-
 - (void) inputReceived:(NSString *) string {
     
     //Backspace
@@ -117,12 +108,6 @@
                 _inputLabel.text = [next stringByAppendingString:_inputLabel.text];
             }
         }
-        
-        
-        if ([_input length] != [_inputFormat length]) {
-            
-            [self nextCharacterType];
-        }
 
     }
     
@@ -183,9 +168,6 @@
     
     //Set textLabel
     _textLabel.text = [NSString stringWithFormat:@"%@ %@:", NSLocalizedString(@"input_text", @"Input Instruction"), [_formatterDelegate getInputName]];
-    
-    //Set keyboard
-    [self nextCharacterType];
     
     if (animated) {
         

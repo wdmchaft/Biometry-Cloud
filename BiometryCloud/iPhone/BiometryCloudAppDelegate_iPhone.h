@@ -7,8 +7,8 @@
 //
 
 #import "BiometryCloudAppDelegate.h"
+#import "CameraViewController_iPhone.h"
 
-@class CameraViewController_iPhone;
 @interface BiometryCloudAppDelegate_iPhone : BiometryCloudAppDelegate
 {
 }

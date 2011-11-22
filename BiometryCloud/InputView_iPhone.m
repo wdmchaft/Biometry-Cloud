@@ -83,7 +83,11 @@
 
 - (void) nextCharacterType
 {
-    [super nextCharacterType];
+    if ([_inputFormat isEqualToString:@"MAIL"]) {
+        
+        [_dummyField setKeyboardType:UIKeyboardTypeEmailAddress];
+        return;
+    }
     
     //Set keyboard according to defined format and given input
     NSString *next = [NSString stringWithFormat:@"%c",[_inputFormat characterAtIndex:[_input length]]];
@@ -117,11 +121,24 @@
     }
 }
 
+- (void) inputReceived:(NSString *) string {
+    
+    [super inputReceived:string];
+    
+    if ([_input length] != [_inputFormat length]) {
+        
+        [self nextCharacterType];
+    }
+}
+
 #pragma mark - Actions
 
 - (void) showAnimated:(BOOL)animated {
 
     [super showAnimated:animated];
+    
+    //Set keyboard
+    [self nextCharacterType];
     
     [_dummyField becomeFirstResponder];
 }

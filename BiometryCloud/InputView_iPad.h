@@ -10,7 +10,12 @@
 
 @interface InputView_iPad : InputView {
     
+    IBOutlet UIView *customKeyboard;
+    BOOL showCustomKeyboard;
     
+    IBOutlet UIButton *kButton;
+    
+    IBOutlet UIView *inputExt;
 }
 
 @end

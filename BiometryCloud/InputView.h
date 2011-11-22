@@ -45,5 +45,6 @@
 
 - (void) showAnimated:(BOOL) animated;
 - (void) hideAnimated:(BOOL) animated;
+- (void) inputReceived:(NSString *) string;
 
 @end

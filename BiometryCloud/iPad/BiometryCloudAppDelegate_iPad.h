@@ -7,7 +7,12 @@
 //
 
 #import "BiometryCloudAppDelegate.h"
+#import "CameraViewController_iPad.h"
 
 @interface BiometryCloudAppDelegate_iPad : BiometryCloudAppDelegate
+{
+}
+
+@property (nonatomic, retain) IBOutlet CameraViewController_iPad *viewController;
 
 @end

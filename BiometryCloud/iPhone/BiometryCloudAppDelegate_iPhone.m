@@ -7,9 +7,9 @@
 //
 
 #import "BiometryCloudAppDelegate_iPhone.h"
-#import "CameraViewController_iPhone.h"
 
 @implementation BiometryCloudAppDelegate_iPhone
+
 @synthesize viewController=_viewController;
 
 - (BOOL)application:(UIApplication *)application didFinishLaunchingWithOptions:(NSDictionary *)launchOptions
