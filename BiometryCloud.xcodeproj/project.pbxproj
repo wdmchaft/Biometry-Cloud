@@ -8,9 +8,6 @@
 
 /* Begin PBXBuildFile section */
 		6E0F4B3214449B5B0084080B /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E0F4B3114449B5B0084080B /* Accelerate.framework */; };
-		6E0F4B3514449FA20084080B /* libopencv_core.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E0F4B3414449FA20084080B /* libopencv_core.a */; };
-		6E0F4B3914449FE60084080B /* libopencv_imgproc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E0F4B3714449FE60084080B /* libopencv_imgproc.a */; };
-		6E0F4B3A14449FE60084080B /* libopencv_objdetect.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E0F4B3814449FE60084080B /* libopencv_objdetect.a */; };
 		6E0F4B4F1444A2FD0084080B /* BiometryDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E0F4B4E1444A2FD0084080B /* BiometryDetector.m */; };
 		6E0F4B521444A4DA0084080B /* ImageHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E0F4B511444A4D90084080B /* ImageHandler.m */; };
 		6E0F4B6C1444C2310084080B /* haarcascade_frontalface_alt2.xml in Resources */ = {isa = PBXBuildFile; fileRef = 6E0F4B6B1444C2310084080B /* haarcascade_frontalface_alt2.xml */; };
@@ -89,6 +86,141 @@
 		6E9BE8DD1450BD0000821C4C /* InputView_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E9BE8DC1450BCFF00821C4C /* InputView_iPad.xib */; };
 		6E9BE8E01450BD1F00821C4C /* InputView_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E9BE8DF1450BD1E00821C4C /* InputView_iPad.m */; };
 		6ED0FB6D147D65C700E96182 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6ED0FB6B147D65C700E96182 /* InfoPlist.strings */; };
+		6ED0FB72147D65F200E96182 /* include in Headers */ = {isa = PBXBuildFile; fileRef = 6E3D0732147D569F00C311D4 /* include */; };
+		6ED0FB73147D663600E96182 /* BiometryCloudDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E2A32821472AD3B00974D21 /* BiometryCloudDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6ED0FB74147D663600E96182 /* BiometryCloudViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = F122C6BC143E265600E2FFE8 /* BiometryCloudViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6ED0FB75147D663600E96182 /* InputFormatterDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E976A6A146C1F1300A2471A /* InputFormatterDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6ED0FB76147D663600E96182 /* RutFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E976A6B146C1F6B00A2471A /* RutFormatter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6ED0FB77147D663600E96182 /* MailFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E976A79146C25C400A2471A /* MailFormatter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6ED0FB78147D663600E96182 /* PassportFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E976A7C146C265E00A2471A /* PassportFormatter.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6ED0FB79147D663600E96182 /* BiometryCloudViewController_iPhone.h in Headers */ = {isa = PBXBuildFile; fileRef = F122C6BF143E26BA00E2FFE8 /* BiometryCloudViewController_iPhone.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6ED0FB7A147D663600E96182 /* BiometryCloudViewController_iPad.h in Headers */ = {isa = PBXBuildFile; fileRef = F122C6B3143E1E4400E2FFE8 /* BiometryCloudViewController_iPad.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6ED0FB7B147D667900E96182 /* BiometryCloudConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E9BE8B2144DC55900821C4C /* BiometryCloudConfiguration.h */; };
+		6ED0FB7C147D667900E96182 /* BiometryDetector.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E0F4B4D1444A2FD0084080B /* BiometryDetector.h */; };
+		6ED0FB7D147D667900E96182 /* AudioHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E2A3304147580C200974D21 /* AudioHandler.h */; };
+		6ED0FB7E147D667900E96182 /* DrawingView.h in Headers */ = {isa = PBXBuildFile; fileRef = F14477A01450506400103ADA /* DrawingView.h */; };
+		6ED0FB7F147D667900E96182 /* ImageHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E0F4B501444A4D90084080B /* ImageHandler.h */; };
+		6ED0FB80147D667900E96182 /* RequestHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E9BE851144730BF00821C4C /* RequestHandler.h */; };
+		6ED0FB81147D667900E96182 /* CheckView.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E976A90146C547700A2471A /* CheckView.h */; };
+		6ED0FB82147D667900E96182 /* InputView.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E9BE8D31450BB4A00821C4C /* InputView.h */; };
+		6ED0FB83147D667900E96182 /* DataHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E9BE867144758FF00821C4C /* DataHandler.h */; };
+		6ED0FB84147D667900E96182 /* CheckingRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E9BE84314472FA000821C4C /* CheckingRequest.h */; };
+		6ED0FB85147D667900E96182 /* CheckView_iPhone.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E976A93146C54E900A2471A /* CheckView_iPhone.h */; };
+		6ED0FB86147D667900E96182 /* DrawingView_iPhone.h in Headers */ = {isa = PBXBuildFile; fileRef = F14477A814506E4700103ADA /* DrawingView_iPhone.h */; };
+		6ED0FB87147D667900E96182 /* InputView_iPhone.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E9BE8D91450BC6E00821C4C /* InputView_iPhone.h */; };
+		6ED0FB88147D667900E96182 /* CheckView_iPad.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E976A96146C553000A2471A /* CheckView_iPad.h */; };
+		6ED0FB89147D667900E96182 /* DrawingView_iPad.h in Headers */ = {isa = PBXBuildFile; fileRef = F14477AB14506F4900103ADA /* DrawingView_iPad.h */; };
+		6ED0FB8A147D667900E96182 /* InputView_iPad.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E9BE8DE1450BD1E00821C4C /* InputView_iPad.h */; };
+		6ED0FB8B147D66A400E96182 /* ASIAuthenticationDialog.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E9BE884144DC21400821C4C /* ASIAuthenticationDialog.h */; };
+		6ED0FB8C147D66A400E96182 /* ASIDataCompressor.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E9BE886144DC21500821C4C /* ASIDataCompressor.h */; };
+		6ED0FB8D147D66A400E96182 /* ASIDataDecompressor.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E9BE888144DC21500821C4C /* ASIDataDecompressor.h */; };
+		6ED0FB8E147D66A400E96182 /* ASIDownloadCache.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E9BE88A144DC21600821C4C /* ASIDownloadCache.h */; };
+		6ED0FB8F147D66A400E96182 /* ASICacheDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E9BE84714472FDC00821C4C /* ASICacheDelegate.h */; };
+		6ED0FB90147D66A400E96182 /* ASIFormDataRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E9BE84814472FDC00821C4C /* ASIFormDataRequest.h */; };
+		6ED0FB91147D66A400E96182 /* ASIProgressDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E9BE882144DC16600821C4C /* ASIProgressDelegate.h */; };
+		6ED0FB92147D66A400E96182 /* ASIHTTPRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E9BE84A14472FDC00821C4C /* ASIHTTPRequest.h */; };
+		6ED0FB93147D66A400E96182 /* ASIInputStream.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E9BE890144DC23500821C4C /* ASIInputStream.h */; };
+		6ED0FB94147D66A400E96182 /* ASIHTTPRequestConfig.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E9BE84C14472FDD00821C4C /* ASIHTTPRequestConfig.h */; };
+		6ED0FB95147D66A400E96182 /* ASIHTTPRequestDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E9BE84D14472FDD00821C4C /* ASIHTTPRequestDelegate.h */; };
+		6ED0FB96147D66A400E96182 /* Reachability.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E9BE893144DC25900821C4C /* Reachability.h */; };
+		6ED0FB97147D66A400E96182 /* JSON.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E9BE855144731F900821C4C /* JSON.h */; };
+		6ED0FB98147D66A400E96182 /* NSObject+SBJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E9BE856144731F900821C4C /* NSObject+SBJSON.h */; };
+		6ED0FB99147D66A400E96182 /* NSString+SBJSON.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E9BE858144731F900821C4C /* NSString+SBJSON.h */; };
+		6ED0FB9A147D66A400E96182 /* SBJsonBase.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E9BE85A144731F900821C4C /* SBJsonBase.h */; };
+		6ED0FB9B147D66A400E96182 /* SBJsonParser.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E9BE85C144731F900821C4C /* SBJsonParser.h */; };
+		6ED0FB9C147D66A400E96182 /* SBJsonWriter.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E9BE85E144731F900821C4C /* SBJsonWriter.h */; };
+		6ED0FB9D147D66E000E96182 /* BiometryCloudViewController.m in Sources */ = {isa = PBXBuildFile; fileRef = F122C6BD143E265600E2FFE8 /* BiometryCloudViewController.m */; };
+		6ED0FB9E147D66E000E96182 /* BiometryDetector.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E0F4B4E1444A2FD0084080B /* BiometryDetector.m */; };
+		6ED0FB9F147D66E000E96182 /* AudioHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E2A3305147580C800974D21 /* AudioHandler.m */; };
+		6ED0FBA0147D66E000E96182 /* DrawingView.m in Sources */ = {isa = PBXBuildFile; fileRef = F14477A11450506400103ADA /* DrawingView.m */; };
+		6ED0FBA1147D66E000E96182 /* ImageHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E0F4B511444A4D90084080B /* ImageHandler.m */; };
+		6ED0FBA2147D66E000E96182 /* RequestHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E9BE852144730BF00821C4C /* RequestHandler.m */; };
+		6ED0FBA3147D66E000E96182 /* CheckView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E976A91146C548500A2471A /* CheckView.m */; };
+		6ED0FBA4147D66E000E96182 /* InputView.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E9BE8D41450BB4A00821C4C /* InputView.m */; };
+		6ED0FBA5147D66E000E96182 /* RutFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E976A6C146C1F6C00A2471A /* RutFormatter.m */; };
+		6ED0FBA6147D66E000E96182 /* MailFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E976A7A146C25C400A2471A /* MailFormatter.m */; };
+		6ED0FBA7147D66E000E96182 /* PassportFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E976A7D146C265E00A2471A /* PassportFormatter.m */; };
+		6ED0FBA8147D66E000E96182 /* DataHandler.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E9BE868144758FF00821C4C /* DataHandler.m */; };
+		6ED0FBA9147D66E000E96182 /* CheckingRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E9BE84414472FA000821C4C /* CheckingRequest.m */; };
+		6ED0FBAA147D66E000E96182 /* BiometryCloudViewController_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = F122C6C0143E26BA00E2FFE8 /* BiometryCloudViewController_iPhone.m */; };
+		6ED0FBAB147D66E000E96182 /* CheckView_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E976A94146C54EA00A2471A /* CheckView_iPhone.m */; };
+		6ED0FBAC147D66E000E96182 /* DrawingView_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = F14477A914506E4700103ADA /* DrawingView_iPhone.m */; };
+		6ED0FBAD147D66E000E96182 /* InputView_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E9BE8DA1450BC6F00821C4C /* InputView_iPhone.m */; };
+		6ED0FBAE147D66E000E96182 /* BiometryCloudViewController_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = F122C6B4143E1E4400E2FFE8 /* BiometryCloudViewController_iPad.m */; };
+		6ED0FBAF147D66E000E96182 /* CheckView_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E976A97146C553000A2471A /* CheckView_iPad.m */; };
+		6ED0FBB0147D66E000E96182 /* DrawingView_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = F14477AC14506F4900103ADA /* DrawingView_iPad.m */; };
+		6ED0FBB1147D66E000E96182 /* InputView_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E9BE8DF1450BD1E00821C4C /* InputView_iPad.m */; };
+		6ED0FBB2147D66F700E96182 /* ASIAuthenticationDialog.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E9BE885144DC21500821C4C /* ASIAuthenticationDialog.m */; };
+		6ED0FBB3147D66F700E96182 /* ASIDataCompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E9BE887144DC21500821C4C /* ASIDataCompressor.m */; };
+		6ED0FBB4147D66F700E96182 /* ASIDataDecompressor.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E9BE889144DC21500821C4C /* ASIDataDecompressor.m */; };
+		6ED0FBB5147D66F700E96182 /* ASIDownloadCache.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E9BE88B144DC21600821C4C /* ASIDownloadCache.m */; };
+		6ED0FBB6147D66F700E96182 /* ASIFormDataRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E9BE84914472FDC00821C4C /* ASIFormDataRequest.m */; };
+		6ED0FBB7147D66F700E96182 /* ASIHTTPRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E9BE84B14472FDD00821C4C /* ASIHTTPRequest.m */; };
+		6ED0FBB8147D66F700E96182 /* ASIInputStream.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E9BE891144DC23500821C4C /* ASIInputStream.m */; };
+		6ED0FBB9147D66F700E96182 /* Reachability.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E9BE894144DC25900821C4C /* Reachability.m */; };
+		6ED0FBBA147D66F700E96182 /* NSObject+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E9BE857144731F900821C4C /* NSObject+SBJSON.m */; };
+		6ED0FBBB147D66F700E96182 /* NSString+SBJSON.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E9BE859144731F900821C4C /* NSString+SBJSON.m */; };
+		6ED0FBBC147D66F700E96182 /* SBJsonBase.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E9BE85B144731F900821C4C /* SBJsonBase.m */; };
+		6ED0FBBD147D66F700E96182 /* SBJsonParser.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E9BE85D144731F900821C4C /* SBJsonParser.m */; };
+		6ED0FBBE147D66F700E96182 /* SBJsonWriter.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E9BE85F144731F900821C4C /* SBJsonWriter.m */; };
+		6ED0FBC5147D687200E96182 /* libopencv_imgproc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E0F4B3714449FE60084080B /* libopencv_imgproc.a */; };
+		6ED0FBC6147D687200E96182 /* libopencv_objdetect.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E0F4B3814449FE60084080B /* libopencv_objdetect.a */; };
+		6ED0FBC7147D687200E96182 /* libopencv_core.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E0F4B3414449FA20084080B /* libopencv_core.a */; };
+		6ED0FBCA147D693E00E96182 /* AudioToolbox.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E976A7F146C371000A2471A /* AudioToolbox.framework */; };
+		6ED0FBCB147D693E00E96182 /* MobileCoreServices.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E9BE89E144DC36B00821C4C /* MobileCoreServices.framework */; };
+		6ED0FBCC147D693E00E96182 /* SystemConfiguration.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E9BE89C144DC35500821C4C /* SystemConfiguration.framework */; };
+		6ED0FBCD147D693E00E96182 /* CFNetwork.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E9BE897144DC2A100821C4C /* CFNetwork.framework */; };
+		6ED0FBCE147D693E00E96182 /* CoreLocation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E9BE865144756F600821C4C /* CoreLocation.framework */; };
+		6ED0FBCF147D693E00E96182 /* Accelerate.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E0F4B3114449B5B0084080B /* Accelerate.framework */; };
+		6ED0FBD0147D693E00E96182 /* CoreGraphics.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1F608BF143E4F8B00A6E0DC /* CoreGraphics.framework */; };
+		6ED0FBD1147D693E00E96182 /* CoreMedia.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1F608C0143E4F8B00A6E0DC /* CoreMedia.framework */; };
+		6ED0FBD2147D693E00E96182 /* CoreVideo.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1F608C1143E4F8B00A6E0DC /* CoreVideo.framework */; };
+		6ED0FBD3147D693E00E96182 /* QuartzCore.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1F608C2143E4F8C00A6E0DC /* QuartzCore.framework */; };
+		6ED0FBD4147D693E00E96182 /* AVFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F1F608AD143E36D600A6E0DC /* AVFoundation.framework */; };
+		6ED0FBD5147D693E00E96182 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F122C689143E1D6F00E2FFE8 /* UIKit.framework */; };
+		6ED0FBD6147D693E00E96182 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F122C68B143E1D6F00E2FFE8 /* Foundation.framework */; };
+		6ED0FBD7147D693E00E96182 /* CoreFoundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 6EF7C41A147C2237005FEB9E /* CoreFoundation.framework */; };
+		6ED0FBD8147D694D00E96182 /* libsqlite3.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E9BE8AF144DC49400821C4C /* libsqlite3.dylib */; };
+		6ED0FBD9147D694D00E96182 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E9BE8A0144DC3F500821C4C /* libz.dylib */; };
+		6ED0FBDA147D6A0700E96182 /* BiometryCloud.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 6E9BE8B9144DDD0D00821C4C /* BiometryCloud.sqlite */; };
+		6ED0FBDB147D6A0700E96182 /* haarcascade_frontalface_alt2.xml in Resources */ = {isa = PBXBuildFile; fileRef = 6E0F4B6B1444C2310084080B /* haarcascade_frontalface_alt2.xml */; };
+		6ED0FBDC147D6A0700E96182 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F16C87A11457239E00EC9B85 /* InfoPlist.strings */; };
+		6ED0FBDD147D6A0700E96182 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F16C87A31457239E00EC9B85 /* Localizable.strings */; };
+		6ED0FBDE147D6A0700E96182 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F16C879C145722CD00EC9B85 /* Localizable.strings */; };
+		6ED0FBDF147D6A0700E96182 /* wrong.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E2A32971472C53600974D21 /* wrong.png */; };
+		6ED0FBE0147D6A0700E96182 /* check.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E976AA7146C570E00A2471A /* check.png */; };
+		6ED0FBE1147D6A1700E96182 /* acceptButton_iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E2A3312147BD7B200974D21 /* acceptButton_iPad.png */; };
+		6ED0FBE2147D6A1D00E96182 /* borrar.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E2A3313147BD7B200974D21 /* borrar.png */; };
+		6ED0FBE3147D6A1D00E96182 /* borrara.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E2A3314147BD7B200974D21 /* borrara.png */; };
+		6ED0FBE4147D6A1D00E96182 /* cancelButton_iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E2A3315147BD7B200974D21 /* cancelButton_iPad.png */; };
+		6ED0FBE5147D6A1D00E96182 /* mundo.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E2A3316147BD7B200974D21 /* mundo.png */; };
+		6ED0FBE6147D6A1D00E96182 /* chile.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E2A3317147BD7B200974D21 /* chile.png */; };
+		6ED0FBE7147D6A1D00E96182 /* inter.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E2A3318147BD7B200974D21 /* inter.png */; };
+		6ED0FBE8147D6A1D00E96182 /* K.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E2A3319147BD7B200974D21 /* K.png */; };
+		6ED0FBE9147D6A1D00E96182 /* Ka.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E2A331A147BD7B200974D21 /* Ka.png */; };
+		6ED0FBEA147D6A1D00E96182 /* 0.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E2A331B147BD7B200974D21 /* 0.png */; };
+		6ED0FBEB147D6A1D00E96182 /* 0a.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E2A331C147BD7B200974D21 /* 0a.png */; };
+		6ED0FBEC147D6A1D00E96182 /* 1a.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E2A331D147BD7B200974D21 /* 1a.png */; };
+		6ED0FBED147D6A1D00E96182 /* 1.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E2A331E147BD7B200974D21 /* 1.png */; };
+		6ED0FBEE147D6A1D00E96182 /* 2.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E2A3320147BD7B200974D21 /* 2.png */; };
+		6ED0FBEF147D6A1D00E96182 /* 2a.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E2A3321147BD7B200974D21 /* 2a.png */; };
+		6ED0FBF0147D6A1D00E96182 /* 3.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E2A3322147BD7B200974D21 /* 3.png */; };
+		6ED0FBF1147D6A1D00E96182 /* 3a.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E2A3323147BD7B200974D21 /* 3a.png */; };
+		6ED0FBF2147D6A1D00E96182 /* 4.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E2A3324147BD7B200974D21 /* 4.png */; };
+		6ED0FBF3147D6A1D00E96182 /* 4a.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E2A3325147BD7B200974D21 /* 4a.png */; };
+		6ED0FBF4147D6A1D00E96182 /* 5.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E2A3326147BD7B200974D21 /* 5.png */; };
+		6ED0FBF5147D6A1D00E96182 /* 5a.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E2A3327147BD7B200974D21 /* 5a.png */; };
+		6ED0FBF6147D6A1D00E96182 /* 6.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E2A3328147BD7B200974D21 /* 6.png */; };
+		6ED0FBF7147D6A1D00E96182 /* 6a.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E2A3329147BD7B200974D21 /* 6a.png */; };
+		6ED0FBF8147D6A1D00E96182 /* 7.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E2A332A147BD7B200974D21 /* 7.png */; };
+		6ED0FBF9147D6A1D00E96182 /* 7a.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E2A332B147BD7B200974D21 /* 7a.png */; };
+		6ED0FBFA147D6A1D00E96182 /* 8.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E2A332C147BD7B200974D21 /* 8.png */; };
+		6ED0FBFB147D6A1D00E96182 /* 8a.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E2A332D147BD7B200974D21 /* 8a.png */; };
+		6ED0FBFC147D6A1D00E96182 /* 9.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E2A332E147BD7B200974D21 /* 9.png */; };
+		6ED0FBFD147D6A1D00E96182 /* 9a.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E2A332F147BD7B200974D21 /* 9a.png */; };
+		6ED0FC07147D70D400E96182 /* libopencv_imgproc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E0F4B3714449FE60084080B /* libopencv_imgproc.a */; };
+		6ED0FC08147D70D400E96182 /* libopencv_objdetect.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E0F4B3814449FE60084080B /* libopencv_objdetect.a */; };
+		6ED0FC09147D70D400E96182 /* libopencv_core.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E0F4B3414449FA20084080B /* libopencv_core.a */; };
 		F122C68A143E1D6F00E2FFE8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F122C689143E1D6F00E2FFE8 /* UIKit.framework */; };
 		F122C68C143E1D6F00E2FFE8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F122C68B143E1D6F00E2FFE8 /* Foundation.framework */; };
 		F122C694143E1D6F00E2FFE8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F122C692143E1D6F00E2FFE8 /* InfoPlist.strings */; };
@@ -256,7 +388,7 @@
 		6ED0FB67147D65C600E96182 /* BiometryCloud.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BiometryCloud.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		6ED0FB6A147D65C700E96182 /* BiometryCloud-Info.plist */ = {isa = PBXFileReference; path = "BiometryCloud-Info.plist"; sourceTree = "<group>"; };
 		6ED0FB6C147D65C700E96182 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
-		6ED0FB6E147D65C700E96182 /* BiometryCloud-Prefix.pch */ = {isa = PBXFileReference; path = "BiometryCloud-Prefix.pch"; sourceTree = "<group>"; };
+		6ED0FB6E147D65C700E96182 /* BiometryCloud-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BiometryCloud-Prefix.pch"; sourceTree = "<group>"; };
 		6EF7C41A147C2237005FEB9E /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		F122C685143E1D6F00E2FFE8 /* BiometryCloudApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BiometryCloudApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F122C689143E1D6F00E2FFE8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
@@ -320,6 +452,25 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6ED0FBCA147D693E00E96182 /* AudioToolbox.framework in Frameworks */,
+				6ED0FBCB147D693E00E96182 /* MobileCoreServices.framework in Frameworks */,
+				6ED0FBCC147D693E00E96182 /* SystemConfiguration.framework in Frameworks */,
+				6ED0FBCD147D693E00E96182 /* CFNetwork.framework in Frameworks */,
+				6ED0FBCE147D693E00E96182 /* CoreLocation.framework in Frameworks */,
+				6ED0FBCF147D693E00E96182 /* Accelerate.framework in Frameworks */,
+				6ED0FBD0147D693E00E96182 /* CoreGraphics.framework in Frameworks */,
+				6ED0FBD1147D693E00E96182 /* CoreMedia.framework in Frameworks */,
+				6ED0FBD2147D693E00E96182 /* CoreVideo.framework in Frameworks */,
+				6ED0FBD3147D693E00E96182 /* QuartzCore.framework in Frameworks */,
+				6ED0FBD4147D693E00E96182 /* AVFoundation.framework in Frameworks */,
+				6ED0FBD5147D693E00E96182 /* UIKit.framework in Frameworks */,
+				6ED0FBD6147D693E00E96182 /* Foundation.framework in Frameworks */,
+				6ED0FBD7147D693E00E96182 /* CoreFoundation.framework in Frameworks */,
+				6ED0FBC5147D687200E96182 /* libopencv_imgproc.a in Frameworks */,
+				6ED0FBC6147D687200E96182 /* libopencv_objdetect.a in Frameworks */,
+				6ED0FBC7147D687200E96182 /* libopencv_core.a in Frameworks */,
+				6ED0FBD8147D694D00E96182 /* libsqlite3.dylib in Frameworks */,
+				6ED0FBD9147D694D00E96182 /* libz.dylib in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -342,9 +493,9 @@
 				6E9BE8A4144DC43400821C4C /* SystemConfiguration.framework in Frameworks */,
 				6E9BE8A2144DC42A00821C4C /* libz.dylib in Frameworks */,
 				6E9BE8B1144DC4A000821C4C /* libsqlite3.dylib in Frameworks */,
-				6E0F4B3514449FA20084080B /* libopencv_core.a in Frameworks */,
-				6E0F4B3914449FE60084080B /* libopencv_imgproc.a in Frameworks */,
-				6E0F4B3A14449FE60084080B /* libopencv_objdetect.a in Frameworks */,
+				6ED0FC07147D70D400E96182 /* libopencv_imgproc.a in Frameworks */,
+				6ED0FC08147D70D400E96182 /* libopencv_objdetect.a in Frameworks */,
+				6ED0FC09147D70D400E96182 /* libopencv_core.a in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -718,6 +869,49 @@
 			isa = PBXHeadersBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6ED0FB73147D663600E96182 /* BiometryCloudDelegate.h in Headers */,
+				6ED0FB74147D663600E96182 /* BiometryCloudViewController.h in Headers */,
+				6ED0FB75147D663600E96182 /* InputFormatterDelegate.h in Headers */,
+				6ED0FB76147D663600E96182 /* RutFormatter.h in Headers */,
+				6ED0FB77147D663600E96182 /* MailFormatter.h in Headers */,
+				6ED0FB78147D663600E96182 /* PassportFormatter.h in Headers */,
+				6ED0FB79147D663600E96182 /* BiometryCloudViewController_iPhone.h in Headers */,
+				6ED0FB7A147D663600E96182 /* BiometryCloudViewController_iPad.h in Headers */,
+				6ED0FB72147D65F200E96182 /* include in Headers */,
+				6ED0FB8B147D66A400E96182 /* ASIAuthenticationDialog.h in Headers */,
+				6ED0FB8C147D66A400E96182 /* ASIDataCompressor.h in Headers */,
+				6ED0FB8D147D66A400E96182 /* ASIDataDecompressor.h in Headers */,
+				6ED0FB8E147D66A400E96182 /* ASIDownloadCache.h in Headers */,
+				6ED0FB8F147D66A400E96182 /* ASICacheDelegate.h in Headers */,
+				6ED0FB90147D66A400E96182 /* ASIFormDataRequest.h in Headers */,
+				6ED0FB91147D66A400E96182 /* ASIProgressDelegate.h in Headers */,
+				6ED0FB92147D66A400E96182 /* ASIHTTPRequest.h in Headers */,
+				6ED0FB93147D66A400E96182 /* ASIInputStream.h in Headers */,
+				6ED0FB94147D66A400E96182 /* ASIHTTPRequestConfig.h in Headers */,
+				6ED0FB95147D66A400E96182 /* ASIHTTPRequestDelegate.h in Headers */,
+				6ED0FB96147D66A400E96182 /* Reachability.h in Headers */,
+				6ED0FB97147D66A400E96182 /* JSON.h in Headers */,
+				6ED0FB98147D66A400E96182 /* NSObject+SBJSON.h in Headers */,
+				6ED0FB99147D66A400E96182 /* NSString+SBJSON.h in Headers */,
+				6ED0FB9A147D66A400E96182 /* SBJsonBase.h in Headers */,
+				6ED0FB9B147D66A400E96182 /* SBJsonParser.h in Headers */,
+				6ED0FB9C147D66A400E96182 /* SBJsonWriter.h in Headers */,
+				6ED0FB7B147D667900E96182 /* BiometryCloudConfiguration.h in Headers */,
+				6ED0FB7C147D667900E96182 /* BiometryDetector.h in Headers */,
+				6ED0FB7D147D667900E96182 /* AudioHandler.h in Headers */,
+				6ED0FB7E147D667900E96182 /* DrawingView.h in Headers */,
+				6ED0FB7F147D667900E96182 /* ImageHandler.h in Headers */,
+				6ED0FB80147D667900E96182 /* RequestHandler.h in Headers */,
+				6ED0FB81147D667900E96182 /* CheckView.h in Headers */,
+				6ED0FB82147D667900E96182 /* InputView.h in Headers */,
+				6ED0FB83147D667900E96182 /* DataHandler.h in Headers */,
+				6ED0FB84147D667900E96182 /* CheckingRequest.h in Headers */,
+				6ED0FB85147D667900E96182 /* CheckView_iPhone.h in Headers */,
+				6ED0FB86147D667900E96182 /* DrawingView_iPhone.h in Headers */,
+				6ED0FB87147D667900E96182 /* InputView_iPhone.h in Headers */,
+				6ED0FB88147D667900E96182 /* CheckView_iPad.h in Headers */,
+				6ED0FB89147D667900E96182 /* DrawingView_iPad.h in Headers */,
+				6ED0FB8A147D667900E96182 /* InputView_iPad.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -794,6 +988,42 @@
 			buildActionMask = 2147483647;
 			files = (
 				6ED0FB6D147D65C700E96182 /* InfoPlist.strings in Resources */,
+				6ED0FBDA147D6A0700E96182 /* BiometryCloud.sqlite in Resources */,
+				6ED0FBDB147D6A0700E96182 /* haarcascade_frontalface_alt2.xml in Resources */,
+				6ED0FBDC147D6A0700E96182 /* InfoPlist.strings in Resources */,
+				6ED0FBE1147D6A1700E96182 /* acceptButton_iPad.png in Resources */,
+				6ED0FBE2147D6A1D00E96182 /* borrar.png in Resources */,
+				6ED0FBE3147D6A1D00E96182 /* borrara.png in Resources */,
+				6ED0FBE4147D6A1D00E96182 /* cancelButton_iPad.png in Resources */,
+				6ED0FBE5147D6A1D00E96182 /* mundo.png in Resources */,
+				6ED0FBE6147D6A1D00E96182 /* chile.png in Resources */,
+				6ED0FBE7147D6A1D00E96182 /* inter.png in Resources */,
+				6ED0FBE8147D6A1D00E96182 /* K.png in Resources */,
+				6ED0FBE9147D6A1D00E96182 /* Ka.png in Resources */,
+				6ED0FBEA147D6A1D00E96182 /* 0.png in Resources */,
+				6ED0FBEB147D6A1D00E96182 /* 0a.png in Resources */,
+				6ED0FBEC147D6A1D00E96182 /* 1a.png in Resources */,
+				6ED0FBED147D6A1D00E96182 /* 1.png in Resources */,
+				6ED0FBEE147D6A1D00E96182 /* 2.png in Resources */,
+				6ED0FBEF147D6A1D00E96182 /* 2a.png in Resources */,
+				6ED0FBF0147D6A1D00E96182 /* 3.png in Resources */,
+				6ED0FBF1147D6A1D00E96182 /* 3a.png in Resources */,
+				6ED0FBF2147D6A1D00E96182 /* 4.png in Resources */,
+				6ED0FBF3147D6A1D00E96182 /* 4a.png in Resources */,
+				6ED0FBF4147D6A1D00E96182 /* 5.png in Resources */,
+				6ED0FBF5147D6A1D00E96182 /* 5a.png in Resources */,
+				6ED0FBF6147D6A1D00E96182 /* 6.png in Resources */,
+				6ED0FBF7147D6A1D00E96182 /* 6a.png in Resources */,
+				6ED0FBF8147D6A1D00E96182 /* 7.png in Resources */,
+				6ED0FBF9147D6A1D00E96182 /* 7a.png in Resources */,
+				6ED0FBFA147D6A1D00E96182 /* 8.png in Resources */,
+				6ED0FBFB147D6A1D00E96182 /* 8a.png in Resources */,
+				6ED0FBFC147D6A1D00E96182 /* 9.png in Resources */,
+				6ED0FBFD147D6A1D00E96182 /* 9a.png in Resources */,
+				6ED0FBDD147D6A0700E96182 /* Localizable.strings in Resources */,
+				6ED0FBDE147D6A0700E96182 /* Localizable.strings in Resources */,
+				6ED0FBDF147D6A0700E96182 /* wrong.png in Resources */,
+				6ED0FBE0147D6A0700E96182 /* check.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -908,6 +1138,40 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6ED0FBB2147D66F700E96182 /* ASIAuthenticationDialog.m in Sources */,
+				6ED0FBB3147D66F700E96182 /* ASIDataCompressor.m in Sources */,
+				6ED0FBB4147D66F700E96182 /* ASIDataDecompressor.m in Sources */,
+				6ED0FBB5147D66F700E96182 /* ASIDownloadCache.m in Sources */,
+				6ED0FBB6147D66F700E96182 /* ASIFormDataRequest.m in Sources */,
+				6ED0FBB7147D66F700E96182 /* ASIHTTPRequest.m in Sources */,
+				6ED0FBB8147D66F700E96182 /* ASIInputStream.m in Sources */,
+				6ED0FBB9147D66F700E96182 /* Reachability.m in Sources */,
+				6ED0FBBA147D66F700E96182 /* NSObject+SBJSON.m in Sources */,
+				6ED0FBBB147D66F700E96182 /* NSString+SBJSON.m in Sources */,
+				6ED0FBBC147D66F700E96182 /* SBJsonBase.m in Sources */,
+				6ED0FBBD147D66F700E96182 /* SBJsonParser.m in Sources */,
+				6ED0FBBE147D66F700E96182 /* SBJsonWriter.m in Sources */,
+				6ED0FB9D147D66E000E96182 /* BiometryCloudViewController.m in Sources */,
+				6ED0FB9E147D66E000E96182 /* BiometryDetector.m in Sources */,
+				6ED0FB9F147D66E000E96182 /* AudioHandler.m in Sources */,
+				6ED0FBA0147D66E000E96182 /* DrawingView.m in Sources */,
+				6ED0FBA1147D66E000E96182 /* ImageHandler.m in Sources */,
+				6ED0FBA2147D66E000E96182 /* RequestHandler.m in Sources */,
+				6ED0FBA3147D66E000E96182 /* CheckView.m in Sources */,
+				6ED0FBA4147D66E000E96182 /* InputView.m in Sources */,
+				6ED0FBA5147D66E000E96182 /* RutFormatter.m in Sources */,
+				6ED0FBA6147D66E000E96182 /* MailFormatter.m in Sources */,
+				6ED0FBA7147D66E000E96182 /* PassportFormatter.m in Sources */,
+				6ED0FBA8147D66E000E96182 /* DataHandler.m in Sources */,
+				6ED0FBA9147D66E000E96182 /* CheckingRequest.m in Sources */,
+				6ED0FBAA147D66E000E96182 /* BiometryCloudViewController_iPhone.m in Sources */,
+				6ED0FBAB147D66E000E96182 /* CheckView_iPhone.m in Sources */,
+				6ED0FBAC147D66E000E96182 /* DrawingView_iPhone.m in Sources */,
+				6ED0FBAD147D66E000E96182 /* InputView_iPhone.m in Sources */,
+				6ED0FBAE147D66E000E96182 /* BiometryCloudViewController_iPad.m in Sources */,
+				6ED0FBAF147D66E000E96182 /* CheckView_iPad.m in Sources */,
+				6ED0FBB0147D66E000E96182 /* DrawingView_iPad.m in Sources */,
+				6ED0FBB1147D66E000E96182 /* InputView_iPad.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1039,13 +1303,20 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BiometryCloud/BiometryCloud-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
-				INFOPLIST_FILE = "BiometryCloud/BiometryCloud-Info.plist";
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/opencv_device/include";
+				INFOPLIST_FILE = "BiometryCloud.framework/BiometryCloud-Info.plist";
 				INFOPLIST_PATH = "$(UNLOCALIZED_RESOURCES_FOLDER_PATH)/Info.plist";
 				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/opencv_device/lib";
 				LINK_WITH_STANDARD_LIBRARIES = NO;
 				MACH_O_TYPE = mh_object;
+				OTHER_LDFLAGS = (
+					"-lstdc++",
+					"-lz",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = iphoneos;
 				UNLOCALIZED_RESOURCES_FOLDER_PATH = "$(CONTENTS_FOLDER_PATH)/Resources";
 				WRAPPER_EXTENSION = framework;
 			};
@@ -1063,13 +1334,20 @@
 				FRAMEWORK_VERSION = A;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BiometryCloud/BiometryCloud-Prefix.pch";
-				INFOPLIST_FILE = "BiometryCloud/BiometryCloud-Info.plist";
+				HEADER_SEARCH_PATHS = "$(SRCROOT)/opencv_device/include";
+				INFOPLIST_FILE = "BiometryCloud.framework/BiometryCloud-Info.plist";
 				INFOPLIST_PATH = "$(UNLOCALIZED_RESOURCES_FOLDER_PATH)/Info.plist";
 				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/opencv_device/lib";
 				LINK_WITH_STANDARD_LIBRARIES = NO;
 				MACH_O_TYPE = mh_object;
+				OTHER_LDFLAGS = (
+					"-lstdc++",
+					"-lz",
+				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SKIP_INSTALL = YES;
+				SUPPORTED_PLATFORMS = iphoneos;
 				UNLOCALIZED_RESOURCES_FOLDER_PATH = "$(CONTENTS_FOLDER_PATH)/Resources";
 				WRAPPER_EXTENSION = framework;
 			};
@@ -1137,6 +1415,7 @@
 					"-lz",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = iphoneos;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Debug;
@@ -1158,6 +1437,7 @@
 					"-lz",
 				);
 				PRODUCT_NAME = "$(TARGET_NAME)";
+				SUPPORTED_PLATFORMS = iphoneos;
 				WRAPPER_EXTENSION = app;
 			};
 			name = Release;
@@ -1172,6 +1452,7 @@
 				6ED0FB71147D65C700E96182 /* Release */,
 			);
 			defaultConfigurationIsVisible = 0;
+			defaultConfigurationName = Release;
 		};
 		F122C67F143E1D6F00E2FFE8 /* Build configuration list for PBXProject "BiometryCloud" */ = {
 			isa = XCConfigurationList;
