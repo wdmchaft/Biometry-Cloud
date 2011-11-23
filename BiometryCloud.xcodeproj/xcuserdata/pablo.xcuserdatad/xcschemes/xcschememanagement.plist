@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>SchemeUserState</key>
+	<dict>
+		<key>BiometryCloud.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>1</integer>
+		</dict>
+		<key>BiometryCloudApp.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>0</integer>
+		</dict>
+		<key>Lipo Tool.xcscheme</key>
+		<dict>
+			<key>orderHint</key>
+			<integer>2</integer>
+		</dict>
+	</dict>
+	<key>SuppressBuildableAutocreation</key>
+	<dict>
+		<key>6ED0FB66147D65C600E96182</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6EF7C418147C2237005FEB9E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>6EF7C4A9147C2842005FEB9E</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+		<key>F122C684143E1D6F00E2FFE8</key>
+		<dict>
+			<key>primary</key>
+			<true/>
+		</dict>
+	</dict>
+</dict>
+</plist>

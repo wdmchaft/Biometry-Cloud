@@ -18,8 +18,8 @@
     [super application:application didFinishLaunchingWithOptions:launchOptions];
     
 //Create the camera view 
-    //CameraViewController_iPhone *cameraView = [[CameraViewController_iPhone alloc]init];
-    _viewController= [[CameraViewController_iPhone alloc]init];
+    //BiometryCloudViewController_iPhone *cameraView = [[BiometryCloudViewController_iPhone alloc]init];
+    _viewController= [[BiometryCloudViewController_iPhone alloc]init];
     [self.window addSubview:_viewController.view];
     [self.window makeKeyAndVisible];
 
