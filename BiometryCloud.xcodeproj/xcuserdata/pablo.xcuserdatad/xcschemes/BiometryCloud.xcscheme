@@ -13,7 +13,7 @@
             buildForAnalyzing = "YES">
             <BuildableReference
                BuildableIdentifier = "primary"
-               BlueprintIdentifier = "6EF7C418147C2237005FEB9E"
+               BlueprintIdentifier = "6ED0FB66147D65C600E96182"
                BuildableName = "BiometryCloud.framework"
                BlueprintName = "BiometryCloud"
                ReferencedContainer = "container:BiometryCloud.xcodeproj">
