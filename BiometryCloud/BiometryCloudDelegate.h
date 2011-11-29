@@ -11,10 +11,12 @@
 
 @protocol BiometryCloudDelegate
 
+@required
+- (BOOL) isAnswerHandledByDelegate;
+
+@optional
 - (void) identificationProcessFinished:(NSDictionary *) answer;
 
 - (void) faceCaptured:(UIImage *) face;
-
-- (BOOL) isAnswerHandledByDelegate;
 
 @end

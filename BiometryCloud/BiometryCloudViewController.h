@@ -61,10 +61,10 @@
     int _takenPhotos;
     
     //Flag to set if answer from webservice is required
-    BOOL requestAnswerRequired;
+    BOOL _requestAnswerRequired;
     
     //Flag to set if input is required
-    BOOL inputRequired;
+    BOOL _inputRequired;
     
     //Last found face to store it while entering input
     UIImage *detectedFaceImage;
@@ -81,14 +81,16 @@
 //The delegate
 @property (nonatomic, assign) id<BiometryCloudDelegate> libraryDelegate;
 
-@property (nonatomic, assign, setter = setNeedsAutoExposure:) BOOL needsAutoExposure;
-@property (nonatomic, assign, setter = setNeedsWhiteBalance:) BOOL needsWhiteBalance;
-@property (nonatomic, assign, setter = setCanSwitchCamera:) BOOL canSwitchCamera;
-@property (nonatomic, assign, setter = setPointOfExposure:) CGPoint pointOfExposure;
-@property (nonatomic, assign, setter = setScale:) float scale;
-//@property (nonatomic, retain) IBOutlet DrawingView *drawingView;
+//Parameters
+@property (nonatomic, assign) int consequentPhotos;
+@property (nonatomic, assign) BOOL inputRequired;
+@property (nonatomic, assign) BOOL requestAnswerRequired;
 
-@property (nonatomic, assign, setter = setConsequentPhotos:) int consequentPhotos;
+@property (nonatomic, assign) BOOL needsAutoExposure;
+@property (nonatomic, assign) BOOL needsWhiteBalance;
+@property (nonatomic, assign) BOOL canSwitchCamera;
+@property (nonatomic, assign) CGPoint pointOfExposure;
+@property (nonatomic, assign) float scale;
 
 /*
 -(void)initCapture;

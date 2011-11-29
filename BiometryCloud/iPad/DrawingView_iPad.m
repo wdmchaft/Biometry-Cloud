@@ -19,7 +19,9 @@
         NSArray *array = [[NSBundle mainBundle] loadNibNamed:@"DrawingView_iPad" owner:self options:nil];
         [self addSubview:[array objectAtIndex:0]];
         
-        maskRect=CGRectMake(self.frame.origin.x+50, self.frame.origin.y+70, 668, 904);
+        maskOffset = 50;
+        
+        [self setLimitRectDimensions];
         
         initialFrame=animatingImage.frame;
     }

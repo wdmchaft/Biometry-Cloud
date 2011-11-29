@@ -20,6 +20,7 @@
         // Load XMLs
         // Face template
         NSString *path = [[NSBundle mainBundle] pathForResource:@"haarcascade_frontalface_alt2" ofType:@"xml"];
+        
         // Eye Pairs template
 		//NSString *path = [[NSBundle mainBundle] pathForResource:@"haarcascade_mcs_eyepair_small" ofType:@"xml"];
 		faceCascade = (CvHaarClassifierCascade*)cvLoad([path cStringUsingEncoding:NSASCIIStringEncoding], NULL, NULL, NULL);

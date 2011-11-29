@@ -45,6 +45,7 @@
 		6E2A334B147BD7B200974D21 /* 8a.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E2A332D147BD7B200974D21 /* 8a.png */; };
 		6E2A334C147BD7B200974D21 /* 9.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E2A332E147BD7B200974D21 /* 9.png */; };
 		6E2A334D147BD7B200974D21 /* 9a.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E2A332F147BD7B200974D21 /* 9a.png */; };
+		6E46136D147D74E7006C1CD1 /* BiometryCloudApp-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6E46136C147D74E7006C1CD1 /* BiometryCloudApp-Info.plist */; };
 		6E976A6D146C1F6F00A2471A /* RutFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E976A6C146C1F6C00A2471A /* RutFormatter.m */; };
 		6E976A7B146C25C400A2471A /* MailFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E976A7A146C25C400A2471A /* MailFormatter.m */; };
 		6E976A7E146C265F00A2471A /* PassportFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E976A7D146C265E00A2471A /* PassportFormatter.m */; };
@@ -85,16 +86,14 @@
 		6E9BE8DB1450BC7000821C4C /* InputView_iPhone.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E9BE8DA1450BC6F00821C4C /* InputView_iPhone.m */; };
 		6E9BE8DD1450BD0000821C4C /* InputView_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E9BE8DC1450BCFF00821C4C /* InputView_iPad.xib */; };
 		6E9BE8E01450BD1F00821C4C /* InputView_iPad.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E9BE8DF1450BD1E00821C4C /* InputView_iPad.m */; };
-		6ED0FB6D147D65C700E96182 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = 6ED0FB6B147D65C700E96182 /* InfoPlist.strings */; };
-		6ED0FB72147D65F200E96182 /* include in Headers */ = {isa = PBXBuildFile; fileRef = 6E3D0732147D569F00C311D4 /* include */; };
 		6ED0FB73147D663600E96182 /* BiometryCloudDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E2A32821472AD3B00974D21 /* BiometryCloudDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6ED0FB74147D663600E96182 /* BiometryCloudViewController.h in Headers */ = {isa = PBXBuildFile; fileRef = F122C6BC143E265600E2FFE8 /* BiometryCloudViewController.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6ED0FB75147D663600E96182 /* InputFormatterDelegate.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E976A6A146C1F1300A2471A /* InputFormatterDelegate.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6ED0FB76147D663600E96182 /* RutFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E976A6B146C1F6B00A2471A /* RutFormatter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6ED0FB77147D663600E96182 /* MailFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E976A79146C25C400A2471A /* MailFormatter.h */; settings = {ATTRIBUTES = (Public, ); }; };
 		6ED0FB78147D663600E96182 /* PassportFormatter.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E976A7C146C265E00A2471A /* PassportFormatter.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6ED0FB79147D663600E96182 /* BiometryCloudViewController_iPhone.h in Headers */ = {isa = PBXBuildFile; fileRef = F122C6BF143E26BA00E2FFE8 /* BiometryCloudViewController_iPhone.h */; settings = {ATTRIBUTES = (Public, ); }; };
-		6ED0FB7A147D663600E96182 /* BiometryCloudViewController_iPad.h in Headers */ = {isa = PBXBuildFile; fileRef = F122C6B3143E1E4400E2FFE8 /* BiometryCloudViewController_iPad.h */; settings = {ATTRIBUTES = (Public, ); }; };
+		6ED0FB79147D663600E96182 /* BiometryCloudViewController_iPhone.h in Headers */ = {isa = PBXBuildFile; fileRef = F122C6BF143E26BA00E2FFE8 /* BiometryCloudViewController_iPhone.h */; settings = {ATTRIBUTES = (); }; };
+		6ED0FB7A147D663600E96182 /* BiometryCloudViewController_iPad.h in Headers */ = {isa = PBXBuildFile; fileRef = F122C6B3143E1E4400E2FFE8 /* BiometryCloudViewController_iPad.h */; settings = {ATTRIBUTES = (); }; };
 		6ED0FB7B147D667900E96182 /* BiometryCloudConfiguration.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E9BE8B2144DC55900821C4C /* BiometryCloudConfiguration.h */; };
 		6ED0FB7C147D667900E96182 /* BiometryDetector.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E0F4B4D1444A2FD0084080B /* BiometryDetector.h */; };
 		6ED0FB7D147D667900E96182 /* AudioHandler.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E2A3304147580C200974D21 /* AudioHandler.h */; };
@@ -184,9 +183,6 @@
 		6ED0FBD9147D694D00E96182 /* libz.dylib in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E9BE8A0144DC3F500821C4C /* libz.dylib */; };
 		6ED0FBDA147D6A0700E96182 /* BiometryCloud.sqlite in Resources */ = {isa = PBXBuildFile; fileRef = 6E9BE8B9144DDD0D00821C4C /* BiometryCloud.sqlite */; };
 		6ED0FBDB147D6A0700E96182 /* haarcascade_frontalface_alt2.xml in Resources */ = {isa = PBXBuildFile; fileRef = 6E0F4B6B1444C2310084080B /* haarcascade_frontalface_alt2.xml */; };
-		6ED0FBDC147D6A0700E96182 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F16C87A11457239E00EC9B85 /* InfoPlist.strings */; };
-		6ED0FBDD147D6A0700E96182 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F16C87A31457239E00EC9B85 /* Localizable.strings */; };
-		6ED0FBDE147D6A0700E96182 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F16C879C145722CD00EC9B85 /* Localizable.strings */; };
 		6ED0FBDF147D6A0700E96182 /* wrong.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E2A32971472C53600974D21 /* wrong.png */; };
 		6ED0FBE0147D6A0700E96182 /* check.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E976AA7146C570E00A2471A /* check.png */; };
 		6ED0FBE1147D6A1700E96182 /* acceptButton_iPad.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E2A3312147BD7B200974D21 /* acceptButton_iPad.png */; };
@@ -221,6 +217,38 @@
 		6ED0FC07147D70D400E96182 /* libopencv_imgproc.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E0F4B3714449FE60084080B /* libopencv_imgproc.a */; };
 		6ED0FC08147D70D400E96182 /* libopencv_objdetect.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E0F4B3814449FE60084080B /* libopencv_objdetect.a */; };
 		6ED0FC09147D70D400E96182 /* libopencv_core.a in Frameworks */ = {isa = PBXBuildFile; fileRef = 6E0F4B3414449FA20084080B /* libopencv_core.a */; };
+		6ED22992147E9AE5005767BD /* BiometryCloudViewController_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = F122C6C1143E26BA00E2FFE8 /* BiometryCloudViewController_iPhone.xib */; };
+		6ED22993147E9AE6005767BD /* CheckView_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E976A99146C55A200A2471A /* CheckView_iPhone.xib */; };
+		6ED22994147E9AE6005767BD /* DrawingView_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = F14477A41450508D00103ADA /* DrawingView_iPhone.xib */; };
+		6ED22995147E9AE6005767BD /* InputView_iPhone.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E9BE8D71450BBEF00821C4C /* InputView_iPhone.xib */; };
+		6ED22996147E9AE6005767BD /* BiometryCloudViewController_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = F122C6B5143E1E4400E2FFE8 /* BiometryCloudViewController_iPad.xib */; };
+		6ED22997147E9AE6005767BD /* CheckView_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E976A9B146C563900A2471A /* CheckView_iPad.xib */; };
+		6ED22998147E9AE6005767BD /* DrawingView_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = F14477A6145050A600103ADA /* DrawingView_iPad.xib */; };
+		6ED22999147E9AE6005767BD /* InputView_iPad.xib in Resources */ = {isa = PBXBuildFile; fileRef = 6E9BE8DC1450BCFF00821C4C /* InputView_iPad.xib */; };
+		6ED229FA147E9CF1005767BD /* access_denied.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6E2A32FE14757F8D00974D21 /* access_denied.wav */; };
+		6ED229FB147E9CF1005767BD /* access_granted.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6E2A32FF14757F8D00974D21 /* access_granted.wav */; };
+		6ED229FC147E9CF1005767BD /* camera_shot.wav in Resources */ = {isa = PBXBuildFile; fileRef = 6E2A330214757FB800974D21 /* camera_shot.wav */; };
+		6ED229FD147E9D10005767BD /* kButtonDown.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E976A82146C390200A2471A /* kButtonDown.png */; };
+		6ED229FE147E9D10005767BD /* kButtonUp.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E976A83146C390400A2471A /* kButtonUp.png */; };
+		6ED229FF147E9D10005767BD /* changeCamaraButtonIcon.png in Resources */ = {isa = PBXBuildFile; fileRef = F16C8795145641E600EC9B85 /* changeCamaraButtonIcon.png */; };
+		6ED22A00147E9D10005767BD /* changeCamaraButtonIconPressed.png in Resources */ = {isa = PBXBuildFile; fileRef = F16C8796145641E600EC9B85 /* changeCamaraButtonIconPressed.png */; };
+		6ED22A01147E9D22005767BD /* centerface1.png in Resources */ = {isa = PBXBuildFile; fileRef = F14477E014507A7200103ADA /* centerface1.png */; };
+		6ED22A02147E9D22005767BD /* centerface0.png in Resources */ = {isa = PBXBuildFile; fileRef = F14477E114507A7200103ADA /* centerface0.png */; };
+		6ED22A03147E9D34005767BD /* flecha1.png in Resources */ = {isa = PBXBuildFile; fileRef = F14477AE145079F800103ADA /* flecha1.png */; };
+		6ED22A04147E9D34005767BD /* flecha2.png in Resources */ = {isa = PBXBuildFile; fileRef = F14477AF145079F800103ADA /* flecha2.png */; };
+		6ED22A05147E9D34005767BD /* flecha3.png in Resources */ = {isa = PBXBuildFile; fileRef = F14477B0145079F800103ADA /* flecha3.png */; };
+		6ED22A06147E9D34005767BD /* flecha4.png in Resources */ = {isa = PBXBuildFile; fileRef = F14477B1145079F800103ADA /* flecha4.png */; };
+		6ED22A07147E9D34005767BD /* flecha5.png in Resources */ = {isa = PBXBuildFile; fileRef = F14477B2145079F800103ADA /* flecha5.png */; };
+		6ED22A08147E9D34005767BD /* flecha6.png in Resources */ = {isa = PBXBuildFile; fileRef = F14477B3145079F800103ADA /* flecha6.png */; };
+		6ED22A09147E9D34005767BD /* flecha7.png in Resources */ = {isa = PBXBuildFile; fileRef = F14477B4145079F800103ADA /* flecha7.png */; };
+		6ED22A0A147E9D34005767BD /* flecha8.png in Resources */ = {isa = PBXBuildFile; fileRef = F14477B5145079F800103ADA /* flecha8.png */; };
+		6ED22A0B147E9D34005767BD /* flecha9.png in Resources */ = {isa = PBXBuildFile; fileRef = F14477B6145079F800103ADA /* flecha9.png */; };
+		6ED22A0C147E9D34005767BD /* flecha10.png in Resources */ = {isa = PBXBuildFile; fileRef = F14477B7145079F800103ADA /* flecha10.png */; };
+		6ED22A0D147E9D34005767BD /* flecha11.png in Resources */ = {isa = PBXBuildFile; fileRef = F14477B8145079F800103ADA /* flecha11.png */; };
+		6ED22B97147EA5B9005767BD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F16C87A11457239E00EC9B85 /* InfoPlist.strings */; };
+		6ED22B98147EA5B9005767BD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F16C87A31457239E00EC9B85 /* Localizable.strings */; };
+		6ED22B99147EA5B9005767BD /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F16C879A145722CD00EC9B85 /* InfoPlist.strings */; };
+		6ED22B9A147EA5B9005767BD /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = F16C879C145722CD00EC9B85 /* Localizable.strings */; };
 		F122C68A143E1D6F00E2FFE8 /* UIKit.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F122C689143E1D6F00E2FFE8 /* UIKit.framework */; };
 		F122C68C143E1D6F00E2FFE8 /* Foundation.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = F122C68B143E1D6F00E2FFE8 /* Foundation.framework */; };
 		F122C694143E1D6F00E2FFE8 /* InfoPlist.strings in Resources */ = {isa = PBXBuildFile; fileRef = F122C692143E1D6F00E2FFE8 /* InfoPlist.strings */; };
@@ -312,7 +340,8 @@
 		6E2A332D147BD7B200974D21 /* 8a.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 8a.png; sourceTree = "<group>"; };
 		6E2A332E147BD7B200974D21 /* 9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 9.png; sourceTree = "<group>"; };
 		6E2A332F147BD7B200974D21 /* 9a.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 9a.png; sourceTree = "<group>"; };
-		6E3D0732147D569F00C311D4 /* include */ = {isa = PBXFileReference; lastKnownFileType = folder; name = include; path = opencv_device/include; sourceTree = "<group>"; };
+		6E46136B147D74E7006C1CD1 /* BiometryCloudApp-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BiometryCloudApp-Prefix.pch"; sourceTree = "<group>"; };
+		6E46136C147D74E7006C1CD1 /* BiometryCloudApp-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "BiometryCloudApp-Info.plist"; sourceTree = "<group>"; };
 		6E976A6A146C1F1300A2471A /* InputFormatterDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputFormatterDelegate.h; sourceTree = "<group>"; };
 		6E976A6B146C1F6B00A2471A /* RutFormatter.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = RutFormatter.h; sourceTree = "<group>"; };
 		6E976A6C146C1F6C00A2471A /* RutFormatter.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = RutFormatter.m; sourceTree = "<group>"; };
@@ -386,17 +415,15 @@
 		6E9BE8DE1450BD1E00821C4C /* InputView_iPad.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputView_iPad.h; sourceTree = "<group>"; };
 		6E9BE8DF1450BD1E00821C4C /* InputView_iPad.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = InputView_iPad.m; sourceTree = "<group>"; };
 		6ED0FB67147D65C600E96182 /* BiometryCloud.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = BiometryCloud.framework; sourceTree = BUILT_PRODUCTS_DIR; };
-		6ED0FB6A147D65C700E96182 /* BiometryCloud-Info.plist */ = {isa = PBXFileReference; path = "BiometryCloud-Info.plist"; sourceTree = "<group>"; };
+		6ED0FB6A147D65C700E96182 /* BiometryCloud-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BiometryCloud-Info.plist"; sourceTree = "<group>"; };
 		6ED0FB6C147D65C700E96182 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		6ED0FB6E147D65C700E96182 /* BiometryCloud-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BiometryCloud-Prefix.pch"; sourceTree = "<group>"; };
 		6EF7C41A147C2237005FEB9E /* CoreFoundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = CoreFoundation.framework; path = System/Library/Frameworks/CoreFoundation.framework; sourceTree = SDKROOT; };
 		F122C685143E1D6F00E2FFE8 /* BiometryCloudApp.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = BiometryCloudApp.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		F122C689143E1D6F00E2FFE8 /* UIKit.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = UIKit.framework; path = System/Library/Frameworks/UIKit.framework; sourceTree = SDKROOT; };
 		F122C68B143E1D6F00E2FFE8 /* Foundation.framework */ = {isa = PBXFileReference; lastKnownFileType = wrapper.framework; name = Foundation.framework; path = System/Library/Frameworks/Foundation.framework; sourceTree = SDKROOT; };
-		F122C691143E1D6F00E2FFE8 /* BiometryCloud-Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = "BiometryCloud-Info.plist"; sourceTree = "<group>"; };
 		F122C693143E1D6F00E2FFE8 /* en */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; name = en; path = en.lproj/InfoPlist.strings; sourceTree = "<group>"; };
 		F122C695143E1D6F00E2FFE8 /* main.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = main.m; sourceTree = "<group>"; };
-		F122C697143E1D6F00E2FFE8 /* BiometryCloud-Prefix.pch */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = "BiometryCloud-Prefix.pch"; sourceTree = "<group>"; };
 		F122C698143E1D6F00E2FFE8 /* BiometryCloudAppDelegate.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; path = BiometryCloudAppDelegate.h; sourceTree = "<group>"; };
 		F122C699143E1D6F00E2FFE8 /* BiometryCloudAppDelegate.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = BiometryCloudAppDelegate.m; sourceTree = "<group>"; };
 		F122C69C143E1D6F00E2FFE8 /* BiometryCloudAppDelegate_iPhone.h */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.h; name = BiometryCloudAppDelegate_iPhone.h; path = iPhone/BiometryCloudAppDelegate_iPhone.h; sourceTree = "<group>"; };
@@ -659,7 +686,6 @@
 		F122C67A143E1D6F00E2FFE8 = {
 			isa = PBXGroup;
 			children = (
-				6E3D0732147D569F00C311D4 /* include */,
 				F122C68F143E1D6F00E2FFE8 /* BiometryCloud */,
 				6ED0FB68147D65C600E96182 /* BiometryCloud */,
 				F122C688143E1D6F00E2FFE8 /* Frameworks */,
@@ -741,10 +767,10 @@
 		F122C690143E1D6F00E2FFE8 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
-				F122C691143E1D6F00E2FFE8 /* BiometryCloud-Info.plist */,
+				6E46136B147D74E7006C1CD1 /* BiometryCloudApp-Prefix.pch */,
+				6E46136C147D74E7006C1CD1 /* BiometryCloudApp-Info.plist */,
 				F122C692143E1D6F00E2FFE8 /* InfoPlist.strings */,
 				F122C695143E1D6F00E2FFE8 /* main.m */,
-				F122C697143E1D6F00E2FFE8 /* BiometryCloud-Prefix.pch */,
 			);
 			name = "Supporting Files";
 			sourceTree = "<group>";
@@ -877,7 +903,6 @@
 				6ED0FB78147D663600E96182 /* PassportFormatter.h in Headers */,
 				6ED0FB79147D663600E96182 /* BiometryCloudViewController_iPhone.h in Headers */,
 				6ED0FB7A147D663600E96182 /* BiometryCloudViewController_iPad.h in Headers */,
-				6ED0FB72147D65F200E96182 /* include in Headers */,
 				6ED0FB8B147D66A400E96182 /* ASIAuthenticationDialog.h in Headers */,
 				6ED0FB8C147D66A400E96182 /* ASIDataCompressor.h in Headers */,
 				6ED0FB8D147D66A400E96182 /* ASIDataDecompressor.h in Headers */,
@@ -928,6 +953,7 @@
 				6ED0FB63147D65C600E96182 /* Headers */,
 				6ED0FB64147D65C600E96182 /* Resources */,
 				6ED0FB65147D65C600E96182 /* ShellScript */,
+				6ED22B11147E9F9B005767BD /* ShellScript */,
 			);
 			buildRules = (
 			);
@@ -987,13 +1013,28 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6ED0FB6D147D65C700E96182 /* InfoPlist.strings in Resources */,
+				6ED22B97147EA5B9005767BD /* InfoPlist.strings in Resources */,
+				6ED22B98147EA5B9005767BD /* Localizable.strings in Resources */,
+				6ED22B99147EA5B9005767BD /* InfoPlist.strings in Resources */,
+				6ED22B9A147EA5B9005767BD /* Localizable.strings in Resources */,
 				6ED0FBDA147D6A0700E96182 /* BiometryCloud.sqlite in Resources */,
 				6ED0FBDB147D6A0700E96182 /* haarcascade_frontalface_alt2.xml in Resources */,
-				6ED0FBDC147D6A0700E96182 /* InfoPlist.strings in Resources */,
 				6ED0FBE1147D6A1700E96182 /* acceptButton_iPad.png in Resources */,
+				6ED22A03147E9D34005767BD /* flecha1.png in Resources */,
+				6ED22A04147E9D34005767BD /* flecha2.png in Resources */,
+				6ED22A05147E9D34005767BD /* flecha3.png in Resources */,
+				6ED22A06147E9D34005767BD /* flecha4.png in Resources */,
+				6ED22A07147E9D34005767BD /* flecha5.png in Resources */,
+				6ED22A08147E9D34005767BD /* flecha6.png in Resources */,
+				6ED22A09147E9D34005767BD /* flecha7.png in Resources */,
+				6ED22A0A147E9D34005767BD /* flecha8.png in Resources */,
+				6ED22A0B147E9D34005767BD /* flecha9.png in Resources */,
+				6ED22A0C147E9D34005767BD /* flecha10.png in Resources */,
+				6ED22A0D147E9D34005767BD /* flecha11.png in Resources */,
 				6ED0FBE2147D6A1D00E96182 /* borrar.png in Resources */,
 				6ED0FBE3147D6A1D00E96182 /* borrara.png in Resources */,
+				6ED22A01147E9D22005767BD /* centerface1.png in Resources */,
+				6ED22A02147E9D22005767BD /* centerface0.png in Resources */,
 				6ED0FBE4147D6A1D00E96182 /* cancelButton_iPad.png in Resources */,
 				6ED0FBE5147D6A1D00E96182 /* mundo.png in Resources */,
 				6ED0FBE6147D6A1D00E96182 /* chile.png in Resources */,
@@ -1020,10 +1061,23 @@
 				6ED0FBFB147D6A1D00E96182 /* 8a.png in Resources */,
 				6ED0FBFC147D6A1D00E96182 /* 9.png in Resources */,
 				6ED0FBFD147D6A1D00E96182 /* 9a.png in Resources */,
-				6ED0FBDD147D6A0700E96182 /* Localizable.strings in Resources */,
-				6ED0FBDE147D6A0700E96182 /* Localizable.strings in Resources */,
+				6ED229FA147E9CF1005767BD /* access_denied.wav in Resources */,
+				6ED229FB147E9CF1005767BD /* access_granted.wav in Resources */,
+				6ED229FC147E9CF1005767BD /* camera_shot.wav in Resources */,
 				6ED0FBDF147D6A0700E96182 /* wrong.png in Resources */,
 				6ED0FBE0147D6A0700E96182 /* check.png in Resources */,
+				6ED229FD147E9D10005767BD /* kButtonDown.png in Resources */,
+				6ED229FE147E9D10005767BD /* kButtonUp.png in Resources */,
+				6ED229FF147E9D10005767BD /* changeCamaraButtonIcon.png in Resources */,
+				6ED22A00147E9D10005767BD /* changeCamaraButtonIconPressed.png in Resources */,
+				6ED22992147E9AE5005767BD /* BiometryCloudViewController_iPhone.xib in Resources */,
+				6ED22993147E9AE6005767BD /* CheckView_iPhone.xib in Resources */,
+				6ED22994147E9AE6005767BD /* DrawingView_iPhone.xib in Resources */,
+				6ED22995147E9AE6005767BD /* InputView_iPhone.xib in Resources */,
+				6ED22996147E9AE6005767BD /* BiometryCloudViewController_iPad.xib in Resources */,
+				6ED22997147E9AE6005767BD /* CheckView_iPad.xib in Resources */,
+				6ED22998147E9AE6005767BD /* DrawingView_iPad.xib in Resources */,
+				6ED22999147E9AE6005767BD /* InputView_iPad.xib in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1099,6 +1153,7 @@
 				6E2A334B147BD7B200974D21 /* 8a.png in Resources */,
 				6E2A334C147BD7B200974D21 /* 9.png in Resources */,
 				6E2A334D147BD7B200974D21 /* 9a.png in Resources */,
+				6E46136D147D74E7006C1CD1 /* BiometryCloudApp-Info.plist in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1129,7 +1184,20 @@
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 			shellPath = /bin/sh;
-			shellScript = "set -e\n\nset +u\nif [[ $UFW_MASTER_SCRIPT_RUNNING ]]\nthen\n    # Nothing for the slave script to do\n    exit 0\nfi\nset -u\nexport UFW_MASTER_SCRIPT_RUNNING=1\n\n\n# Functions\n\n## List files in the specified directory, storing to the specified array.\n#\n# @param $1 The path to list\n# @param $2 The name of the array to fill\n#\n##\nlist_files ()\n{\n    filelist=$(ls \"$1\")\n    while read line\n    do\n        eval \"$2[\\${#$2[*]}]=\\\"\\$line\\\"\"\n    done <<< \"$filelist\"\n}\n\n\n# Sanity check\n\nif [[ ! -f \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\" ]]\nthen\n    echo \"Framework target \\\"${TARGET_NAME}\\\" had no source files to build from. Make sure your source files have the correct target membership\"\n    exit 1\nfi\n\n\n# Gather information\n\nif [[ \"$SDK_NAME\" =~ ([A-Za-z]+) ]]\nthen\n    UFW_SDK_PLATFORM=${BASH_REMATCH[1]}\nelse\n    echo \"Could not find platform name from SDK_NAME: $SDK_NAME\"\n    exit 1\nfi\n\nif [[ \"$SDK_NAME\" =~ ([0-9]+.*$) ]]\nthen\n    UFW_SDK_VERSION=${BASH_REMATCH[1]}\nelse\n    echo \"Could not find sdk version from SDK_NAME: $SDK_NAME\"\n    exit 1\nfi\n\nif [[ \"$UFW_SDK_PLATFORM\" = \"iphoneos\" ]]\nthen\n    UFW_OTHER_PLATFORM=iphonesimulator\nelse\n    UFW_OTHER_PLATFORM=iphoneos\nfi\n\nif [[ \"$BUILT_PRODUCTS_DIR\" =~ (.*)$UFW_SDK_PLATFORM$ ]]\nthen\n    UFW_OTHER_BUILT_PRODUCTS_DIR=\"${BASH_REMATCH[1]}${UFW_OTHER_PLATFORM}\"\nelse\n    echo \"Could not find $UFW_SDK_PLATFORM in $BUILT_PRODUCTS_DIR\"\n    exit 1\nfi\n\n\n# Short-circuit if all binaries are up to date.\n# We already checked the other platform in the prerun script.\n\nif [[ -f \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\" ]] && [[ -f \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework/${EXECUTABLE_PATH}\" ]] && [[ ! \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\" -nt \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework/${EXECUTABLE_PATH}\" ]]\nthen\n    exit 0\nfi\n\n\n# Make sure the other platform gets built\n\necho \"Build other platform\"\n\necho xcodebuild -project \"${PROJECT_FILE_PATH}\" -target \"${TARGET_NAME}\" -configuration \"${CONFIGURATION}\" -sdk ${UFW_OTHER_PLATFORM}${UFW_SDK_VERSION} BUILD_DIR=\"${BUILD_DIR}\" CONFIGURATION_TEMP_DIR=\"${PROJECT_TEMP_DIR}/${CONFIGURATION}-${UFW_OTHER_PLATFORM}\" $ACTION\nxcodebuild -project \"${PROJECT_FILE_PATH}\" -target \"${TARGET_NAME}\" -configuration \"${CONFIGURATION}\" -sdk ${UFW_OTHER_PLATFORM}${UFW_SDK_VERSION} BUILD_DIR=\"${BUILD_DIR}\" CONFIGURATION_TEMP_DIR=\"${PROJECT_TEMP_DIR}/${CONFIGURATION}-${UFW_OTHER_PLATFORM}\" $ACTION\n\n\n# Build the fat static library binary\n\necho \"Create universal static library\"\n\necho \"$PLATFORM_DEVELOPER_BIN_DIR/libtool\" -static \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\" \"${UFW_OTHER_BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\" -o \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}.temp\"\n\"$PLATFORM_DEVELOPER_BIN_DIR/libtool\" -static \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\" \"${UFW_OTHER_BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\" -o \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}.temp\"\n\necho mv \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}.temp\" \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\"\nmv \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}.temp\" \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\"\n\n\n# Build framework structure\n\necho \"Build symlinks\"\n\necho ln -sf A \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/Versions/Current\"\nln -sf A \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/Versions/Current\"\necho ln -sf Versions/Current/Headers \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/Headers\"\nln -sf Versions/Current/Headers \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/Headers\"\necho ln -sf Versions/Current/Resources \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/Resources\"\nln -sf Versions/Current/Resources \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/Resources\"\necho ln -sf \"Versions/Current/${EXECUTABLE_NAME}\" \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/${EXECUTABLE_NAME}\"\nln -sf \"Versions/Current/${EXECUTABLE_NAME}\" \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/${EXECUTABLE_NAME}\"\n\n\n# Link to binary for unit tests\n\nmkdir -p \"${BUILT_PRODUCTS_DIR}/.fake_fw_testing.framework\"\nln -sf \"../${WRAPPER_NAME}/${EXECUTABLE_NAME}\" \"${BUILT_PRODUCTS_DIR}/.fake_fw_testing.framework/.fake_fw_testing\"\n\n\n# Build embedded framework structure\n\necho \"Build Embedded Framework\"\n\necho rm -rf \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework\"\nrm -rf \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework\"\necho mkdir -p \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework/Resources\"\nmkdir -p \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework/Resources\"\necho cp -a \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework/\"\ncp -a \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework/\"\n\ndeclare -a UFW_FILE_LIST\nlist_files \"${BUILT_PRODUCTS_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}\" UFW_FILE_LIST\nfor filename in \"${UFW_FILE_LIST[@]}\"\ndo\n    if [[ \"${filename}\" != \"Info.plist\" ]] && [[ ! \"${filename}\" =~ .*\\.lproj$ ]]\n    then\n        echo ln -sf \"../${WRAPPER_NAME}/Resources/${filename}\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework/Resources/${filename}\"\n        ln -sf \"../${WRAPPER_NAME}/Resources/${filename}\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework/Resources/${filename}\"\n    fi\ndone\n\n\n# Replace other platform's framework with a copy of this one (so that both have the same universal binary)\n\necho \"Copy from $UFW_SDK_PLATFORM to $UFW_OTHER_PLATFORM\"\n\necho rm -rf \"${BUILD_DIR}/${CONFIGURATION}-${UFW_OTHER_PLATFORM}\"\nrm -rf \"${BUILD_DIR}/${CONFIGURATION}-${UFW_OTHER_PLATFORM}\"\necho cp -a \"${BUILD_DIR}/${CONFIGURATION}-${UFW_SDK_PLATFORM}\" \"${BUILD_DIR}/${CONFIGURATION}-${UFW_OTHER_PLATFORM}\"\ncp -a \"${BUILD_DIR}/${CONFIGURATION}-${UFW_SDK_PLATFORM}\" \"${BUILD_DIR}/${CONFIGURATION}-${UFW_OTHER_PLATFORM}\"\n";
+			shellScript = "set -e\n\nset +u\nif [[ $UFW_MASTER_SCRIPT_RUNNING ]]\nthen\n    # Nothing for the slave script to do\n    exit 0\nfi\nset -u\nexport UFW_MASTER_SCRIPT_RUNNING=1\n\n\n# Functions\n\n## List files in the specified directory, storing to the specified array.\n#\n# @param $1 The path to list\n# @param $2 The name of the array to fill\n#\n##\nlist_files ()\n{\n    filelist=$(ls \"$1\")\n    while read line\n    do\n        eval \"$2[\\${#$2[*]}]=\\\"\\$line\\\"\"\n    done <<< \"$filelist\"\n}\n\n\n# Sanity check\n\nif [[ ! -f \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\" ]]\nthen\n    echo \"Framework target \\\"${TARGET_NAME}\\\" had no source files to build from. Make sure your source files have the correct target membership\"\n    exit 1\nfi\n\n\n# Gather information\n\nif [[ \"$SDK_NAME\" =~ ([A-Za-z]+) ]]\nthen\n    UFW_SDK_PLATFORM=${BASH_REMATCH[1]}\nelse\n    echo \"Could not find platform name from SDK_NAME: $SDK_NAME\"\n    exit 1\nfi\n\nif [[ \"$SDK_NAME\" =~ ([0-9]+.*$) ]]\nthen\n    UFW_SDK_VERSION=${BASH_REMATCH[1]}\nelse\n    echo \"Could not find sdk version from SDK_NAME: $SDK_NAME\"\n    exit 1\nfi\n\nif [[ \"$UFW_SDK_PLATFORM\" = \"iphoneos\" ]]\nthen\n    UFW_OTHER_PLATFORM=iphonesimulator\nelse\n    UFW_OTHER_PLATFORM=iphoneos\nfi\n\nif [[ \"$BUILT_PRODUCTS_DIR\" =~ (.*)$UFW_SDK_PLATFORM$ ]]\nthen\n    UFW_OTHER_BUILT_PRODUCTS_DIR=\"${BASH_REMATCH[1]}${UFW_OTHER_PLATFORM}\"\nelse\n    echo \"Could not find $UFW_SDK_PLATFORM in $BUILT_PRODUCTS_DIR\"\n    exit 1\nfi\n\n\n# Short-circuit if all binaries are up to date.\n# We already checked the other platform in the prerun script.\n\nif [[ -f \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\" ]] && [[ -f \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework/${EXECUTABLE_PATH}\" ]] && [[ ! \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\" -nt \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework/${EXECUTABLE_PATH}\" ]]\nthen\n    exit 0\nfi\n\n\n# Make sure the other platform gets built\n\necho \"Build other platform\"\n\necho xcodebuild -project \"${PROJECT_FILE_PATH}\" -target \"${TARGET_NAME}\" -configuration \"${CONFIGURATION}\" -sdk ${UFW_OTHER_PLATFORM}${UFW_SDK_VERSION} BUILD_DIR=\"${BUILD_DIR}\" CONFIGURATION_TEMP_DIR=\"${PROJECT_TEMP_DIR}/${CONFIGURATION}-${UFW_OTHER_PLATFORM}\" $ACTION\nxcodebuild -project \"${PROJECT_FILE_PATH}\" -target \"${TARGET_NAME}\" -configuration \"${CONFIGURATION}\" -sdk ${UFW_OTHER_PLATFORM}${UFW_SDK_VERSION} BUILD_DIR=\"${BUILD_DIR}\" CONFIGURATION_TEMP_DIR=\"${PROJECT_TEMP_DIR}/${CONFIGURATION}-${UFW_OTHER_PLATFORM}\" $ACTION\n\n\n# Build the fat static library binary\n\necho \"Create universal static library\"\n\necho \"$PLATFORM_DEVELOPER_BIN_DIR/libtool\" -static \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\" \"${UFW_OTHER_BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\" -o \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}.temp\"\n\"$PLATFORM_DEVELOPER_BIN_DIR/libtool\" -static \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\" \"${UFW_OTHER_BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\" -o \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}.temp\"\n\necho mv \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}.temp\" \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\"\nmv \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}.temp\" \"${BUILT_PRODUCTS_DIR}/${EXECUTABLE_PATH}\"\n\n\n# Build framework structure\n\necho \"Build symlinks\"\n\necho ln -sf A \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/Versions/Current\"\nln -sf A \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/Versions/Current\"\necho ln -sf Versions/Current/Headers \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/Headers\"\nln -sf Versions/Current/Headers \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/Headers\"\necho ln -sf Versions/Current/Resources \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/Resources\"\nln -sf Versions/Current/Resources \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/Resources\"\necho ln -sf \"Versions/Current/${EXECUTABLE_NAME}\" \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/${EXECUTABLE_NAME}\"\nln -sf \"Versions/Current/${EXECUTABLE_NAME}\" \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}/${EXECUTABLE_NAME}\"\n\n\n# Link to binary for unit tests\n\nmkdir -p \"${BUILT_PRODUCTS_DIR}/.fake_fw_testing.framework\"\nln -sf \"../${WRAPPER_NAME}/${EXECUTABLE_NAME}\" \"${BUILT_PRODUCTS_DIR}/.fake_fw_testing.framework/.fake_fw_testing\"\n\n\n# Build embedded framework structure\n\necho \"Build Embedded Framework\"\n\necho rm -rf \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework\"\nrm -rf \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework\"\necho mkdir -p \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework/Resources\"\nmkdir -p \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework/Resources\"\necho cp -a \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework/\"\ncp -a \"${BUILT_PRODUCTS_DIR}/${WRAPPER_NAME}\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework/\"\n\ndeclare -a UFW_FILE_LIST\nlist_files \"${BUILT_PRODUCTS_DIR}/${UNLOCALIZED_RESOURCES_FOLDER_PATH}\" UFW_FILE_LIST\nfor filename in \"${UFW_FILE_LIST[@]}\"\ndo\n    if [[ \"${filename}\" != \"Info.plist\" ]]\n    then\n        echo ln -sf \"../${WRAPPER_NAME}/Resources/${filename}\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework/Resources/${filename}\"\n        ln -sf \"../${WRAPPER_NAME}/Resources/${filename}\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework/Resources/${filename}\"\n    fi\ndone\n\n\n# Replace other platform's framework with a copy of this one (so that both have the same universal binary)\n\necho \"Copy from $UFW_SDK_PLATFORM to $UFW_OTHER_PLATFORM\"\n\necho rm -rf \"${BUILD_DIR}/${CONFIGURATION}-${UFW_OTHER_PLATFORM}\"\nrm -rf \"${BUILD_DIR}/${CONFIGURATION}-${UFW_OTHER_PLATFORM}\"\necho cp -a \"${BUILD_DIR}/${CONFIGURATION}-${UFW_SDK_PLATFORM}\" \"${BUILD_DIR}/${CONFIGURATION}-${UFW_OTHER_PLATFORM}\"\ncp -a \"${BUILD_DIR}/${CONFIGURATION}-${UFW_SDK_PLATFORM}\" \"${BUILD_DIR}/${CONFIGURATION}-${UFW_OTHER_PLATFORM}\"\n";
+		};
+		6ED22B11147E9F9B005767BD /* ShellScript */ = {
+			isa = PBXShellScriptBuildPhase;
+			buildActionMask = 2147483647;
+			files = (
+			);
+			inputPaths = (
+			);
+			outputPaths = (
+			);
+			runOnlyForDeploymentPostprocessing = 0;
+			shellPath = /bin/sh;
+			shellScript = "#Copy opencv to embedded framework folder\n\nmkdir -p \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework/Libraries\"\n\necho cp -a \"${PROJECT_DIR}/opencv_device/lib/libopencv_imgproc.a\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework/Libraries/libopencv_imgproc.a\"\ncp -a \"${PROJECT_DIR}/opencv_device/lib/libopencv_core.a\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework/Libraries/libopencv_imgproc.a\"\n\necho cp -a \"${PROJECT_DIR}/opencv_device/lib/libopencv_core.a\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework/Libraries/libopencv_objdetect.a\"\ncp -a \"${PROJECT_DIR}/opencv_device/lib/libopencv_core.a\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework/Libraries/libopencv_objdetect.a\"\n\necho cp -a \"${PROJECT_DIR}/opencv_device/lib/libopencv_core.a\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework/Libraries/libopencv_core.a\"\ncp -a \"${PROJECT_DIR}/opencv_device/lib/libopencv_core.a\" \"${BUILT_PRODUCTS_DIR}/${PRODUCT_NAME}.embeddedframework/Libraries/libopencv_core.a\"\n\n";
 		};
 /* End PBXShellScriptBuildPhase section */
 
@@ -1294,6 +1362,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				CONTENTS_FOLDER_PATH = "$(WRAPPER_NAME)/Versions/$(FRAMEWORK_VERSION)";
 				DEAD_CODE_STRIPPING = NO;
 				DEPLOYMENT_POSTPROCESSING = YES;
@@ -1304,9 +1373,9 @@
 				GCC_PREFIX_HEADER = "BiometryCloud/BiometryCloud-Prefix.pch";
 				GCC_PREPROCESSOR_DEFINITIONS = DEBUG;
 				HEADER_SEARCH_PATHS = "$(SRCROOT)/opencv_device/include";
-				INFOPLIST_FILE = "BiometryCloud.framework/BiometryCloud-Info.plist";
+				INFOPLIST_FILE = "BiometryCloud/BiometryCloud-Info.plist";
 				INFOPLIST_PATH = "$(UNLOCALIZED_RESOURCES_FOLDER_PATH)/Info.plist";
-				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				INSTALL_PATH = "$(PROJECT_DIR)/Products/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/opencv_device/lib";
 				LINK_WITH_STANDARD_LIBRARIES = NO;
 				MACH_O_TYPE = mh_object;
@@ -1326,6 +1395,7 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				ALWAYS_SEARCH_USER_PATHS = NO;
+				CONFIGURATION_BUILD_DIR = "$(BUILD_DIR)/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				CONTENTS_FOLDER_PATH = "$(WRAPPER_NAME)/Versions/$(FRAMEWORK_VERSION)";
 				DEAD_CODE_STRIPPING = NO;
 				DEPLOYMENT_POSTPROCESSING = YES;
@@ -1335,9 +1405,9 @@
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BiometryCloud/BiometryCloud-Prefix.pch";
 				HEADER_SEARCH_PATHS = "$(SRCROOT)/opencv_device/include";
-				INFOPLIST_FILE = "BiometryCloud.framework/BiometryCloud-Info.plist";
+				INFOPLIST_FILE = "BiometryCloud/BiometryCloud-Info.plist";
 				INFOPLIST_PATH = "$(UNLOCALIZED_RESOURCES_FOLDER_PATH)/Info.plist";
-				INSTALL_PATH = "$(BUILT_PRODUCTS_DIR)";
+				INSTALL_PATH = "$(PROJECT_DIR)/Products/$(CONFIGURATION)$(EFFECTIVE_PLATFORM_NAME)";
 				LIBRARY_SEARCH_PATHS = "$(SRCROOT)/opencv_device/lib";
 				LINK_WITH_STANDARD_LIBRARIES = NO;
 				MACH_O_TYPE = mh_object;
@@ -1402,10 +1472,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "BiometryCloud/BiometryCloud-Prefix.pch";
+				GCC_PREFIX_HEADER = "BiometryCloud/BiometryCloudApp-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = "$(SRCROOT)/opencv_device/include";
-				INFOPLIST_FILE = "BiometryCloud/BiometryCloud-Info.plist";
+				INFOPLIST_FILE = "BiometryCloud/BiometryCloudApp-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/opencv_device/lib\"",
@@ -1424,10 +1494,10 @@
 			isa = XCBuildConfiguration;
 			buildSettings = {
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
-				GCC_PREFIX_HEADER = "BiometryCloud/BiometryCloud-Prefix.pch";
+				GCC_PREFIX_HEADER = "BiometryCloud/BiometryCloudApp-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
 				HEADER_SEARCH_PATHS = "$(SRCROOT)/opencv_device/include";
-				INFOPLIST_FILE = "BiometryCloud/BiometryCloud-Info.plist";
+				INFOPLIST_FILE = "BiometryCloud/BiometryCloudApp-Info.plist";
 				LIBRARY_SEARCH_PATHS = (
 					"$(inherited)",
 					"\"$(SRCROOT)/opencv_device/lib\"",

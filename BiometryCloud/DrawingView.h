@@ -19,7 +19,7 @@
     
     CGRect mouthRect;
     
-    CGRect maskRect;
+    CGRect limitRect;
     
     BOOL distanceOK;
     
@@ -42,6 +42,8 @@
     BOOL isShowingFeedback;
     
     BOOL mirroredRect;
+    
+    int maskOffset;
 }
 
 - (void) drawMouthRect:(CGRect)rect;
@@ -60,17 +62,16 @@
 
 - (void) hideFeedbackWithDelay;
 
--(void) showFeedback;
+- (void) showFeedback;
 
-
-
-
-@property (nonatomic, assign) CGRect maskRect;
+- (void) setLimitRectDimensions;
 
 @property (nonatomic, assign) BOOL distanceOK;
 
 @property (nonatomic, assign) BOOL positionOK;
 
 @property (nonatomic, assign) BOOL mirroredRect;
+
+@property (nonatomic, assign) CGRect limitRect;
 
 @end
