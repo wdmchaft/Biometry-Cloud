@@ -29,6 +29,8 @@
     
     IBOutlet UIImageView *animatingImage;
     
+    IBOutlet UIView *limitRectView;
+    
     NSMutableArray *getCloserImages;
     
     NSMutableArray *centerFaceImages;
@@ -42,8 +44,6 @@
     BOOL isShowingFeedback;
     
     BOOL mirroredRect;
-    
-    int maskOffset;
 }
 
 - (void) drawMouthRect:(CGRect)rect;
@@ -63,8 +63,6 @@
 - (void) hideFeedbackWithDelay;
 
 - (void) showFeedback;
-
-- (void) setLimitRectDimensions;
 
 @property (nonatomic, assign) BOOL distanceOK;
 

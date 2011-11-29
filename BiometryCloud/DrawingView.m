@@ -304,13 +304,6 @@
     }
 }
 
-- (void) setLimitRectDimensions {
-
-    limitRect = CGRectMake(self.frame.origin.x+maskOffset, self.frame.origin.y+maskOffset, self.bounds.size.width - 2*maskOffset, self.bounds.size.height - 2*maskOffset);
-    
-    feedbackLabel.frame = CGRectMake(limitRect.origin.x, limitRect.origin.y+limitRect.size.height, limitRect.size.width, feedbackLabel.frame.size.height);
-}
-
 - (void)dealloc
 {
     [super dealloc];

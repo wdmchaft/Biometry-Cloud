@@ -36,6 +36,22 @@
 				<reference key="NSNextResponder"/>
 				<int key="NSvFlags">274</int>
 				<array class="NSMutableArray" key="NSSubviews">
+					<object class="IBUIView" id="789153111">
+						<reference key="NSNextResponder" ref="191373211"/>
+						<int key="NSvFlags">-2147483374</int>
+						<string key="NSFrame">{{25, 25}, {270, 430}}</string>
+						<reference key="NSSuperview" ref="191373211"/>
+						<reference key="NSWindow"/>
+						<reference key="NSNextKeyView" ref="333873932"/>
+						<object class="NSColor" key="IBUIBackgroundColor">
+							<int key="NSColorSpace">3</int>
+							<bytes key="NSWhite">MQA</bytes>
+							<object class="NSColorSpace" key="NSCustomColorSpace">
+								<int key="NSID">2</int>
+							</object>
+						</object>
+						<string key="targetRuntimeIdentifier">IBCocoaTouchFramework</string>
+					</object>
 					<object class="IBUILabel" id="667820966">
 						<reference key="NSNextResponder" ref="191373211"/>
 						<int key="NSvFlags">282</int>
@@ -79,7 +95,7 @@
 				<string key="NSFrameSize">{320, 480}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
-				<reference key="NSNextKeyView" ref="333873932"/>
+				<reference key="NSNextKeyView" ref="789153111"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">3</int>
 					<bytes key="NSWhite">MCAwAA</bytes>
@@ -106,6 +122,14 @@
 					</object>
 					<int key="connectionID">13</int>
 				</object>
+				<object class="IBConnectionRecord">
+					<object class="IBCocoaTouchOutletConnection" key="connection">
+						<string key="label">limitRectView</string>
+						<reference key="source" ref="372490531"/>
+						<reference key="destination" ref="789153111"/>
+					</object>
+					<int key="connectionID">15</int>
+				</object>
 			</array>
 			<object class="IBMutableOrderedSet" key="objectRecords">
 				<array key="orderedObjects">
@@ -121,6 +145,7 @@
 						<array class="NSMutableArray" key="children">
 							<reference ref="667820966"/>
 							<reference ref="333873932"/>
+							<reference ref="789153111"/>
 						</array>
 						<reference key="parent" ref="0"/>
 						<string key="objectName">View</string>
@@ -146,6 +171,12 @@
 						<reference key="object" ref="333873932"/>
 						<reference key="parent" ref="191373211"/>
 					</object>
+					<object class="IBObjectRecord">
+						<int key="objectID">14</int>
+						<reference key="object" ref="789153111"/>
+						<reference key="parent" ref="191373211"/>
+						<string key="objectName">View - Rect</string>
+					</object>
 				</array>
 			</object>
 			<dictionary class="NSMutableDictionary" key="flattenedProperties">
@@ -156,12 +187,13 @@
 				<string key="1.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="10.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 				<string key="11.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
+				<string key="14.IBPluginDependency">com.apple.InterfaceBuilder.IBCocoaTouchPlugin</string>
 			</dictionary>
 			<dictionary class="NSMutableDictionary" key="unlocalizedProperties"/>
 			<nil key="activeLocalization"/>
 			<dictionary class="NSMutableDictionary" key="localizations"/>
 			<nil key="sourceID"/>
-			<int key="maxID">13</int>
+			<int key="maxID">15</int>
 		</object>
 		<object class="IBClassDescriber" key="IBDocument.Classes">
 			<array class="NSMutableArray" key="referencedPartialClassDescriptions">
@@ -171,6 +203,7 @@
 					<dictionary class="NSMutableDictionary" key="outlets">
 						<string key="animatingImage">UIImageView</string>
 						<string key="feedbackLabel">UILabel</string>
+						<string key="limitRectView">UIView</string>
 					</dictionary>
 					<dictionary class="NSMutableDictionary" key="toOneOutletInfosByName">
 						<object class="IBToOneOutletInfo" key="animatingImage">
@@ -180,6 +213,10 @@
 						<object class="IBToOneOutletInfo" key="feedbackLabel">
 							<string key="name">feedbackLabel</string>
 							<string key="candidateClassName">UILabel</string>
+						</object>
+						<object class="IBToOneOutletInfo" key="limitRectView">
+							<string key="name">limitRectView</string>
+							<string key="candidateClassName">UIView</string>
 						</object>
 					</dictionary>
 					<object class="IBClassDescriptionSource" key="sourceIdentifier">

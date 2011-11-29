@@ -46,21 +46,21 @@
 					<bool key="EncodedWithXMLCoder">YES</bool>
 					<object class="IBUIImageView" id="277712867">
 						<reference key="NSNextResponder" ref="191373211"/>
-						<int key="NSvFlags">292</int>
+						<int key="NSvFlags">282</int>
 						<string key="NSFrameSize">{768, 1004}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="340442998"/>
+						<reference key="NSNextKeyView" ref="88144146"/>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 					</object>
 					<object class="IBUIImageView" id="88144146">
 						<reference key="NSNextResponder" ref="191373211"/>
-						<int key="NSvFlags">274</int>
-						<string key="NSFrame">{{172, 383}, {424, 404}}</string>
+						<int key="NSvFlags">282</int>
+						<string key="NSFrame">{{172, 383}, {424, 424}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView"/>
+						<reference key="NSNextKeyView" ref="841594625"/>
 						<bool key="IBUIUserInteractionEnabled">NO</bool>
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 						<object class="NSCustomResource" key="IBUIImage">
@@ -70,11 +70,11 @@
 					</object>
 					<object class="IBUILabel" id="340442998">
 						<reference key="NSNextResponder" ref="191373211"/>
-						<int key="NSvFlags">292</int>
+						<int key="NSvFlags">282</int>
 						<string key="NSFrame">{{0, 893}, {768, 111}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="841594625"/>
+						<reference key="NSNextKeyView" ref="207348090"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">1</int>
 							<bytes key="NSRGB">MC4xNzE5OTI4MjMgMC4zODc3NTUxMDIgMC4xMTg4MjU4ODUxAA</bytes>
@@ -101,11 +101,11 @@
 					</object>
 					<object class="IBUILabel" id="841594625">
 						<reference key="NSNextResponder" ref="191373211"/>
-						<int key="NSvFlags">-2147483356</int>
+						<int key="NSvFlags">-2147483366</int>
 						<string key="NSFrame">{{0, 795}, {768, 101}}</string>
 						<reference key="NSSuperview" ref="191373211"/>
 						<reference key="NSWindow"/>
-						<reference key="NSNextKeyView" ref="207348090"/>
+						<reference key="NSNextKeyView" ref="340442998"/>
 						<object class="NSColor" key="IBUIBackgroundColor">
 							<int key="NSColorSpace">1</int>
 							<bytes key="NSRGB">MC4xNzE5OTI4MjMgMC4zODc3NTUxMDIgMC4xMTg4MjU4ODUxAA</bytes>
@@ -125,7 +125,7 @@
 					</object>
 					<object class="IBUIView" id="207348090">
 						<reference key="NSNextResponder" ref="191373211"/>
-						<int key="NSvFlags">-2147483356</int>
+						<int key="NSvFlags">-2147483366</int>
 						<object class="NSMutableArray" key="NSSubviews">
 							<bool key="EncodedWithXMLCoder">YES</bool>
 							<object class="IBUIActivityIndicatorView" id="372482274">
@@ -147,7 +147,7 @@
 								<string key="NSFrame">{{65, 12}, {441, 65}}</string>
 								<reference key="NSSuperview" ref="207348090"/>
 								<reference key="NSWindow"/>
-								<reference key="NSNextKeyView" ref="88144146"/>
+								<reference key="NSNextKeyView"/>
 								<bool key="IBUIOpaque">NO</bool>
 								<bool key="IBUIClipsSubviews">YES</bool>
 								<int key="IBUIContentMode">7</int>
@@ -173,16 +173,13 @@
 						<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 					</object>
 				</object>
-				<string key="NSFrame">{{0, 20}, {768, 1004}}</string>
+				<string key="NSFrameSize">{768, 1024}</string>
 				<reference key="NSSuperview"/>
 				<reference key="NSWindow"/>
 				<reference key="NSNextKeyView" ref="277712867"/>
 				<object class="NSColor" key="IBUIBackgroundColor">
 					<int key="NSColorSpace">3</int>
 					<bytes key="NSWhite">MCAwAA</bytes>
-				</object>
-				<object class="IBUISimulatedStatusBarMetrics" key="IBUISimulatedStatusBarMetrics">
-					<int key="IBUIStatusBarStyle">2</int>
 				</object>
 				<string key="targetRuntimeIdentifier">IBIPadFramework</string>
 			</object>
