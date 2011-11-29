@@ -1,19 +1,29 @@
 //
-//  CameraViewController.m
+//  BiometryCloudViewController.m
 //  BiometryCloud
 //
 //  Created by Andrés Munita Irarrázaval on 06-10-11.
 //  Copyright 2011 Biometry Cloud. All rights reserved.
 //
 
-#import "CameraViewController.h"
+#import "BiometryCloudViewController.h"
 #import "BiometryCloudConfiguration.h"
 
-@implementation CameraViewController
+#import "DrawingView.h"
+#import "BiometryDetector.h"
+#import "RequestHandler.h"
+#import "InputView.h"
+#import "CheckView.h"
+#import "AudioHandler.h"
+
+#import "BiometryCloudViewController_iPhone.h"
+#import "BiometryCloudViewController_iPad.h"
+
+@implementation BiometryCloudViewController
 
 //create the setters and getters for the parameters of the cammera
 
-@synthesize needsAutoExposure=_needsAutoExposure, needsWhiteBalance=_needsWhiteBalance, pointOfExposure=_pointOfExposure, scale=_scale, canSwitchCamera=_canSwitchCamera, consequentPhotos=_consequentPhotos, libraryDelegate;
+@synthesize needsAutoExposure=_needsAutoExposure, needsWhiteBalance=_needsWhiteBalance, pointOfExposure=_pointOfExposure, scale=_scale, canSwitchCamera=_canSwitchCamera, consequentPhotos=_consequentPhotos, inputRequired=_inputRequired, requestAnswerRequired=_requestAnswerRequired, libraryDelegate;
 
 #pragma mark - Camera Methods
 
@@ -280,36 +290,6 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
 	[pool drain];
 } 
 
--(void) doFlash
-{
-    //Flash sound
-    if (inputRequired || requestAnswerRequired || _consequentPhotos > 1) {
-        
-        [audioHandler playCameraSound];
-    }
-    //Access sound
-    else {
-    
-        [audioHandler playPassOrDenySound:YES];
-    }
-    
-	UIView *flashView = [[UIView alloc] initWithFrame:[cameraView frame]];
-	[flashView setBackgroundColor:[UIColor whiteColor]];
-	[flashView setAlpha:0.f];
-	[[[self view] window] addSubview:flashView];
-	
-	[UIView animateWithDuration:.5f
-					 animations:^{
-						 [flashView setAlpha:1.f];
-						 [flashView setAlpha:0.f];
-					 }
-					 completion:^(BOOL finished){
-						 [flashView removeFromSuperview];
-						 [flashView release];
-					 }
-	 ];
-}
-
 #pragma mark - Initialization Methods
 
 -(void)  startCaptureAndRecognize {
@@ -323,6 +303,23 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
 }
 
 #pragma mark - Parameters setting
+
+//main settings
+- (void) setConsequentPhotos:(int)consequentPhotos {
+
+    _consequentPhotos = consequentPhotos;
+    
+    //Store only if _consequentPhotos is set to infinite and answer is not required
+    [requestHandler setStoreRequests:!_consequentPhotos && !_requestAnswerRequired]; 
+}
+
+- (void) setRequestAnswerRequired:(BOOL)requestAnswerRequired {
+
+    _requestAnswerRequired = requestAnswerRequired;
+    
+    //Store only if _consequentPhotos is set to infinite and answer is not required
+    [requestHandler setStoreRequests:!_consequentPhotos && !_requestAnswerRequired]; 
+}
 
 //setting of params for the cammera.
 
@@ -401,26 +398,59 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
 	return [NSString stringWithCString:buffer encoding:NSUTF8StringEncoding];
 }
 
-#pragma mark - CheckingViewDelegate
+#pragma mark - CheckView 
 
 //not in delegate but needed
 - (void) showCheckView {
 
     //play sound
-    if (!requestAnswerRequired) {
+    if (_inputRequired && !_requestAnswerRequired) {
         
         [audioHandler playPassOrDenySound:YES];
     }
     
     //show checking view
-    [_checkView showCheckViewForFace:detectedFaceImage inTimeStamp:[self currentTime] waitingForAnswer:requestAnswerRequired];
-    
-    [detectedFaceImage release];
+    [_checkView showCheckViewForFace:detectedFaceImage inTimeStamp:[self currentTime] waitingForAnswer:_requestAnswerRequired];
 }
 
 - (void) checkViewDone {
     
     [self startCaptureAndRecognize];
+}
+
+-(void) doFlash
+{
+    //Flash sound
+    if (_inputRequired || _requestAnswerRequired || _consequentPhotos > 1) {
+        
+        [audioHandler playCameraSound];
+    }
+    else {
+        
+        [audioHandler playPassOrDenySound:YES];
+    }
+    
+	UIView *flashView = [[UIView alloc] initWithFrame:[self.view.window frame]];
+	[flashView setBackgroundColor:[UIColor whiteColor]];
+	[flashView setAlpha:0.f];
+	[[[self view] window] addSubview:flashView];
+	
+	[UIView animateWithDuration:.5f
+					 animations:^{
+						 [flashView setAlpha:1.f];
+						 [flashView setAlpha:0.f];
+					 }
+					 completion:^(BOOL finished){
+						 [flashView removeFromSuperview];
+						 [flashView release];
+					 }
+	 ];
+    
+    //Show CheckView
+    if (!_inputRequired) {
+        
+        [self showCheckView];
+    }
 }
 
 #pragma mark - BiometryDelegate methods
@@ -448,6 +478,31 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     return frameImage;
 }
 
+- (CGRect) getValidROI {
+
+    return _drawingView.limitRectView.frame; //MASK
+}
+
+- (CGRect) getDetectionROI {
+
+    return CGRectMake(-previewLayer.frame.origin.x/_scale - 20, -previewLayer.frame.origin.y/_scale - 20, previewLayer.bounds.size.width/_scale + 40, previewLayer.bounds.size.height/_scale + 40);
+}
+
+- (CGSize) getViewSize {
+
+    return self.view.frame.size;
+}
+
+- (void) setDetectedFaceImage: (UIImage*) image {
+
+    if (detectedFaceImage) {
+        [detectedFaceImage release];
+    }
+    
+    detectedFaceImage = image;
+    [detectedFaceImage retain];
+}
+
 - (void) successfullFaceDetection:(UIImage*) face {
 
     debugLog(@"Face ready to send!");
@@ -457,11 +512,10 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     
     [self performSelectorOnMainThread:@selector(doFlash) withObject:nil waitUntilDone:NO];
     
-    detectedFaceImage = face;
-    [detectedFaceImage retain];
+    [self setDetectedFaceImage:face];
     
     //Show input view
-    if (inputRequired) {
+    if (_inputRequired) {
         
         [_inputView performSelectorOnMainThread:@selector(showAnimated:) withObject:[NSNumber numberWithBool:TRUE] waitUntilDone:NO];
     }
@@ -488,11 +542,6 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
             
                 [self startCaptureAndRecognize];
             }
-        }
-        //If consequentPhotos is set to 1 or 0, show checking view to continue
-        else {
-            
-            [self performSelectorOnMainThread:@selector(showCheckView) withObject:nil waitUntilDone:NO];
         }
 
     }
@@ -545,7 +594,7 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
 
 - (BOOL) isRequestAnswerRequired {
 
-    return requestAnswerRequired;
+    return _requestAnswerRequired;
 }
 
 #pragma mark - InputViewDelegate Methods
@@ -562,8 +611,6 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
         //Notify library's delegate face is captured
         [libraryDelegate faceCaptured:[UIImage imageWithCGImage:[detectedFaceImage CGImage] scale:1.0 orientation:UIImageOrientationRight]];
         
-        //release the face
-        [detectedFaceImage release];
     }
     else {
         
@@ -580,6 +627,22 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
 }
 
 #pragma mark - View lifecycle
+//Main method to initialize the view controller
++ (id) new {
+
+    BiometryCloudViewController *newViewController;
+    
+    if (UI_USER_INTERFACE_IDIOM() == UIUserInterfaceIdiomPhone) {
+        
+        newViewController = [[BiometryCloudViewController_iPhone alloc] initWithNibName:@"BiometryCloudViewController_iPhone" bundle:[NSBundle mainBundle]];
+    }
+    else {
+    
+       newViewController = [[BiometryCloudViewController_iPad alloc] initWithNibName:@"BiometryCloudViewController_iPad" bundle:[NSBundle mainBundle]]; 
+    }
+    
+    return newViewController;
+}
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
@@ -600,16 +663,13 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
         [self setNeedsWhiteBalance:YES];
         [self setNeedsAutoExposure:NO];
         
-        //default to 1
-        _consequentPhotos = 1;
+        //Default parameters
+        _consequentPhotos = 0; // --> Infinite (Clockwise behavior)
+        _inputRequired = NO;
+        _requestAnswerRequired = NO;
         
-        //test
-        inputRequired = TRUE;
-        _consequentPhotos = 0; // --> Infinite (for clockwise)
-        requestAnswerRequired = TRUE;
-        
-        //Store only if _consequentPhotos is set to 0 (clockwise behavior) and answe is not required
-        [requestHandler setStoreRequests:!_consequentPhotos && !requestAnswerRequired]; 
+        //Store only if _consequentPhotos is set to infinite and answer is not required
+        [requestHandler setStoreRequests:!_consequentPhotos && !_requestAnswerRequired]; 
     }
     return self;
 }
@@ -635,17 +695,14 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
 - (void)viewDidLoad
 {
     [super viewDidLoad];
+    
     [self initCapture];
     
-    //Biometry detector parameters
-    biometryDetector.viewSize = self.view.frame.size;
-    biometryDetector.validROI = _drawingView.maskRect; //MASK
-    biometryDetector.detectionROI = CGRectMake(-previewLayer.frame.origin.x/_scale - 20, -previewLayer.frame.origin.y/_scale - 20, previewLayer.bounds.size.width/_scale + 40, previewLayer.bounds.size.height/_scale + 40);
-    
     //CheckView transformation
-    _checkView.faceImage.layer.transform = CATransform3DConcat(CATransform3DMakeScale(_scale, _scale, 0), CATransform3DMakeRotation(M_PI, 0.0f, 1.0f, 0.0f));
+    _checkView.faceImage.layer.transform = CATransform3DMakeRotation(M_PI, 0.0f, 1.0f, 0.0f);
     _checkView.faceImage.layer.contentsGravity = kCAGravityResizeAspectFill;
-    _checkView.faceImage.bounds = biometryDetector.detectionROI;
+    _checkView.faceImage.bounds = CGRectMake(-previewLayer.frame.origin.x/_scale - 20, -previewLayer.frame.origin.y/_scale - 20, previewLayer.bounds.size.width/_scale + 40, previewLayer.bounds.size.height/_scale + 40);
+    _checkView.faceImage.frame = self.view.frame;
 }
 
 -(void) viewWillAppear:(BOOL)animated 

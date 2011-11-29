@@ -12,7 +12,6 @@
 @implementation BiometryDetector
 
 @synthesize delegate;
-@synthesize detectionROI, validROI, viewSize;
 
 #pragma mark - Object Lifecycle
 
@@ -107,6 +106,11 @@
         UIImage	*frameImage = [delegate getCurrentFrame];
 		
         if (frameImage.CGImage) {
+            
+            CGRect detectionROI = [delegate getDetectionROI];
+            CGSize viewSize = [delegate getViewSize];
+            CGRect validROI = [delegate getValidROI];
+            
             
             //Crop the image to ROI
             UIImage *img = [imageHandler imageByCropping:frameImage toRect:[imageHandler convertRect:CGRectMake(detectionROI.origin.x, detectionROI.origin.y, detectionROI.size.width, detectionROI.size.height) fromContextSize:viewSize toContextSize:frameImage.size]];

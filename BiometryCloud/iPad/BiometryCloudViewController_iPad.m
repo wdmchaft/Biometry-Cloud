@@ -1,24 +1,21 @@
 //
-//  CameraViewController_iPhone.m
+//  BiometryCloudViewController_iPad.m
 //  BiometryCloud
 //
 //  Created by Andrés Munita Irarrázaval on 06-10-11.
 //  Copyright 2011 Biometry Cloud. All rights reserved.
 //
 
-#import "CameraViewController_iPhone.h"
+#import "BiometryCloudViewController_iPad.h"
 
-
-@implementation CameraViewController_iPhone
+@implementation BiometryCloudViewController_iPad
 
 - (id)initWithNibName:(NSString *)nibNameOrNil bundle:(NSBundle *)nibBundleOrNil
 {
     self = [super initWithNibName:nibNameOrNil bundle:nibBundleOrNil];
     if (self) {
         // Custom initialization
-        [self setScale:1.3];
-        
-        
+        [self setScale:1.6];
     }
     return self;
 }
@@ -35,10 +32,10 @@
 
 - (void)viewDidLoad
 {
+    self.view.frame = [[UIScreen mainScreen] applicationFrame];
+    
     [super viewDidLoad];
     // Do any additional setup after loading the view from its nib.
-    
- 
 }
 
 - (void)viewDidUnload
@@ -51,8 +48,7 @@
 - (BOOL)shouldAutorotateToInterfaceOrientation:(UIInterfaceOrientation)interfaceOrientation
 {
     // Return YES for supported orientations
-    return (interfaceOrientation == UIInterfaceOrientationPortrait);
+	return (interfaceOrientation == UIInterfaceOrientationPortrait);
 }
-
 
 @end

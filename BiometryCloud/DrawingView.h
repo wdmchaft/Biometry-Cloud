@@ -19,8 +19,6 @@
     
     CGRect mouthRect;
     
-    CGRect maskRect;
-    
     BOOL distanceOK;
     
     BOOL positionOK;
@@ -28,6 +26,8 @@
     IBOutlet UILabel *feedbackLabel;
     
     IBOutlet UIImageView *animatingImage;
+    
+    IBOutlet UIView *limitRectView;
     
     NSMutableArray *getCloserImages;
     
@@ -60,17 +60,14 @@
 
 - (void) hideFeedbackWithDelay;
 
--(void) showFeedback;
-
-
-
-
-@property (nonatomic, assign) CGRect maskRect;
+- (void) showFeedback;
 
 @property (nonatomic, assign) BOOL distanceOK;
 
 @property (nonatomic, assign) BOOL positionOK;
 
 @property (nonatomic, assign) BOOL mirroredRect;
+
+@property (nonatomic, assign) UIView *limitRectView;
 
 @end

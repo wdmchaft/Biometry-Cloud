@@ -7,12 +7,12 @@
 //
 
 #import "BiometryCloudAppDelegate.h"
-#import "CameraViewController_iPhone.h"
+#import "BiometryCloudViewController_iPhone.h"
 
 @interface BiometryCloudAppDelegate_iPhone : BiometryCloudAppDelegate
 {
 }
 
-@property (nonatomic, retain) IBOutlet CameraViewController_iPhone *viewController;
+@property (nonatomic, retain) IBOutlet BiometryCloudViewController_iPhone *viewController;
 
 @end
