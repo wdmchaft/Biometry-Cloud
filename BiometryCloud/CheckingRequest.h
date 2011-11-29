@@ -10,7 +10,7 @@
 
 #import "ASIFormDataRequest.h"
 
-@interface CheckingRequest : ASIFormDataRequest {
+@interface CheckingRequest : NSObject {
     
     UIImage *face;
     double lat;
