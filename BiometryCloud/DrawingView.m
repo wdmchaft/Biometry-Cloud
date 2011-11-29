@@ -10,7 +10,7 @@
 
 @implementation DrawingView
 
-@synthesize limitRect, distanceOK, positionOK, mirroredRect;
+@synthesize limitRectView, distanceOK, positionOK, mirroredRect;
 
 - (id) initWithCoder:(NSCoder *)aDecoder {
 
@@ -125,7 +125,7 @@
     
     //Draw maskRect
     CGContextSetRGBStrokeColor(context, 0, 0, 0, 0.8);
-    CGContextAddRect(context, limitRect);
+    CGContextAddRect(context, limitRectView.frame);
     CGContextStrokePath(context);
     
     //Set faceRect color
@@ -189,7 +189,7 @@
             feedbackLabel.textColor = [UIColor blackColor];
             feedbackLabel.textAlignment=UITextAlignmentCenter;
             feedbackLabel.text = NSLocalizedString(@"center_feedback", @"center_message");//@"Centre su cara";
-            animatingImage.frame = limitRect;
+            animatingImage.frame = limitRectView.frame;
             currentFeedback=@"centerFace";
             if (animating) {
                 

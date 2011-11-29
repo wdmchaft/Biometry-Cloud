@@ -19,9 +19,7 @@
         NSArray *array = [[NSBundle mainBundle] loadNibNamed:@"DrawingView_iPhone" owner:self options:nil];
         [self addSubview:[array objectAtIndex:0]];
         
-        limitRect = limitRectView.frame;
-        
-        feedbackLabel.frame = CGRectMake(limitRect.origin.x, limitRect.origin.y+limitRect.size.height, limitRect.size.width, feedbackLabel.frame.size.height);
+        feedbackLabel.frame = CGRectMake(limitRectView.frame.origin.x, limitRectView.frame.origin.y+limitRectView.frame.size.height, limitRectView.frame.size.width, feedbackLabel.frame.size.height);
         
         initialFrame=animatingImage.frame;
     }

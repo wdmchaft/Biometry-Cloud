@@ -478,6 +478,21 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
     return frameImage;
 }
 
+- (CGRect) getValidROI {
+
+    return _drawingView.limitRectView.frame; //MASK
+}
+
+- (CGRect) getDetectionROI {
+
+    return CGRectMake(-previewLayer.frame.origin.x/_scale - 20, -previewLayer.frame.origin.y/_scale - 20, previewLayer.bounds.size.width/_scale + 40, previewLayer.bounds.size.height/_scale + 40);
+}
+
+- (CGSize) getViewSize {
+
+    return self.view.frame.size;
+}
+
 - (void) setDetectedFaceImage: (UIImage*) image {
 
     if (detectedFaceImage) {
@@ -681,20 +696,12 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
 {
     [super viewDidLoad];
     
-    //porperly set limitRect dimensions
-    [_drawingView setLimitRectDimensions];
-    
     [self initCapture];
-    
-    //Biometry detector parameters
-    biometryDetector.viewSize = self.view.frame.size;
-    biometryDetector.validROI = _drawingView.limitRect; //MASK
-    biometryDetector.detectionROI = CGRectMake(-previewLayer.frame.origin.x/_scale - 20, -previewLayer.frame.origin.y/_scale - 20, previewLayer.bounds.size.width/_scale + 40, previewLayer.bounds.size.height/_scale + 40);
     
     //CheckView transformation
     _checkView.faceImage.layer.transform = CATransform3DMakeRotation(M_PI, 0.0f, 1.0f, 0.0f);
     _checkView.faceImage.layer.contentsGravity = kCAGravityResizeAspectFill;
-    _checkView.faceImage.bounds = biometryDetector.detectionROI;
+    _checkView.faceImage.bounds = CGRectMake(-previewLayer.frame.origin.x/_scale - 20, -previewLayer.frame.origin.y/_scale - 20, previewLayer.bounds.size.width/_scale + 40, previewLayer.bounds.size.height/_scale + 40);
     _checkView.faceImage.frame = self.view.frame;
 }
 

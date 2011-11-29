@@ -12,6 +12,10 @@
 @protocol BiometryDetectorDelegate
 
 - (UIImage *) getCurrentFrame;
+- (CGSize) getViewSize;
+- (CGRect) getValidROI;
+- (CGRect) getDetectionROI;
+
 - (void) faceDetectedInRect: (CGRect) rect centered: (BOOL) centered close: (BOOL) close light: (BOOL) light aligned: (BOOL) aligned;
 - (void) successfullFaceDetection:(UIImage*) face;
 - (void) noFaceDetected;
@@ -27,11 +31,6 @@
     //Queue for detection
     NSOperationQueue *threadQueue;
     
-    //Parameters for correct image size handling
-    CGRect detectionROI;
-    CGRect validROI;
-    CGSize viewSize;
-    
     //Array to store last rects and see if they are aligned
     NSMutableArray *lastRects;
     int nRects;
@@ -44,10 +43,6 @@
 }
 
 @property (nonatomic, assign) id<BiometryDetectorDelegate> delegate;
-
-@property (nonatomic, assign) CGRect detectionROI;
-@property (nonatomic, assign) CGRect validROI;
-@property (nonatomic, assign) CGSize viewSize;
 
 - (void) startFaceDetection;
 - (void) stopFaceDetection;

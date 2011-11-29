@@ -19,8 +19,6 @@
     
     CGRect mouthRect;
     
-    CGRect limitRect;
-    
     BOOL distanceOK;
     
     BOOL positionOK;
@@ -70,6 +68,6 @@
 
 @property (nonatomic, assign) BOOL mirroredRect;
 
-@property (nonatomic, assign) CGRect limitRect;
+@property (nonatomic, assign) UIView *limitRectView;
 
 @end
