@@ -31,12 +31,6 @@
     return self;
 }
 
-- (void)dealloc
-{
-    
-    
-    [super dealloc];
-}
 
 #pragma mark - Input Related Methods
 
@@ -156,7 +150,6 @@
         UIAlertView *alert = [[UIAlertView alloc] initWithTitle:@"Error" message:[NSString stringWithFormat:@"El %@ ingresado es incorrecto", [_formatterDelegate getInputName]] delegate:self cancelButtonTitle:@"Aceptar" otherButtonTitles:nil];
         
         [alert show];
-        [alert release];
     }
 }
 

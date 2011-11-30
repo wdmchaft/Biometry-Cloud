@@ -24,9 +24,8 @@
 	NSString *responseString = [[NSString alloc] initWithData:data encoding:NSUTF8StringEncoding];
 	
 	NSError *error;
-	SBJsonParser *json = [[SBJsonParser new] autorelease];
+	SBJsonParser *json = [SBJsonParser new];
 	NSDictionary *dataDict = [json objectWithString:responseString error:&error];
-	[responseString release];	
 	
 	if (dataDict == nil) {
 		
@@ -89,7 +88,6 @@
     }
     else {
     
-        [request release];
     }
 }
 
@@ -115,7 +113,6 @@
     
     debugLog(@"Checking reply received: %@", resp);
     
-    [resp release];
     
     NSDictionary *answerDict = [self parseJSONCheckingData:[request responseData]];
     
@@ -135,7 +132,6 @@
         [self performSelector:@selector(resendCheckingRequests) withObject:nil afterDelay:2];
     }
     
-    [request release];
 }
 
 - (void) checkingRequestFailed {
@@ -175,7 +171,6 @@
             [self sendStoredCheckingRequest:request];
         }
         
-        [array release];
     }
     else if (!n) {
         
@@ -197,7 +192,6 @@
     
     currentLocation = [newLocation copy];
     
-    [aux release];
 }
 
 #pragma mark - Reachability Notification Handling
@@ -246,7 +240,7 @@
         [[NSNotificationCenter defaultCenter] addObserver:self selector:@selector(reachabilityChanged:) name:kReachabilityChangedNotification object:nil];
         
         //Reachability initialization
-        reachability = [[Reachability reachabilityForInternetConnection] retain];
+        reachability = [Reachability reachabilityForInternetConnection];
         [reachability startNotifier];
         
         //Default URL
@@ -259,14 +253,5 @@
     return self;
 }
 
-- (void) dealloc {
-    
-    [locationManager release];
-    [currentLocation release];
-    [dataHandler release];
-    [reachability release];
-    
-    [super dealloc];
-}
 
 @end

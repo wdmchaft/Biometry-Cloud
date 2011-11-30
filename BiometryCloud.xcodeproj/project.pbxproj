@@ -1387,6 +1387,7 @@
 		F122C6AC143E1D7000E2FFE8 /* Debug */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BiometryCloud/BiometryCloudApp-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;
@@ -1409,6 +1410,7 @@
 		F122C6AD143E1D7000E2FFE8 /* Release */ = {
 			isa = XCBuildConfiguration;
 			buildSettings = {
+				CLANG_ENABLE_OBJC_ARC = YES;
 				GCC_PRECOMPILE_PREFIX_HEADER = YES;
 				GCC_PREFIX_HEADER = "BiometryCloud/BiometryCloudApp-Prefix.pch";
 				GCC_VERSION = com.apple.compilers.llvm.clang.1_0;

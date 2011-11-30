@@ -13,15 +13,5 @@
 
 @synthesize face, lat, lng, time, legal_id;
 
-- (void) dealloc {
-    
-    [face release];
-    
-    [time release];
-    
-    [legal_id release];
-    
-    [super dealloc];
-}
 
 @end

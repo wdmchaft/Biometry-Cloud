@@ -30,7 +30,7 @@
 
 {
     //Library's delegate
-    id<BiometryCloudDelegate> libraryDelegate;
+    id<BiometryCloudDelegate> __unsafe_unretained libraryDelegate;
     
     BOOL hasFrontalCamera;
     AVCaptureDeviceInput *captureInput;
@@ -79,7 +79,7 @@
 }
 
 //The delegate
-@property (nonatomic, assign) id<BiometryCloudDelegate> libraryDelegate;
+@property (nonatomic, unsafe_unretained) id<BiometryCloudDelegate> libraryDelegate;
 
 //Parameters
 @property (nonatomic, assign) int consequentPhotos;

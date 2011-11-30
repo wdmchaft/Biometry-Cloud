@@ -13,6 +13,6 @@
 {
 }
 
-@property (nonatomic, retain) IBOutlet BiometryCloudViewController_iPhone *viewController;
+@property (nonatomic, strong) IBOutlet BiometryCloudViewController_iPhone *viewController;
 
 @end

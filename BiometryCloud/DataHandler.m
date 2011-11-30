@@ -30,13 +30,6 @@
     return self;
 }
 
-- (void)dealloc {
-
-	[databaseName release];
-	[databasePath release];
-
-    [super dealloc];
-}
 
 -(void) checkAndCreateDatabase{
 	
@@ -47,7 +40,6 @@
 	// of the database and to copy it over if required
 	NSFileManager *fileManager = [NSFileManager defaultManager];
 	
-	[databasePath retain];
 	
 	// Check if the database has already been created in the users filesystem
 	dbsuccess = [fileManager fileExistsAtPath:databasePath];
@@ -62,7 +54,7 @@
         [fileManager copyItemAtPath:databasePathFromApp toPath:databasePath error:nil];
 	}
 	
-	[fileManager release];//must be released
+	//must be released
 }
 
 #pragma mark - Checking Requests Handling
@@ -71,7 +63,6 @@
 	
 	writing = TRUE;
 	
-	[databasePath retain];
 	
 	// Setup the database object
 	sqlite3 *database;
@@ -112,7 +103,6 @@
 - (int) areCheckingRequestsQueued {
 	
 	if (!writing) {
-		[databasePath retain];
 		
 		// Setup the database object
 		sqlite3 *database;
@@ -160,7 +150,6 @@
 - (NSMutableArray *) getAllCheckingRequests {
 	
 	if (!writing) {
-		[databasePath retain];
 		
 		NSMutableArray *array = [[NSMutableArray alloc] init];
 		
@@ -186,7 +175,7 @@
                     NSString *legal_id = [NSString stringWithUTF8String:(char *)sqlite3_column_text(compiledStatement, 5)];
 					
 					// Create a new request object with the data from the database
-					CheckingRequest *request = [[[CheckingRequest alloc] initWithURL:nil] autorelease];
+					CheckingRequest *request = [[CheckingRequest alloc] initWithURL:nil];
                     
                     request.face = [UIImage imageWithData:face_data];
                     request.lat = lat;
@@ -196,7 +185,6 @@
                     
                     [array addObject:request];
                     
-					[face_data release];
 				}
 			}
 			else {
@@ -226,7 +214,6 @@
 - (NSMutableArray *) getNCheckingRequests:(int) n {
 	
 	if (!writing) {
-		[databasePath retain];
 		
 		NSMutableArray *array = [[NSMutableArray alloc] init];
 		
@@ -262,7 +249,6 @@
                     
                     [array addObject:request];
                     
-					[face_data release];
 				}
 			}
 			else {
@@ -293,7 +279,6 @@
 - (void) deleteCheckingRequest:(CheckingRequest *) request {
 
     if (!writing) {
-		[databasePath retain];
 		
 		// Setup the database object
 		sqlite3 *database;

@@ -19,7 +19,7 @@
 
 @interface InputView : UIView <UITextFieldDelegate> {
     
-    IBOutlet id<InputViewDelegate> delegate;
+    IBOutlet id<InputViewDelegate> __unsafe_unretained delegate;
     
     //Validator delegate
     id<InputFormatterDelegate> _formatterDelegate;
@@ -40,8 +40,8 @@
     IBOutlet UITextField *_dummyField;
 }
 
-@property (nonatomic, assign) id<InputViewDelegate> delegate;
-@property (nonatomic, retain) id<InputFormatterDelegate> formatterDelegate;
+@property (nonatomic, unsafe_unretained) id<InputViewDelegate> delegate;
+@property (nonatomic, strong) id<InputFormatterDelegate> formatterDelegate;
 
 - (void) showAnimated:(BOOL) animated;
 - (void) hideAnimated:(BOOL) animated;

@@ -19,10 +19,12 @@
     NSString *legal_id;
 }
 
-@property (nonatomic, retain) UIImage *face;
+
+
+@property (nonatomic, strong) UIImage *face;
 @property (nonatomic, assign) double lat;
 @property (nonatomic, assign) double lng;
-@property (nonatomic, retain) NSString *time;
-@property (nonatomic, retain) NSString *legal_id;
+@property (nonatomic, strong) NSString *time;
+@property (nonatomic, strong) NSString *legal_id;
 
 @end

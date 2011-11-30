@@ -43,7 +43,6 @@
     cvReleaseHaarClassifierCascade(&faceCascade);
     cvReleaseHaarClassifierCascade(&eyeCascade);
     cvReleaseHaarClassifierCascade(&mouthCascade);
-    [super dealloc];
 }
 
 #pragma mark -
@@ -93,7 +92,7 @@
 	
 	CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB();
 	NSData *data = [NSData dataWithBytes:image->imageData length:image->imageSize];
-	CGDataProviderRef provider = CGDataProviderCreateWithCFData((CFDataRef)data);
+	CGDataProviderRef provider = CGDataProviderCreateWithCFData((__bridge_retained CFDataRef)data);
 	CGImageRef imageRef = CGImageCreate(image->width, image->height,
 										image->depth, image->depth * image->nChannels, image->widthStep,
 										colorSpace, kCGImageAlphaNone|kCGBitmapByteOrderDefault,
@@ -109,7 +108,7 @@
 {
 	CGImageRef imageRef = CGImageCreateWithImageInRect([imageToCrop CGImage], [self convertRectToCGImage:rect fromUIImageSize:imageToCrop.size]);
     
-	UIImage *cropped = [[[UIImage alloc] initWithCGImage:imageRef scale:1.0f orientation:UIImageOrientationRight] autorelease];
+	UIImage *cropped = [[UIImage alloc] initWithCGImage:imageRef scale:1.0f orientation:UIImageOrientationRight];
 	CGImageRelease(imageRef);
 	
 	
@@ -166,12 +165,12 @@
 	// Draw results on the image
 	if(faces->total) {
 		
-		NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
+		@autoreleasepool {
 		
 		// Calc the rect of faces
-		CvRect cvrect = *(CvRect*)cvGetSeqElem(faces, 0);
-		face_rect = CGRectMake(cvrect.x * scale, cvrect.y * scale,cvrect.width * scale, cvrect.height * scale);
-		//debugLog(@"Face detected!");
+			CvRect cvrect = *(CvRect*)cvGetSeqElem(faces, 0);
+			face_rect = CGRectMake(cvrect.x * scale, cvrect.y * scale,cvrect.width * scale, cvrect.height * scale);
+			//debugLog(@"Face detected!");
         
         
         //Change OpenCV's face_rect dimensions to our needs.
@@ -189,7 +188,7 @@
          face_rect.origin.x += face_rect.size.width/5;
          face_rect.size.width -= 2*face_rect.size.width/5;
          */
-		[pool release];
+		}
 	}
 	else {
 		//debugLog(@"No face detected!");
@@ -240,7 +239,7 @@
     
     if (faces->total) {
         
-        NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
+        @autoreleasepool {
 		
 		// Calc the rect of faces
 		CvRect cvrect = *(CvRect*)cvGetSeqElem(faces, 0);
@@ -263,7 +262,7 @@
         
         //debugLog(@"H face: %f, H profile: %f",faceRect.size.height, profileRect.size.height);
         
-		[pool release];
+		}
     }
     else {
         
@@ -277,30 +276,30 @@
         
         if (faces2->total) {
             
-            NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
+            @autoreleasepool {
             
             // Calc the rect of faces
-            CvRect cvrect = *(CvRect*)cvGetSeqElem(faces2, 0);
-            
-            profileRect = CGRectMake(cvrect.x * scale, cvrect.y * scale,cvrect.width * scale, cvrect.height * scale);
-            
-            //Change OpenCV's face_rect dimensions to our needs
-            profileRect.origin.y -= profileRect.size.height/10;
-            profileRect.size.height += 2*profileRect.size.height/15;
-            
-            profileRect.origin.x += profileRect.size.width/15;
-            profileRect.size.width -= 2*profileRect.size.width/15;
-            
-            mirror = TRUE;
-            
-            if (mirr_image->width - profileRect.origin.x > faceRect.origin.x || profileRect.size.height + 8 < faceRect.size.height) {
+                CvRect cvrect = *(CvRect*)cvGetSeqElem(faces2, 0);
                 
-                profileRect = CGRectZero;
-            }
+                profileRect = CGRectMake(cvrect.x * scale, cvrect.y * scale,cvrect.width * scale, cvrect.height * scale);
+                
+                //Change OpenCV's face_rect dimensions to our needs
+                profileRect.origin.y -= profileRect.size.height/10;
+                profileRect.size.height += 2*profileRect.size.height/15;
+                
+                profileRect.origin.x += profileRect.size.width/15;
+                profileRect.size.width -= 2*profileRect.size.width/15;
+                
+                mirror = TRUE;
+                
+                if (mirr_image->width - profileRect.origin.x > faceRect.origin.x || profileRect.size.height + 8 < faceRect.size.height) {
+                    
+                    profileRect = CGRectZero;
+                }
             
             //debugLog(@"H face: %f, H profile: %f",faceRect.size.height, profileRect.size.height);
             
-            [pool release];
+            }
         }
         else {
             
@@ -492,18 +491,18 @@
         
         for(int i = 0; i < eyes->total; i++) {
             
-            NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
+            @autoreleasepool {
             
             // Calc the rect of eye
-            CvRect cvrect = *(CvRect*)cvGetSeqElem(eyes, i);
-            
-            if (cvrect.y + face_rect.origin.y > eyeRect.origin.y) {
-                eyeRect = CGRectMake(cvrect.x + roiRect.origin.x, cvrect.y + roiRect.origin.y,cvrect.width, cvrect.height);
-            }
+                CvRect cvrect = *(CvRect*)cvGetSeqElem(eyes, i);
+                
+                if (cvrect.y + face_rect.origin.y > eyeRect.origin.y) {
+                    eyeRect = CGRectMake(cvrect.x + roiRect.origin.x, cvrect.y + roiRect.origin.y,cvrect.width, cvrect.height);
+                }
             
             //[eyesArray addObject:[NSValue valueWithCGRect:eyeRect]];
             
-            [pool release];
+            }
         
             //debugLog(@"Eyes detected!");
         }
@@ -563,7 +562,7 @@
         
         //for(int i = 0; i < mouth->total; i++) {
             
-            NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
+            @autoreleasepool {
             
             // Calc the rect of eye
             CvRect cvrect = *(CvRect*)cvGetSeqElem(mouth, 0);
@@ -574,7 +573,7 @@
             
             //[eyesArray addObject:[NSValue valueWithCGRect:eyeRect]];
             
-            [pool release];
+            }
             
             //debugLog(@"Mouth detected!");
         //}

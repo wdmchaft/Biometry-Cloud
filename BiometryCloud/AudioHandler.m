@@ -18,11 +18,10 @@
     NSString *soundPath = [[NSBundle mainBundle] pathForResource:@"camera_shot" ofType:@"wav"];
     SystemSoundID soundID;
     
-    AudioServicesCreateSystemSoundID((CFURLRef)[NSURL fileURLWithPath: soundPath], &soundID);
+    AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath: soundPath], &soundID);
     
     AudioServicesPlaySystemSound(soundID);
     
-    [soundPath release];
 	
 }
 
@@ -40,11 +39,10 @@
     NSString *soundPath = [[NSBundle mainBundle] pathForResource:path ofType:@"wav"];
     SystemSoundID soundID;
     
-    AudioServicesCreateSystemSoundID((CFURLRef)[NSURL fileURLWithPath: soundPath], &soundID);
+    AudioServicesCreateSystemSoundID((__bridge CFURLRef)[NSURL fileURLWithPath: soundPath], &soundID);
     
     AudioServicesPlaySystemSound(soundID);
     
-    [soundPath release];
 }
 
 @end

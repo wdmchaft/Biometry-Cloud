@@ -22,7 +22,7 @@
         
         [indicatorView.layer setMasksToBounds:YES];
         
-        defaultColor = [[UIColor colorWithRed:44/255.0 green:99/255.0 blue:30/255.0 alpha:1] retain];
+        defaultColor = [UIColor colorWithRed:44/255.0 green:99/255.0 blue:30/255.0 alpha:1];
     }
     return self;
 }
@@ -117,15 +117,5 @@
     }];
 }
 
-- (void)dealloc
-{
-    [indicatorView release];
-    [nameLabel release];
-    [timeLabel release];
-    [iconImage release];
-    [defaultColor release];
-    
-    [super dealloc];
-}
 
 @end

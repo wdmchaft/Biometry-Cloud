@@ -28,14 +28,6 @@
     return self;
 }
 
-- (void) dealloc {
-
-    [threadQueue release];
-    [lastRects release];
-    [imageHandler release];
-    
-    [super dealloc];
-}
 
 #pragma mark - Rects Methods
 
@@ -85,7 +77,6 @@
     NSInvocationOperation *faceDetection = [[NSInvocationOperation alloc] initWithTarget:self selector:@selector(doFaceDetection) object:nil];
     [threadQueue addOperation:faceDetection];
     
-    [faceDetection release];
 }
 
 - (void) stopFaceDetection {
@@ -242,7 +233,6 @@
             }
 		}
         
-        [frameImage release];
 	}
 	
 	if (detecting) {
@@ -250,7 +240,6 @@
 		NSInvocationOperation *faceDetection = [[NSInvocationOperation alloc] initWithTarget:self selector:@selector(doFaceDetection) object:nil];
 		[threadQueue addOperation:faceDetection];
 		
-		[faceDetection release];
 	}
 }
 

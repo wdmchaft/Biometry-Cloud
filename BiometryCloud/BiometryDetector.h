@@ -24,7 +24,7 @@
 
 @interface BiometryDetector : NSObject {
     
-    id<BiometryDetectorDelegate> delegate;
+    id<BiometryDetectorDelegate> __unsafe_unretained delegate;
     
     ImageHandler *imageHandler;
     
@@ -42,7 +42,7 @@
     int histThreshold;
 }
 
-@property (nonatomic, assign) id<BiometryDetectorDelegate> delegate;
+@property (nonatomic, unsafe_unretained) id<BiometryDetectorDelegate> delegate;
 
 - (void) startFaceDetection;
 - (void) stopFaceDetection;

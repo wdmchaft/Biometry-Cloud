@@ -34,16 +34,6 @@
     return self;
 }
 
-- (void) dealloc {
-
-    [request release];
-    [responseData release];
-    
-    [postData release];
-    [postFiles release];
-    
-    [super dealloc];
-}
 
 #pragma mark - Post Methods
 
@@ -82,7 +72,7 @@
 - (void) start
 {
     
-    NSString *charset = (NSString *)CFStringConvertEncodingToIANACharSetName(CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding));
+    NSString *charset = (__bridge NSString *)CFStringConvertEncodingToIANACharSetName(CFStringConvertNSStringEncodingToEncoding(NSUTF8StringEncoding));
 	
 	// Set your own boundary string only if really obsessive. We don't bother to check if post data contains the boundary, since it's pretty unlikely that it does.
 	
@@ -145,11 +135,9 @@
 
 - (void) connection:(NSURLConnection *)connection didFailWithError:(NSError *)error {
     
-    [connection release];
     
     [delegate performSelector:didFailSelector];
     
-    [self release];
 }
 
 - (void)connection:(NSURLConnection *)connection didReceiveResponse:(NSURLResponse *)response {
@@ -164,7 +152,6 @@
 
 - (void)connectionDidFinishLoading:(NSURLConnection *)connection {
     
-    [connection release];
     
     [delegate performSelector:didFinishSelector withObject:self];
 }

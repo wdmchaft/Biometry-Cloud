@@ -16,7 +16,7 @@
 
 @interface CheckView : UIView {
     
-    IBOutlet id<CheckViewDelegate> delegate;
+    IBOutlet id<CheckViewDelegate> __unsafe_unretained delegate;
     
     IBOutlet UIImageView *iconImage;
     IBOutlet UILabel *timeLabel;
@@ -27,8 +27,8 @@
     UIColor *defaultColor;
 }
 
-@property (nonatomic, assign) id<CheckViewDelegate> delegate;
-@property (nonatomic, retain) UIImageView *faceImage;
+@property (nonatomic, unsafe_unretained) id<CheckViewDelegate> delegate;
+@property (nonatomic, strong) UIImageView *faceImage;
 
 - (void) showCheckViewForFace:(UIImage *) face inTimeStamp:(NSString *) time waitingForAnswer:(BOOL) wait;
 

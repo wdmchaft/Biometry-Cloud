@@ -52,8 +52,8 @@
 	{
 		captureDevice = [AVCaptureDevice defaultDeviceWithMediaType:AVMediaTypeVideo];
         
-		AVCaptureDeviceInput* newInput= [[[AVCaptureDeviceInput alloc] 
-										  initWithDevice:captureDevice error:nil] autorelease];
+		AVCaptureDeviceInput* newInput= [[AVCaptureDeviceInput alloc] 
+										  initWithDevice:captureDevice error:nil];
 		[captureSession removeInput:captureInput];
 		captureInput=newInput;
 		if ([captureSession canAddInput:newInput]) 
@@ -77,8 +77,8 @@
             }
             
             
-            AVCaptureDeviceInput* newInput= [[[AVCaptureDeviceInput alloc] 
-                                              initWithDevice:captureDevice error:nil] autorelease];
+            AVCaptureDeviceInput* newInput= [[AVCaptureDeviceInput alloc] 
+                                              initWithDevice:captureDevice error:nil];
             [captureSession removeInput:captureInput];
             captureInput=newInput;
             
@@ -169,7 +169,7 @@
     
     //now we have to setup the capture input: it needs to be like this so we can change the input device or it's configuration
     
-    captureInput = [[[AVCaptureDeviceInput alloc] initWithDevice:captureDevice error:nil] autorelease];
+    captureInput = [[AVCaptureDeviceInput alloc] initWithDevice:captureDevice error:nil];
     
     //We need to setup the camera
     
@@ -242,52 +242,52 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
 	//We create an autorelease pool because as we are not in the main_queue our code is
     //not executed in the main thread. So we have to create an autorelease pool for the thread we are in
 
-	NSAutoreleasePool * pool = [[NSAutoreleasePool alloc] init];
-    CVImageBufferRef imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer); 
-    
-    //Lock the image buffer
-    
-    CVPixelBufferLockBaseAddress(imageBuffer,0); 
+	@autoreleasepool {
+        CVImageBufferRef imageBuffer = CMSampleBufferGetImageBuffer(sampleBuffer); 
+        
+        //Lock the image buffer
+        
+        CVPixelBufferLockBaseAddress(imageBuffer,0); 
 	
-    //Get information about the image
-    
-    uint8_t *baseAddress = (uint8_t *)CVPixelBufferGetBaseAddress(imageBuffer);
-    size_t bytesPerRow = CVPixelBufferGetBytesPerRow(imageBuffer); 
-    size_t width = CVPixelBufferGetWidth(imageBuffer); 
-    size_t height = CVPixelBufferGetHeight(imageBuffer);  
-    
-    //Create a CGImageRef from the CVImageBufferRef
-    
-    CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB(); 
+        //Get information about the image
+        
+        uint8_t *baseAddress = (uint8_t *)CVPixelBufferGetBaseAddress(imageBuffer);
+        size_t bytesPerRow = CVPixelBufferGetBytesPerRow(imageBuffer); 
+        size_t width = CVPixelBufferGetWidth(imageBuffer); 
+        size_t height = CVPixelBufferGetHeight(imageBuffer);  
+        
+        //Create a CGImageRef from the CVImageBufferRef
+        
+        CGColorSpaceRef colorSpace = CGColorSpaceCreateDeviceRGB(); 
 	
-    CGContextRef newContext = CGBitmapContextCreate(baseAddress, width, height, 8, bytesPerRow, colorSpace, 
+        CGContextRef newContext = CGBitmapContextCreate(baseAddress, width, height, 8, bytesPerRow, colorSpace, 
 													kCGBitmapByteOrder32Little | kCGImageAlphaPremultipliedFirst);
 	
 	CGImageRef newImage = CGBitmapContextCreateImage(newContext); 
-    
+        
 	//The next lines will be in the openCV class
 	
-    if (!copyingFrame) 
-    {
-        CGImageRef aux = currentShownFrame;
-        currentShownFrame = newImage;
-        CGImageRelease(aux);
+        if (!copyingFrame) 
+        {
+            CGImageRef aux = currentShownFrame;
+            currentShownFrame = newImage;
+            CGImageRelease(aux);
 	}
 	else 
-    {
-        CGImageRelease(newImage);
+        {
+            CGImageRelease(newImage);
 	}
 	
-    //We release some components
-    
-    CGContextRelease(newContext); 
-    CGColorSpaceRelease(colorSpace);
-    
+        //We release some components
+        
+        CGContextRelease(newContext); 
+        CGColorSpaceRelease(colorSpace);
+        
 	//We unlock the  image buffer
 	
-    CVPixelBufferUnlockBaseAddress(imageBuffer,0);
+        CVPixelBufferUnlockBaseAddress(imageBuffer,0);
 	
-	[pool drain];
+	}
 } 
 
 #pragma mark - Initialization Methods
@@ -442,7 +442,6 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
 					 }
 					 completion:^(BOOL finished){
 						 [flashView removeFromSuperview];
-						 [flashView release];
 					 }
 	 ];
     
@@ -495,12 +494,8 @@ didOutputSampleBuffer:(CMSampleBufferRef)sampleBuffer
 
 - (void) setDetectedFaceImage: (UIImage*) image {
 
-    if (detectedFaceImage) {
-        [detectedFaceImage release];
-    }
     
     detectedFaceImage = image;
-    [detectedFaceImage retain];
 }
 
 - (void) successfullFaceDetection:(UIImage*) face {

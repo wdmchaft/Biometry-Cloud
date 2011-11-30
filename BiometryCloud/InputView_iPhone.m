@@ -24,7 +24,7 @@
         [super hideAnimated:FALSE];
         
         //if (self.k == nil) {
-        kButton = [[UIButton buttonWithType:UIButtonTypeCustom] retain];
+        kButton = [UIButton buttonWithType:UIButtonTypeCustom];
         // Place the dot in the correct location on the keyboard.
         [kButton setFrame:CGRectMake(0, 163, 106, 53)];
         // Set the overlay graphics. (Use TransDecimalDown.png and TransDecimalUp.png for the Alert Style Keyboard.

@@ -27,7 +27,7 @@
     
     IBOutlet UIImageView *animatingImage;
     
-    IBOutlet UIView *limitRectView;
+    IBOutlet UIView *__unsafe_unretained limitRectView;
     
     NSMutableArray *getCloserImages;
     
@@ -68,6 +68,6 @@
 
 @property (nonatomic, assign) BOOL mirroredRect;
 
-@property (nonatomic, assign) UIView *limitRectView;
+@property (nonatomic, unsafe_unretained) UIView *limitRectView;
 
 @end

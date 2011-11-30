@@ -22,7 +22,7 @@
 @interface RequestHandler : NSObject <CLLocationManagerDelegate> {
     
     //Request Delegate
-    id<RequestHandlerDelegate> delegate;
+    id<RequestHandlerDelegate> __unsafe_unretained delegate;
     
     //WebService's URL
     NSString *checkingURL;
@@ -44,9 +44,9 @@
     BOOL connectionActive;
 }
 
-@property (nonatomic, assign) id<RequestHandlerDelegate> delegate;
+@property (nonatomic, unsafe_unretained) id<RequestHandlerDelegate> delegate;
 
-@property (nonatomic, retain) NSString *checkingURL;
+@property (nonatomic, strong) NSString *checkingURL;
 @property (nonatomic, assign) BOOL storeRequests;
 
 - (void) sendCheckingRequestWithFace: (UIImage *) face legalId: (NSString *) legal_id atTimeStamp: (NSString *) time;
