@@ -8,6 +8,8 @@
 
 #import "PostRequest.h"
 
+#import "BiometryCloudConfiguration.h"
+
 @implementation PostRequest
 
 @synthesize didFailSelector, didStartSelector, didFinishSelector, delegate, responseData;
@@ -123,7 +125,7 @@
 	//add the body to the post
 	[request setHTTPBody:postBody];
     
-    NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self startImmediately:YES];
+    NSURLConnection *connection = [[NSURLConnection alloc] initWithRequest:request delegate:self];
 }
 
 - (NSString *) responseString {
