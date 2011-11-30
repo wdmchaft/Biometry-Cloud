@@ -45,6 +45,9 @@
 		6E2A334B147BD7B200974D21 /* 8a.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E2A332D147BD7B200974D21 /* 8a.png */; };
 		6E2A334C147BD7B200974D21 /* 9.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E2A332E147BD7B200974D21 /* 9.png */; };
 		6E2A334D147BD7B200974D21 /* 9a.png in Resources */ = {isa = PBXBuildFile; fileRef = 6E2A332F147BD7B200974D21 /* 9a.png */; };
+		6E39750014856C430065F5D1 /* PostRequest.h in Headers */ = {isa = PBXBuildFile; fileRef = 6E3974FE14856C420065F5D1 /* PostRequest.h */; };
+		6E39750114856C430065F5D1 /* PostRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3974FF14856C420065F5D1 /* PostRequest.m */; };
+		6E39750214856C430065F5D1 /* PostRequest.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E3974FF14856C420065F5D1 /* PostRequest.m */; };
 		6E46136D147D74E7006C1CD1 /* BiometryCloudApp-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 6E46136C147D74E7006C1CD1 /* BiometryCloudApp-Info.plist */; };
 		6E976A6D146C1F6F00A2471A /* RutFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E976A6C146C1F6C00A2471A /* RutFormatter.m */; };
 		6E976A7B146C25C400A2471A /* MailFormatter.m in Sources */ = {isa = PBXBuildFile; fileRef = 6E976A7A146C25C400A2471A /* MailFormatter.m */; };
@@ -315,6 +318,8 @@
 		6E2A332D147BD7B200974D21 /* 8a.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 8a.png; sourceTree = "<group>"; };
 		6E2A332E147BD7B200974D21 /* 9.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 9.png; sourceTree = "<group>"; };
 		6E2A332F147BD7B200974D21 /* 9a.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = 9a.png; sourceTree = "<group>"; };
+		6E3974FE14856C420065F5D1 /* PostRequest.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = PostRequest.h; sourceTree = "<group>"; };
+		6E3974FF14856C420065F5D1 /* PostRequest.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = PostRequest.m; sourceTree = "<group>"; };
 		6E46136B147D74E7006C1CD1 /* BiometryCloudApp-Prefix.pch */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "BiometryCloudApp-Prefix.pch"; sourceTree = "<group>"; };
 		6E46136C147D74E7006C1CD1 /* BiometryCloudApp-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "BiometryCloudApp-Info.plist"; sourceTree = "<group>"; };
 		6E976A6A146C1F1300A2471A /* InputFormatterDelegate.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = InputFormatterDelegate.h; sourceTree = "<group>"; };
@@ -684,6 +689,8 @@
 				6E976A78146C259D00A2471A /* Input Formatters */,
 				6E9BE867144758FF00821C4C /* DataHandler.h */,
 				6E9BE868144758FF00821C4C /* DataHandler.m */,
+				6E3974FE14856C420065F5D1 /* PostRequest.h */,
+				6E3974FF14856C420065F5D1 /* PostRequest.m */,
 				6E9BE84314472FA000821C4C /* CheckingRequest.h */,
 				6E9BE84414472FA000821C4C /* CheckingRequest.m */,
 				F122C69B143E1D6F00E2FFE8 /* iPhone */,
@@ -857,6 +864,7 @@
 				6ED0FB88147D667900E96182 /* CheckView_iPad.h in Headers */,
 				6ED0FB89147D667900E96182 /* DrawingView_iPad.h in Headers */,
 				6ED0FB8A147D667900E96182 /* InputView_iPad.h in Headers */,
+				6E39750014856C430065F5D1 /* PostRequest.h in Headers */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1153,6 +1161,7 @@
 				6ED0FBAF147D66E000E96182 /* CheckView_iPad.m in Sources */,
 				6ED0FBB0147D66E000E96182 /* DrawingView_iPad.m in Sources */,
 				6ED0FBB1147D66E000E96182 /* InputView_iPad.m in Sources */,
+				6E39750214856C430065F5D1 /* PostRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -1191,6 +1200,7 @@
 				6E976A95146C54EB00A2471A /* CheckView_iPhone.m in Sources */,
 				6E976A98146C553000A2471A /* CheckView_iPad.m in Sources */,
 				6E2A3306147580D000974D21 /* AudioHandler.m in Sources */,
+				6E39750114856C430065F5D1 /* PostRequest.m in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

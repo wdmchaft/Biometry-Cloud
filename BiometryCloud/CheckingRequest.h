@@ -8,9 +8,9 @@
 
 #import <Foundation/Foundation.h>
 
-#import "ASIFormDataRequest.h"
+#import "PostRequest.h"
 
-@interface CheckingRequest : NSObject {
+@interface CheckingRequest : PostRequest {
     
     UIImage *face;
     double lat;

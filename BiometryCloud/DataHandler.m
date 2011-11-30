@@ -252,7 +252,7 @@
                     NSString *legal_id = [NSString stringWithUTF8String:(char *)sqlite3_column_text(compiledStatement, 5)];
 					
 					// Create a new request object with the data from the database
-					CheckingRequest *request = [[[CheckingRequest alloc] initWithURL:nil] autorelease];
+					CheckingRequest *request = [[CheckingRequest alloc] initWithURL:nil];
                     
                     request.face = [UIImage imageWithData:face_data];
                     request.lat = lat;

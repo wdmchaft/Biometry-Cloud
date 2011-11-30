@@ -38,31 +38,29 @@
 
 - (void) setCheckingRequestParams: (CheckingRequest *) request {
 
-    [request setURL:[NSURL URLWithString:checkingURL]];
+    [request setURL:checkingURL];
     
 	[request setDidFinishSelector:@selector(checkingRequestFinished:)];
-	[request setDidFailSelector:@selector(checkingRequestFailed:)];
-    [request setDidStartSelector:@selector(checkingRequestStarted:)];
+	[request setDidFailSelector:@selector(checkingRequestFailed)];
     
-	[request setData:[NSData dataWithData:UIImageJPEGRepresentation(request.face, 0.9)]
-		withFileName:@"photo.jpg"
-	  andContentType:@"image/jpeg"
-			  forKey:@"data"];
+	[request addData:[NSData dataWithData:UIImageJPEGRepresentation(request.face, 0.9)]
+        withFileName:@"photo.jpg"
+      andContentType:@"image/jpeg"
+              forKey:@"data"];
     
-    [request setPostValue:[[UIDevice currentDevice] uniqueIdentifier] forKey:@"device"];
-    [request setPostValue:[NSNumber numberWithDouble:request.lat] forKey:@"lat"];
-    [request setPostValue:[NSNumber numberWithDouble:request.lng] forKey:@"lng"];
+    [request addPostValue:[[UIDevice currentDevice] uniqueIdentifier] forKey:@"device"];
+    [request addPostValue:[NSNumber numberWithDouble:request.lat] forKey:@"lat"];
+    [request addPostValue:[NSNumber numberWithDouble:request.lng] forKey:@"lng"];
     //--> ESTOS 2 PARAMETROS NO SON TOMADOS EN CUENTA POR BIOMETRYCLOUD
-    [request setPostValue:[NSString stringWithString:request.time] forKey:@"time"];
-    [request setPostValue:[NSString stringWithString:request.legal_id] forKey:@"legal_id"];
+    [request addPostValue:[NSString stringWithString:request.time] forKey:@"time"];
+    [request addPostValue:[NSString stringWithString:request.legal_id] forKey:@"legal_id"];
     
     //PARAMS
-    [request setPostValue:@"1" forKey:@"distanceType"];
-    [request setPostValue:@"LBP" forKey:@"algorithm"];
-    [request setPostValue:@"DEMO" forKey:@"app"]; //--> DEMO POR MIENTRAS
+    [request addPostValue:@"1" forKey:@"distanceType"];
+    [request addPostValue:@"LBP" forKey:@"algorithm"];
+    [request addPostValue:@"DEMO" forKey:@"app"]; //--> DEMO POR MIENTRAS
     
-	[request setRequestMethod:@"POST"];
-	[request setDelegate:self];
+    [request setDelegate:self];
 }
 
 - (void) sendCheckingRequestWithFace: (UIImage *) face legalId: (NSString *) legal_id atTimeStamp: (NSString *) time
@@ -81,11 +79,13 @@
     }
     
     //Queue only if there are no queued requests
-    if(!_storeRequests || [[ASIHTTPRequest sharedQueue] operationCount] < 1) {
+    if(!_storeRequests  || !connectionActive) {
     
         [self setCheckingRequestParams:request];
         
-        [request startAsynchronous];
+        [request start];
+        
+        connectionActive = TRUE;
     }
     else {
     
@@ -97,7 +97,7 @@
 {	
     [self setCheckingRequestParams:request];
     
-    [request startAsynchronous];
+    [request start];
     
     debugLog(@"Stored checking request created");
 }
@@ -109,7 +109,13 @@
 
 - (void) checkingRequestFinished:(CheckingRequest *)request {
     
-    debugLog(@"Checking reply received: %@", [request responseString]);
+    connectionActive = FALSE;
+    
+    NSString *resp = [request responseString];
+    
+    debugLog(@"Checking reply received: %@", resp);
+    
+    [resp release];
     
     NSDictionary *answerDict = [self parseJSONCheckingData:[request responseData]];
     
@@ -132,8 +138,10 @@
     [request release];
 }
 
-- (void) checkingRequestFailed:(CheckingRequest *)request {
+- (void) checkingRequestFailed {
 	
+    connectionActive = FALSE;
+    
     if ([delegate isRequestAnswerRequired]) {
         
         NSDictionary *answer = [[NSDictionary alloc] initWithObjects:[NSArray arrayWithObject:@"FAIL"] forKeys:[NSArray arrayWithObject:@"debug"]];
@@ -145,24 +153,18 @@
         [self performSelector:@selector(resendCheckingRequests) withObject:nil afterDelay:2];
     }
     //If no answer required and there's no internet connection, the request isn't deleted from database
-    else if ([request isCancelled]) {
-        
-        debugLog(@"Checking request cancelled");
-    }
     else {
         
         debugLog(@"Checking request failed");
     }
-    
-    [request release];
 }
 
 - (void) resendCheckingRequests {
     
     int n = [dataHandler areCheckingRequestsQueued];
     
-    //Queue next request only if there are no requests queued
-    if (n && [[ASIHTTPRequest sharedQueue] operationCount] < 1) {
+    //Queue next request only if there are no requests active
+    if (n && !connectionActive) {
         
         NSMutableArray *array = [dataHandler getNCheckingRequests:1];
         

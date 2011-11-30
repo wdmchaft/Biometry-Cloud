@@ -19,7 +19,7 @@
 
 @end
 
-@interface RequestHandler : NSObject <CLLocationManagerDelegate, ASIHTTPRequestDelegate> {
+@interface RequestHandler : NSObject <CLLocationManagerDelegate> {
     
     //Request Delegate
     id<RequestHandlerDelegate> delegate;
@@ -40,6 +40,8 @@
     //Reachability to handle internet connection
     Reachability *reachability;
     BOOL isNetworkAvailable;
+    
+    BOOL connectionActive;
 }
 
 @property (nonatomic, assign) id<RequestHandlerDelegate> delegate;
