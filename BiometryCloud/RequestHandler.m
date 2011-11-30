@@ -83,7 +83,7 @@
     
         [self setCheckingRequestParams:request];
         
-        [request start];
+        [request performSelectorOnMainThread:@selector(start) withObject:nil waitUntilDone:NO];
         
         connectionActive = TRUE;
     }
@@ -98,6 +98,8 @@
     [self setCheckingRequestParams:request];
     
     [request start];
+    
+    connectionActive = TRUE;
     
     debugLog(@"Stored checking request created");
 }
